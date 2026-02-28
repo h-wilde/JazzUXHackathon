@@ -5,366 +5,317 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JazzDex</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
-
 <style>
-/* ═══════════════════════════════════════════════════════════
-   BRAND COLORS — edit these to change the whole color scheme
-   ═══════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════
+   BRAND COLORS — edit to retheme the whole app
+   ══════════════════════════════════════════ */
 :root {
-  --navy:     #002B5C;  /* Jazz navy — primary bg / nav */
-  --gold:     #F9A01B;  /* Jazz gold — accents / highlights */
-  --teal:     #00B2A9;  /* Jazz teal — common rarity / catch button */
-  --red:      #C8102E;  /* Jazz red — miss / error color */
-  --cream:    #F5F0E8;  /* Off-white text */
-  --bg:       #001525;  /* Page background (dark navy) */
-
-  /* Rarity colors — change these to adjust each tier's glow/border */
-  --common:   #00B2A9;
-  --rare:     #7C4DFF;
-  --epic:     #FF6D00;
-  --legendary:#F9A01B;
+  --navy:#002B5C; --gold:#F9A01B; --teal:#00B2A9;
+  --red:#C8102E;  --cream:#F5F0E8; --bg:#001525;
+  --common:#00B2A9; --rare:#7C4DFF; --epic:#FF6D00; --legendary:#F9A01B;
 }
-
-* { margin:0; padding:0; box-sizing:border-box; }
-body { background:var(--bg); color:var(--cream); font-family:'Barlow',sans-serif; min-height:100vh; overflow-x:hidden; }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--cream);font-family:'Barlow',sans-serif;min-height:100vh;overflow-x:hidden;}
 
 /* ── HEADER ── */
-header {
-  background: linear-gradient(135deg, #002044, #001020);
-  border-bottom: 3px solid var(--gold);
-  padding: 10px 20px;
-  display: flex; align-items: center; justify-content: space-between;
-  position: sticky; top: 0; z-index: 100;
-}
-.logo { font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:4px; color:var(--gold); text-shadow:0 0 24px rgba(249,160,27,.5); }
-.logo span { color: var(--teal); }
-.hdr-stats { font-family:'Barlow Condensed',sans-serif; font-size:.85rem; color:rgba(245,240,232,.55); display:flex; gap:20px; }
-.hdr-stats strong { color:var(--gold); font-size:1.1rem; }
+header{background:linear-gradient(135deg,#002044,#001020);border-bottom:3px solid var(--gold);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;color:var(--gold);text-shadow:0 0 24px rgba(249,160,27,.5);}
+.logo span{color:var(--teal);}
+.hdr-right{display:flex;align-items:center;gap:16px;}
+.hdr-stats{font-family:'Barlow Condensed',sans-serif;font-size:.85rem;color:rgba(245,240,232,.55);display:flex;gap:16px;}
+.hdr-stats strong{color:var(--gold);font-size:1.1rem;}
+.save-badge{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;color:rgba(245,240,232,.3);display:flex;align-items:center;gap:4px;}
 
 /* ── NAV ── */
-nav { background:var(--navy); display:flex; justify-content:center; gap:4px; padding:7px 12px; border-bottom:1px solid rgba(249,160,27,.2); flex-wrap:wrap; }
-.nav-btn { background:transparent; border:2px solid transparent; color:rgba(245,240,232,.55); font-family:'Barlow Condensed',sans-serif; font-size:.95rem; font-weight:700; letter-spacing:1px; padding:7px 18px; cursor:pointer; border-radius:4px; transition:all .2s; text-transform:uppercase; }
-.nav-btn:hover { color:var(--gold); border-color:rgba(249,160,27,.3); }
-.nav-btn.active { background:var(--gold); color:var(--navy); border-color:var(--gold); }
+nav{background:var(--navy);display:flex;justify-content:center;gap:3px;padding:6px 10px;border-bottom:1px solid rgba(249,160,27,.2);flex-wrap:wrap;}
+.nav-btn{background:transparent;border:2px solid transparent;color:rgba(245,240,232,.55);font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:1px;padding:6px 14px;cursor:pointer;border-radius:4px;transition:all .2s;text-transform:uppercase;}
+.nav-btn:hover{color:var(--gold);border-color:rgba(249,160,27,.3);}
+.nav-btn.active{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+.nav-btn.bear-locked{opacity:.35;}
 
-/* ── VIEW SWITCHING ── */
-.view { display:none; }
-.view.active { display:block; }
+/* ── VIEWS ── */
+.view{display:none;}
+.view.active{display:block;}
+.view-inner{padding:20px;max-width:960px;margin:0 auto;}
+.view-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:3px;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.view-title::after{content:'';flex:1;height:2px;background:linear-gradient(90deg,rgba(249,160,27,.5),transparent);}
 
-/* ══════════════════════════════════════════════════════════
-   SHARED COURT FLOOR — used on both Map and Court views
-   ══════════════════════════════════════════════════════════ */
-.court-wrap {
-  position:relative; width:100%; max-width:960px; margin:0 auto;
-  overflow:hidden; border-left:4px solid var(--gold); border-right:4px solid var(--gold);
-}
-.court-wrap::before { content:''; display:block; padding-top:54%; }  /* 54% = aspect ratio */
-.court-wrap svg.floor { position:absolute; inset:0; width:100%; height:100%; }
+/* ══════════════════
+   COURT FLOOR (shared SVG wrapper)
+   ══════════════════ */
+.court-wrap{position:relative;width:100%;max-width:960px;margin:0 auto;overflow:hidden;border-left:4px solid var(--gold);border-right:4px solid var(--gold);}
+.court-wrap::before{content:'';display:block;padding-top:54%;}
+.court-wrap svg.floor{position:absolute;inset:0;width:100%;height:100%;}
 
-/* ══════════════════════════════════════════════════════════
-   SPAWN CHARACTERS (Map view)
-   Players pop in, roam slowly, pop out when their timer runs out
-   ══════════════════════════════════════════════════════════ */
-.spawn-char {
-  position: absolute;
-  transform: translate(-50%, -100%);  /* anchor at feet */
-  cursor: pointer; z-index: 20;
-  transition: left 9s ease-in-out, top 9s ease-in-out; /* smooth roam */
-  display: flex; flex-direction: column; align-items: center;
-}
-.spawn-char.popin  { animation: pop-in  .4s cubic-bezier(.175,.885,.32,1.275) forwards; }
-.spawn-char.popout { animation: pop-out .3s ease-in forwards; pointer-events:none; }
-@keyframes pop-in  { from{transform:translate(-50%,-100%) scale(0);opacity:0} to{transform:translate(-50%,-100%) scale(1);opacity:1} }
-@keyframes pop-out { to{transform:translate(-50%,-100%) scale(0) rotate(12deg);opacity:0} }
+/* ══════════════════
+   MAP SPAWNS
+   ══════════════════ */
+.spawn-char{position:absolute;transform:translate(-50%,-100%);cursor:pointer;z-index:20;transition:left 9s ease-in-out,top 9s ease-in-out;display:flex;flex-direction:column;align-items:center;}
+.spawn-char.popin{animation:pop-in .4s cubic-bezier(.175,.885,.32,1.275) forwards;}
+.spawn-char.popout{animation:pop-out .3s ease-in forwards;pointer-events:none;}
+@keyframes pop-in{from{transform:translate(-50%,-100%) scale(0);opacity:0}to{transform:translate(-50%,-100%) scale(1);opacity:1}}
+@keyframes pop-out{to{transform:translate(-50%,-100%) scale(0) rotate(12deg);opacity:0}}
+.char-body{display:flex;flex-direction:column;align-items:center;}
+.char-shadow{width:26px;height:6px;background:rgba(0,0,0,.4);border-radius:50%;margin-top:-2px;animation:sh-bob 1.8s ease-in-out infinite;}
+@keyframes sh-bob{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.6)}}
+.char-tag{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;font-weight:700;background:rgba(0,0,0,.8);padding:2px 6px;border-radius:3px;white-space:nowrap;margin-top:4px;letter-spacing:.4px;border-left:2px solid currentColor;}
+.map-legend{background:var(--navy);padding:10px 20px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;border-top:1px solid rgba(249,160,27,.2);max-width:960px;margin:0 auto;}
+.leg-item{display:flex;align-items:center;gap:6px;}
+.leg-dot{width:10px;height:10px;border-radius:50%;}
+.map-hint{color:rgba(245,240,232,.4);font-size:.78rem;margin-left:auto;font-style:italic;}
 
-.char-body { display:flex; flex-direction:column; align-items:center; }
-.char-shadow { width:26px; height:6px; background:rgba(0,0,0,.4); border-radius:50%; margin-top:-2px; animation:sh-bob 1.8s ease-in-out infinite; }
-@keyframes sh-bob { 0%,100%{transform:scaleX(1)} 50%{transform:scaleX(.6)} }
+/* ══════════════════
+   CATCH MODAL
+   ══════════════════ */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,8,25,.93);z-index:300;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
+.modal-overlay.open{display:flex;}
+.catch-modal{background:linear-gradient(160deg,#001830,#002244);border:2px solid var(--gold);border-radius:18px;padding:24px 28px;width:min(440px,96vw);position:relative;box-shadow:0 0 80px rgba(249,160,27,.2);animation:modal-in .35s cubic-bezier(.175,.885,.32,1.275);}
+@keyframes modal-in{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-close{position:absolute;top:12px;right:14px;background:none;border:none;color:rgba(255,255,255,.4);font-size:1.4rem;cursor:pointer;}
+.modal-close:hover{color:#fff;}
+.modal-header{display:flex;align-items:center;gap:16px;margin-bottom:16px;}
+.modal-char{flex-shrink:0;}
+.modal-info{flex:1;}
+.modal-name{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:3px;color:var(--gold);line-height:1;}
+.modal-rbadge{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:2px;padding:2px 10px;border-radius:20px;text-transform:uppercase;display:inline-block;margin-top:4px;}
+/* hoop game */
+.hoop-section{background:rgba(0,0,0,.35);border-radius:12px;padding:16px;}
+.hoop-title{font-family:'Barlow Condensed',sans-serif;font-size:.85rem;color:rgba(245,240,232,.6);text-align:center;margin-bottom:10px;letter-spacing:1px;}
+.shot-row{display:flex;justify-content:center;gap:10px;margin-bottom:10px;}
+.shot-pip{width:32px;height:32px;border-radius:50%;border:2px solid rgba(255,255,255,.2);background:rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .25s;}
+.shot-pip.made{background:var(--gold);border-color:var(--gold);transform:scale(1.1);}
+.shot-pip.miss{background:var(--red);border-color:var(--red);}
+.shot-pip.pending{opacity:.4;}
+canvas#hoop-cv{width:100%;height:150px;display:block;border-radius:8px;background:rgba(0,0,10,.4);}
+.throw-btn{margin-top:10px;width:100%;background:linear-gradient(135deg,var(--gold),#c87c00);color:var(--navy);border:none;font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:3px;padding:10px;border-radius:8px;cursor:pointer;box-shadow:0 4px 18px rgba(249,160,27,.35);transition:transform .1s;}
+.throw-btn:active{transform:scale(.97);}
+.throw-btn:disabled{opacity:.35;cursor:not-allowed;}
+.fail-msg{display:none;text-align:center;color:var(--red);font-family:'Barlow Condensed',sans-serif;font-size:1rem;margin-top:8px;}
+.success-screen{display:none;text-align:center;padding:16px 0;}
+.success-screen h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold);letter-spacing:4px;}
+.success-screen p{font-family:'Barlow Condensed',sans-serif;color:rgba(245,240,232,.7);}
+.burst{font-size:2.8rem;display:block;margin-bottom:8px;animation:burst .5s ease 4;}
+@keyframes burst{0%,100%{transform:scale(1)}50%{transform:scale(1.4)}}
 
-/* Name tag under each character */
-.char-tag { font-family:'Barlow Condensed',sans-serif; font-size:.6rem; font-weight:700; background:rgba(0,0,0,.8); padding:2px 6px; border-radius:3px; white-space:nowrap; margin-top:4px; letter-spacing:.4px; border-left:2px solid currentColor; }
+/* ══════════════════
+   PLAYER CARDS — flip on click
+   ══════════════════ */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:16px;}
+.card-flip-wrap{perspective:700px;height:270px;cursor:pointer;position:relative;}
+.card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1);border-radius:14px;}
+.card-flip-wrap.flipped .card-inner{transform:rotateY(180deg);}
+.card-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;overflow:hidden;background:linear-gradient(160deg,#001830,var(--navy));}
+.card-back{transform:rotateY(180deg);}
+.card-flip-wrap[data-r="common"]    .card-face{border:2px solid var(--common);    box-shadow:0 4px 16px rgba(0,178,169,.2);}
+.card-flip-wrap[data-r="rare"]      .card-face{border:2px solid var(--rare);      box-shadow:0 4px 16px rgba(124,77,255,.25);}
+.card-flip-wrap[data-r="epic"]      .card-face{border:2px solid var(--epic);      box-shadow:0 4px 20px rgba(255,109,0,.3);}
+.card-flip-wrap[data-r="legendary"] .card-face{border:2px solid var(--legendary);box-shadow:0 4px 28px rgba(249,160,27,.4);animation:cardleg 3s ease-in-out infinite;}
+@keyframes cardleg{0%,100%{box-shadow:0 4px 28px rgba(249,160,27,.4)}50%{box-shadow:0 4px 50px rgba(249,160,27,.7)}}
+/* Card count badge */
+.card-count-badge{position:absolute;top:8px;left:8px;z-index:10;background:rgba(0,0,0,.75);color:var(--gold);font-family:'Bebas Neue',sans-serif;font-size:.9rem;padding:2px 8px;border-radius:12px;border:1px solid rgba(249,160,27,.4);pointer-events:none;transition:opacity .2s;}
+.card-flip-wrap:hover .card-count-badge,.card-flip-wrap.flipped .card-count-badge{opacity:0;}
+/* Front face */
+.card-front-img{width:100%;height:100%;object-fit:cover;display:block;}
+.card-front-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.8));padding:20px 10px 10px;}
+.card-front-overlay .card-pname{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:2px;color:#fff;}
+.card-front-overlay .card-rbadge{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:2px;padding:2px 7px;border-radius:20px;text-transform:uppercase;display:inline-block;margin-top:2px;}
+.card-front-noimg{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px;padding:12px;}
+.card-front-noimg .card-char{height:90px;display:flex;align-items:flex-end;justify-content:center;}
+.card-front-noimg .card-pname{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:2px;text-align:center;}
+.card-front-noimg .card-era{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;color:rgba(245,240,232,.4);text-align:center;}
+/* Back face */
+.card-back-inner{padding:14px;height:100%;display:flex;flex-direction:column;}
+.card-back-num{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;color:rgba(245,240,232,.35);}
+.card-back-name{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:2px;color:var(--gold);line-height:1;margin-bottom:2px;}
+.card-back-era{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;color:rgba(245,240,232,.4);margin-bottom:10px;}
+.card-back-stats{background:rgba(0,0,0,.3);border-radius:8px;padding:8px 10px;display:grid;grid-template-columns:1fr 1fr;gap:4px 8px;margin-bottom:8px;}
+.srow{display:flex;justify-content:space-between;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;}
+.sl{color:rgba(245,240,232,.45);}.sv{font-weight:600;}
+.card-back-quote{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;color:rgba(245,240,232,.4);font-style:italic;text-align:center;margin-top:auto;padding-top:6px;}
+.card-back-hint{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;color:rgba(245,240,232,.2);text-align:center;margin-top:4px;}
+/* Not-yet-caught placeholder */
+.card-not-caught{border:2px dashed rgba(249,160,27,.15);border-radius:14px;height:270px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:rgba(0,10,30,.4);color:rgba(245,240,232,.3);font-family:'Barlow Condensed',sans-serif;font-size:.85rem;text-align:center;padding:20px;}
+.card-not-caught .q-mark{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:rgba(245,240,232,.1);}
 
-/* Map legend bar */
-.map-legend { background:var(--navy); padding:10px 20px; display:flex; gap:16px; flex-wrap:wrap; align-items:center; font-family:'Barlow Condensed',sans-serif; font-size:.82rem; border-top:1px solid rgba(249,160,27,.2); max-width:960px; margin:0 auto; }
-.leg-item { display:flex; align-items:center; gap:6px; }
-.leg-dot { width:10px; height:10px; border-radius:50%; }
-.map-hint { color:rgba(245,240,232,.4); font-size:.78rem; margin-left:auto; font-style:italic; }
+/* ══════════════════
+   DEX
+   ══════════════════ */
+.dex-bar-wrap{background:rgba(0,0,0,.3);border-radius:8px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;gap:14px;}
+.dex-track{flex:1;height:12px;background:rgba(0,0,0,.4);border-radius:6px;overflow:hidden;border:1px solid rgba(249,160,27,.2);}
+.dex-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--gold));border-radius:6px;transition:width .5s;}
+.dex-frac{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--gold);letter-spacing:2px;white-space:nowrap;}
+.dex-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px;}
+.dex-slot{border:2px solid rgba(249,160,27,.15);border-radius:10px;padding:7px 4px;text-align:center;background:rgba(0,20,50,.5);transition:all .2s;}
+.dex-slot.got{border-color:var(--gold);background:rgba(0,30,70,.8);cursor:pointer;}
+.dex-slot.got:hover{transform:scale(1.06);}
+.dex-char{display:flex;justify-content:center;align-items:flex-end;height:50px;margin-bottom:3px;}
+.dex-pname{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.3px;}
+.dex-slot:not(.got) .dex-char{filter:brightness(0);}
+.dex-slot:not(.got) .dex-pname{color:rgba(255,255,255,.15);}
 
-/* ══════════════════════════════════════════════════════════
-   CATCH MODAL — hoop shooting mini-game
-   ══════════════════════════════════════════════════════════ */
-.modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,8,25,.93); z-index:300; align-items:center; justify-content:center; backdrop-filter:blur(6px); }
-.modal-overlay.open { display:flex; }
-.catch-modal { background:linear-gradient(160deg,#001830,#002244); border:2px solid var(--gold); border-radius:18px; padding:24px 28px; width:min(440px,96vw); position:relative; box-shadow:0 0 80px rgba(249,160,27,.2); animation:modal-in .35s cubic-bezier(.175,.885,.32,1.275); }
-@keyframes modal-in { from{transform:scale(.7);opacity:0} to{transform:scale(1);opacity:1} }
-.modal-close { position:absolute; top:12px; right:14px; background:none; border:none; color:rgba(255,255,255,.4); font-size:1.4rem; cursor:pointer; }
-.modal-close:hover { color:#fff; }
+/* ══════════════════
+   COURT VIEW — canvas above players (z-index 3)
+   ══════════════════ */
+#court-view{padding:0;}
+.roam-court{position:relative;width:100%;max-width:960px;margin:0 auto;overflow:hidden;border:4px solid var(--gold);}
+.roam-court::before{content:'';display:block;padding-top:54%;}
+.roam-court svg.floor{position:absolute;inset:0;width:100%;height:100%;z-index:1;}
+.roamer-div{position:absolute;transform:translate(-50%,-100%);pointer-events:none;transition:left 4.5s ease-in-out,top 4.5s ease-in-out;display:flex;flex-direction:column;align-items:center;z-index:2;}
+.roamer-tag{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;font-weight:700;background:rgba(0,0,0,.75);padding:2px 5px;border-radius:3px;white-space:nowrap;margin-top:3px;}
+.roam-court canvas#court-cv{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3;}
+.court-footer{background:var(--navy);padding:10px 20px;max-width:960px;margin:0 auto;border-top:1px solid rgba(249,160,27,.2);}
+.court-footer-top{font-family:'Barlow Condensed',sans-serif;font-size:.9rem;color:rgba(245,240,232,.5);text-align:center;margin-bottom:8px;}
+/* Roster selector at bottom of court */
+.roster-selector{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:4px 0;}
+.roster-slot{width:44px;height:44px;border-radius:50%;border:2px dashed rgba(249,160,27,.3);background:rgba(0,0,0,.2);display:flex;align-items:center;justify-content:center;font-size:.6rem;color:rgba(245,240,232,.3);font-family:'Barlow Condensed',sans-serif;cursor:pointer;transition:all .2s;position:relative;overflow:visible;}
+.roster-slot.filled{border-color:var(--gold);border-style:solid;}
+.roster-slot.filled:hover{border-color:var(--red);background:rgba(200,16,46,.1);}
+.roster-slot svg{pointer-events:none;}
+.roster-hint{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;color:rgba(245,240,232,.3);text-align:center;margin-top:6px;}
+/* Player picker modal */
+.picker-overlay{display:none;position:fixed;inset:0;background:rgba(0,8,25,.9);z-index:400;align-items:center;justify-content:center;}
+.picker-overlay.open{display:flex;}
+.picker-modal{background:linear-gradient(160deg,#001830,#002244);border:2px solid var(--teal);border-radius:16px;padding:20px;width:min(480px,96vw);max-height:80vh;overflow-y:auto;}
+.picker-title{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:2px;color:var(--teal);margin-bottom:12px;}
+.picker-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:8px;}
+.picker-item{border:2px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 4px;text-align:center;cursor:pointer;transition:all .2s;background:rgba(0,20,50,.5);}
+.picker-item:hover{border-color:var(--teal);background:rgba(0,178,169,.1);}
+.picker-item.on-court{border-color:var(--gold);background:rgba(249,160,27,.1);}
+.picker-item .pi-char{height:44px;display:flex;align-items:flex-end;justify-content:center;}
+.picker-item .pi-name{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;font-weight:700;margin-top:2px;}
+.picker-close{float:right;background:none;border:none;color:rgba(255,255,255,.4);font-size:1.4rem;cursor:pointer;}
 
-/* Player name + rarity in the modal header (no stats here) */
-.modal-header { display:flex; align-items:center; gap:16px; margin-bottom:16px; }
-.modal-char   { flex-shrink:0; }
-.modal-info   { flex:1; }
-.modal-name   { font-family:'Bebas Neue',sans-serif; font-size:1.8rem; letter-spacing:3px; color:var(--gold); line-height:1; }
-.modal-rbadge { font-family:'Barlow Condensed',sans-serif; font-size:.72rem; font-weight:700; letter-spacing:2px; padding:2px 10px; border-radius:20px; text-transform:uppercase; display:inline-block; margin-top:4px; }
+/* ══════════════════
+   FACES PANEL
+   ══════════════════ */
+.faces-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:14px;}
+.face-slot{background:rgba(0,20,50,.6);border:2px dashed rgba(249,160,27,.25);border-radius:12px;padding:12px 8px;text-align:center;transition:border-color .2s;}
+.face-slot:hover{border-color:rgba(249,160,27,.7);}
+.face-slot label{cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;}
+.face-preview{width:54px;height:54px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,.15);background:rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;font-size:1.5rem;}
+.face-preview img{width:100%;height:100%;object-fit:cover;}
+.face-pname{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;color:var(--cream);letter-spacing:.4px;}
+.face-sub{font-size:.6rem;color:rgba(245,240,232,.4);}
+.face-slot input[type=file]{display:none;}
 
-/* Hoop game section */
-.hoop-section { background:rgba(0,0,0,.35); border-radius:12px; padding:16px; }
-.hoop-title   { font-family:'Barlow Condensed',sans-serif; font-size:.85rem; color:rgba(245,240,232,.6); text-align:center; margin-bottom:10px; letter-spacing:1px; }
-/* Single shot indicator */
-.shot-row     { display:flex; justify-content:center; margin-bottom:10px; }
-.shot-pip     { width:36px; height:36px; border-radius:50%; border:2px solid rgba(255,255,255,.2); background:rgba(0,0,0,.3); display:flex; align-items:center; justify-content:center; font-size:1rem; transition:all .25s; }
-.shot-pip.made { background:var(--gold); border-color:var(--gold); transform:scale(1.1); }
-.shot-pip.miss { background:var(--red);  border-color:var(--red); }
+/* ══════════════════
+   CUSTOM PLAYER CREATOR
+   ══════════════════ */
+.custom-creator{background:rgba(0,20,50,.5);border:2px solid rgba(249,160,27,.3);border-radius:16px;padding:24px;max-width:500px;margin:0 auto;}
+.custom-preview-area{display:flex;align-items:flex-end;justify-content:center;height:110px;margin-bottom:16px;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.form-grid.wide{grid-template-columns:1fr;}
+.form-field{display:flex;flex-direction:column;gap:4px;}
+.form-field label{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:700;color:rgba(245,240,232,.5);letter-spacing:1px;text-transform:uppercase;}
+.form-field input,.form-field select{background:rgba(0,0,0,.4);border:1px solid rgba(249,160,27,.25);border-radius:6px;padding:8px 10px;color:var(--cream);font-family:'Barlow Condensed',sans-serif;font-size:.95rem;width:100%;}
+.form-field input:focus,.form-field select:focus{outline:none;border-color:var(--gold);}
+.form-field select option{background:#001525;}
+.face-upload-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(0,178,169,.15);border:2px dashed rgba(0,178,169,.4);border-radius:8px;padding:10px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;color:var(--teal);transition:all .2s;width:100%;}
+.face-upload-btn:hover{background:rgba(0,178,169,.25);border-color:var(--teal);}
+.face-upload-btn input{display:none;}
+.save-player-btn{width:100%;background:linear-gradient(135deg,var(--gold),#c87c00);color:var(--navy);border:none;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:3px;padding:12px;border-radius:8px;cursor:pointer;margin-top:16px;box-shadow:0 4px 18px rgba(249,160,27,.3);}
+.saved-badge{text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:var(--teal);margin-top:8px;display:none;}
+.custom-card-display{margin-top:20px;max-width:500px;margin-left:auto;margin-right:auto;}
 
-canvas#hoop-cv { width:100%; height:150px; display:block; border-radius:8px; background:rgba(0,0,10,.4); }
+/* ══════════════════
+   JAZZ BEAR UNLOCK
+   ══════════════════ */
+#bear-view .view-inner{text-align:center;}
+.bear-unlock-msg{background:linear-gradient(135deg,rgba(249,160,27,.1),rgba(0,178,169,.1));border:2px solid var(--gold);border-radius:16px;padding:32px;margin-bottom:24px;}
+.bear-unlock-msg h2{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:4px;color:var(--gold);margin-bottom:8px;}
+.bear-unlock-msg p{font-family:'Barlow Condensed',sans-serif;color:rgba(245,240,232,.7);font-size:1rem;line-height:1.6;}
+.bear-char{display:flex;justify-content:center;margin:20px 0;}
+.bear-locked-msg{font-family:'Barlow Condensed',sans-serif;color:rgba(245,240,232,.4);font-size:.95rem;line-height:1.6;margin-top:16px;}
+.bear-progress{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold);margin-top:8px;}
 
-.throw-btn { margin-top:10px; width:100%; background:linear-gradient(135deg,var(--gold),#c87c00); color:var(--navy); border:none; font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:3px; padding:10px; border-radius:8px; cursor:pointer; box-shadow:0 4px 18px rgba(249,160,27,.35); transition:transform .1s; }
-.throw-btn:active   { transform:scale(.97); }
-.throw-btn:disabled { opacity:.35; cursor:not-allowed; }
-
-.catch-btn { display:none; margin-top:10px; width:100%; background:linear-gradient(135deg,var(--teal),#007a75); color:#fff; border:none; font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:3px; padding:12px; border-radius:8px; cursor:pointer; animation:cpulse 1s ease-in-out infinite; box-shadow:0 0 20px rgba(0,178,169,.5); }
-@keyframes cpulse { 0%,100%{box-shadow:0 0 20px rgba(0,178,169,.5)} 50%{box-shadow:0 0 40px rgba(0,178,169,.9)} }
-
-.fail-msg    { display:none; text-align:center; color:var(--red); font-family:'Barlow Condensed',sans-serif; font-size:1rem; margin-top:8px; }
-
-.success-screen   { display:none; text-align:center; padding:16px 0; }
-.success-screen h3 { font-family:'Bebas Neue',sans-serif; font-size:2rem; color:var(--gold); letter-spacing:4px; }
-.success-screen p  { font-family:'Barlow Condensed',sans-serif; color:rgba(245,240,232,.7); }
-.burst { font-size:2.8rem; display:block; margin-bottom:8px; animation:burst .5s ease 4; }
-@keyframes burst { 0%,100%{transform:scale(1)} 50%{transform:scale(1.4)} }
-
-/* ══════════════════════════════════════════════════════════
-   PLAYER CARDS — flip on click (front=photo, back=stats)
-   ══════════════════════════════════════════════════════════ */
-#cards-view > div { padding:20px; max-width:960px; margin:0 auto; }
-
-.view-title { font-family:'Bebas Neue',sans-serif; font-size:1.8rem; letter-spacing:3px; color:var(--gold); margin-bottom:16px; display:flex; align-items:center; gap:10px; }
-.view-title::after { content:''; flex:1; height:2px; background:linear-gradient(90deg,rgba(249,160,27,.5),transparent); }
-
-.cards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:16px; }
-
-/* Card flip container */
-.card-flip-wrap {
-  perspective: 700px;
-  height: 270px;
-  cursor: pointer;
-}
-/* The inner card that actually rotates */
-.card-inner {
-  position: relative; width:100%; height:100%;
-  transform-style: preserve-3d;
-  transition: transform .55s cubic-bezier(.4,0,.2,1);
-  border-radius: 14px;
-}
-.card-flip-wrap.flipped .card-inner { transform: rotateY(180deg); }
-
-/* Both faces share these styles */
-.card-face {
-  position: absolute; inset:0;
-  backface-visibility: hidden;
-  border-radius: 14px;
-  overflow: hidden;
-  background: linear-gradient(160deg, #001830, var(--navy));
-}
-/* Back face is pre-rotated so it shows when flipped */
-.card-back { transform: rotateY(180deg); }
-
-/* Rarity borders — change colors here per tier */
-.card-flip-wrap[data-r="common"]    .card-face { border:2px solid var(--common);    box-shadow:0 4px 16px rgba(0,178,169,.2);   }
-.card-flip-wrap[data-r="rare"]      .card-face { border:2px solid var(--rare);      box-shadow:0 4px 16px rgba(124,77,255,.25); }
-.card-flip-wrap[data-r="epic"]      .card-face { border:2px solid var(--epic);      box-shadow:0 4px 20px rgba(255,109,0,.3);   }
-.card-flip-wrap[data-r="legendary"] .card-face { border:2px solid var(--legendary); box-shadow:0 4px 28px rgba(249,160,27,.4); animation:cardleg 3s ease-in-out infinite; }
-@keyframes cardleg { 0%,100%{box-shadow:0 4px 28px rgba(249,160,27,.4)} 50%{box-shadow:0 4px 50px rgba(249,160,27,.7)} }
-
-/* FRONT face — big photo */
-.card-front-img {
-  width:100%; height:100%;
-  object-fit: cover;
-  display: block;
-}
-/* Overlay at the bottom of the photo side */
-.card-front-overlay {
-  position: absolute; bottom:0; left:0; right:0;
-  background: linear-gradient(transparent, rgba(0,0,0,.75));
-  padding: 20px 10px 10px;
-}
-.card-front-overlay .card-pname  { font-family:'Bebas Neue',sans-serif; font-size:1.25rem; letter-spacing:2px; color:#fff; }
-.card-front-overlay .card-rbadge { font-family:'Barlow Condensed',sans-serif; font-size:.6rem; font-weight:700; letter-spacing:2px; padding:2px 7px; border-radius:20px; text-transform:uppercase; display:inline-block; margin-top:2px; }
-
-/* FRONT face — no photo uploaded yet */
-.card-front-noimg {
-  display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%;
-  gap: 8px;
-}
-.card-front-noimg .card-char { height:90px; display:flex; align-items:flex-end; justify-content:center; }
-.card-front-noimg .card-pname { font-family:'Bebas Neue',sans-serif; font-size:1.15rem; letter-spacing:2px; text-align:center; padding:0 8px 2px; }
-.card-front-noimg .card-era   { font-family:'Barlow Condensed',sans-serif; font-size:.68rem; color:rgba(245,240,232,.4); text-align:center; }
-
-/* BACK face — stats */
-.card-back-inner { padding:14px; height:100%; display:flex; flex-direction:column; }
-.card-back-num    { font-family:'Barlow Condensed',sans-serif; font-size:.7rem; color:rgba(245,240,232,.35); margin-bottom:4px; }
-.card-back-name   { font-family:'Bebas Neue',sans-serif; font-size:1.2rem; letter-spacing:2px; color:var(--gold); line-height:1; margin-bottom:2px; }
-.card-back-era    { font-family:'Barlow Condensed',sans-serif; font-size:.68rem; color:rgba(245,240,232,.4); margin-bottom:10px; }
-.card-back-stats  { background:rgba(0,0,0,.3); border-radius:8px; padding:8px 10px; display:grid; grid-template-columns:1fr 1fr; gap:4px 8px; margin-bottom:8px; }
-.srow { display:flex; justify-content:space-between; font-family:'Barlow Condensed',sans-serif; font-size:.82rem; }
-.sl { color:rgba(245,240,232,.45); } .sv { font-weight:600; }
-.card-back-quote  { font-family:'Barlow Condensed',sans-serif; font-size:.7rem; color:rgba(245,240,232,.4); font-style:italic; text-align:center; margin-top:auto; padding-top:6px; }
-.card-back-hint   { font-family:'Barlow Condensed',sans-serif; font-size:.6rem; color:rgba(245,240,232,.25); text-align:center; margin-top:4px; }
-
-/* Locked (not yet caught) card styling */
-.card-flip-wrap.locked .card-inner { pointer-events:none; }
-.card-flip-wrap.locked .card-face  { filter:brightness(.2) saturate(0); }
-.card-flip-wrap.locked .card-face::after { content:'?'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Bebas Neue',sans-serif; font-size:4rem; color:rgba(255,255,255,.3); }
-
-/* ══════════════════════════════════════════════════════════
-   JAZZDEX GRID
-   ══════════════════════════════════════════════════════════ */
-#dex-view > div  { padding:20px; max-width:960px; margin:0 auto; }
-.dex-bar-wrap    { background:rgba(0,0,0,.3); border-radius:8px; padding:12px 16px; margin-bottom:16px; display:flex; align-items:center; gap:14px; }
-.dex-track       { flex:1; height:12px; background:rgba(0,0,0,.4); border-radius:6px; overflow:hidden; border:1px solid rgba(249,160,27,.2); }
-.dex-fill        { height:100%; background:linear-gradient(90deg,var(--teal),var(--gold)); border-radius:6px; transition:width .5s; }
-.dex-frac        { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:var(--gold); letter-spacing:2px; white-space:nowrap; }
-.dex-grid        { display:grid; grid-template-columns:repeat(auto-fill,minmax(78px,1fr)); gap:8px; }
-.dex-slot        { border:2px solid rgba(249,160,27,.15); border-radius:10px; padding:7px 4px; text-align:center; background:rgba(0,20,50,.5); transition:all .2s; }
-.dex-slot.got    { border-color:var(--gold); background:rgba(0,30,70,.8); cursor:pointer; }
-.dex-slot.got:hover { transform:scale(1.06); }
-.dex-char        { display:flex; justify-content:center; align-items:flex-end; height:50px; margin-bottom:3px; }
-.dex-pname       { font-family:'Barlow Condensed',sans-serif; font-size:.62rem; font-weight:700; letter-spacing:.3px; }
-.dex-slot:not(.got) .dex-char  { filter:brightness(0); }
-.dex-slot:not(.got) .dex-pname { color:rgba(255,255,255,.15); }
-
-/* ══════════════════════════════════════════════════════════
-   COURT VIEW — roaming players + canvas ball overlay
-   The canvas sits ABOVE the player divs (z-index) so ball
-   is always drawn in front of players.
-   ══════════════════════════════════════════════════════════ */
-#court-view    { padding:0; }
-.roam-court    { position:relative; width:100%; max-width:960px; margin:0 auto; overflow:hidden; border:4px solid var(--gold); }
-.roam-court::before { content:''; display:block; padding-top:54%; }
-.roam-court svg.floor  { position:absolute; inset:0; width:100%; height:100%; z-index:1; }
-/* Player divs sit above the floor SVG */
-.roamer-div    { position:absolute; transform:translate(-50%,-100%); pointer-events:none; transition:left 4.5s ease-in-out, top 4.5s ease-in-out; display:flex; flex-direction:column; align-items:center; z-index:2; }
-.roamer-tag    { font-family:'Barlow Condensed',sans-serif; font-size:.6rem; font-weight:700; background:rgba(0,0,0,.75); padding:2px 5px; border-radius:3px; white-space:nowrap; margin-top:3px; }
-/* Canvas ABOVE player divs so ball draws in front */
-.roam-court canvas#court-cv { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:3; }
-
-.court-footer  { background:var(--navy); padding:10px 20px; text-align:center; font-family:'Barlow Condensed',sans-serif; font-size:.9rem; color:rgba(245,240,232,.5); border-top:1px solid rgba(249,160,27,.2); max-width:960px; margin:0 auto; }
-
-/* ══════════════════════════════════════════════════════════
-   FACES UPLOAD PANEL
-   ══════════════════════════════════════════════════════════ */
-#faces-view > div { padding:20px; max-width:960px; margin:0 auto; }
-.faces-info   { font-family:'Barlow Condensed',sans-serif; font-size:.95rem; color:rgba(245,240,232,.6); margin-bottom:16px; line-height:1.6; }
-.faces-grid   { display:grid; grid-template-columns:repeat(auto-fill,minmax(128px,1fr)); gap:14px; }
-.face-slot    { background:rgba(0,20,50,.6); border:2px dashed rgba(249,160,27,.25); border-radius:12px; padding:12px 8px; text-align:center; transition:border-color .2s; }
-.face-slot:hover { border-color:rgba(249,160,27,.7); }
-.face-slot label  { cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:6px; }
-.face-preview { width:54px; height:54px; border-radius:50%; overflow:hidden; border:2px solid rgba(255,255,255,.15); background:rgba(0,0,0,.3); display:flex; align-items:center; justify-content:center; font-size:1.5rem; }
-.face-preview img { width:100%; height:100%; object-fit:cover; }
-.face-pname   { font-family:'Barlow Condensed',sans-serif; font-size:.72rem; font-weight:700; color:var(--cream); letter-spacing:.4px; }
-.face-sub     { font-size:.6rem; color:rgba(245,240,232,.4); }
-.face-slot input[type=file] { display:none; }
-
-/* ── RARITY BADGE COLORS ── */
-.rarity-common    { color:var(--common);  background:rgba(0,178,169,.15); }
-.rarity-rare      { color:#a87fff;        background:rgba(124,77,255,.15); }
-.rarity-epic      { color:#ff9940;        background:rgba(255,109,0,.15); }
-.rarity-legendary { color:var(--gold);    background:rgba(249,160,27,.15); }
+/* ══════════════════
+   RARITY BADGES
+   ══════════════════ */
+.rarity-common   {color:var(--common);  background:rgba(0,178,169,.15);}
+.rarity-rare     {color:#a87fff;        background:rgba(124,77,255,.15);}
+.rarity-epic     {color:#ff9940;        background:rgba(255,109,0,.15);}
+.rarity-legendary{color:var(--gold);    background:rgba(249,160,27,.15);}
 </style>
 </head>
 <body>
 
 <header>
   <div class="logo">Jazz<span>Dex</span></div>
-  <div class="hdr-stats"><span>CAUGHT <strong id="caught-count">0</strong></span><span>/ 12</span></div>
+  <div class="hdr-right">
+    <div class="hdr-stats">
+      <span>CAUGHT <strong id="caught-count">0</strong></span>
+      <span>/ <span id="total-count">18</span></span>
+    </div>
+    <div class="save-badge" id="save-badge">💾 saved</div>
+  </div>
 </header>
 
 <nav>
-  <button class="nav-btn active" onclick="showView('map-view',this)">🗺 Map</button>
-  <button class="nav-btn" onclick="showView('cards-view',this)">🃏 Cards</button>
-  <button class="nav-btn" onclick="showView('dex-view',this)">📋 JazzDex</button>
-  <button class="nav-btn" onclick="showView('court-view',this)">🏟 Court</button>
-  <button class="nav-btn" onclick="showView('faces-view',this)">📸 Faces</button>
+  <button class="nav-btn active"    onclick="showView('map-view',this)">🗺 Map</button>
+  <button class="nav-btn"           onclick="showView('cards-view',this)">🃏 Cards</button>
+  <button class="nav-btn"           onclick="showView('dex-view',this)">📋 JazzDex</button>
+  <button class="nav-btn"           onclick="showView('court-view',this)">🏟 Court</button>
+  <button class="nav-btn"           onclick="showView('faces-view',this)">📸 Faces</button>
+  <button class="nav-btn"           onclick="showView('custom-view',this)">⭐ My Player</button>
+  <button class="nav-btn bear-locked" id="bear-nav" onclick="showView('bear-view',this)">🐻 Jazz Bear</button>
 </nav>
 
-<!-- ═══════ MAP VIEW ═══════ -->
+<!-- ═══════ MAP ═══════ -->
 <div id="map-view" class="view active">
   <div class="court-wrap" id="court-map">
-    <!-- Court floor SVG — edit viewBox/lines here to change court layout -->
     <svg class="floor" viewBox="0 0 900 490" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="fg" cx="50%" cy="50%" r="60%">
-          <stop offset="0%"   stop-color="#D4A520"/>
-          <stop offset="100%" stop-color="#9A7010"/>
-        </radialGradient>
-      </defs>
+      <defs><radialGradient id="fg" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#D4A520"/><stop offset="100%" stop-color="#9A7010"/></radialGradient></defs>
       <rect width="900" height="490" fill="url(#fg)"/>
-      <!-- Wood grain lines -->
-      <g opacity=".06" stroke="#000" stroke-width="1.5">
-        <line x1="0" y1="40" x2="900" y2="40"/><line x1="0" y1="80" x2="900" y2="80"/>
-        <line x1="0" y1="120" x2="900" y2="120"/><line x1="0" y1="160" x2="900" y2="160"/>
-        <line x1="0" y1="200" x2="900" y2="200"/><line x1="0" y1="240" x2="900" y2="240"/>
-        <line x1="0" y1="280" x2="900" y2="280"/><line x1="0" y1="320" x2="900" y2="320"/>
-        <line x1="0" y1="360" x2="900" y2="360"/><line x1="0" y1="400" x2="900" y2="400"/>
-        <line x1="0" y1="440" x2="900" y2="440"/>
-      </g>
-      <!-- Court lines -->
+      <g opacity=".06" stroke="#000" stroke-width="1.5"><line x1="0" y1="40" x2="900" y2="40"/><line x1="0" y1="80" x2="900" y2="80"/><line x1="0" y1="120" x2="900" y2="120"/><line x1="0" y1="160" x2="900" y2="160"/><line x1="0" y1="200" x2="900" y2="200"/><line x1="0" y1="240" x2="900" y2="240"/><line x1="0" y1="280" x2="900" y2="280"/><line x1="0" y1="320" x2="900" y2="320"/><line x1="0" y1="360" x2="900" y2="360"/><line x1="0" y1="400" x2="900" y2="400"/><line x1="0" y1="440" x2="900" y2="440"/></g>
       <rect x="30" y="20" width="840" height="450" fill="none" stroke="rgba(0,43,92,.8)" stroke-width="3" rx="3"/>
       <circle cx="450" cy="245" r="65" fill="rgba(0,43,92,.15)" stroke="rgba(0,43,92,.65)" stroke-width="2.5"/>
       <circle cx="450" cy="245" r="4" fill="rgba(0,43,92,.6)"/>
       <line x1="450" y1="20" x2="450" y2="470" stroke="rgba(0,43,92,.55)" stroke-width="2.5"/>
-      <!-- Paint boxes -->
       <rect x="30" y="158" width="185" height="174" fill="rgba(0,43,92,.2)" stroke="rgba(0,43,92,.65)" stroke-width="2.5"/>
       <rect x="685" y="158" width="185" height="174" fill="rgba(0,43,92,.2)" stroke="rgba(0,43,92,.65)" stroke-width="2.5"/>
-      <!-- Free-throw arcs -->
       <path d="M30 158 A92 92 0 0 1 215 158" fill="none" stroke="rgba(0,43,92,.65)" stroke-width="2.5"/>
       <path d="M685 158 A92 92 0 0 0 870 158" fill="none" stroke="rgba(0,43,92,.65)" stroke-width="2.5"/>
-      <!-- 3-point arcs -->
       <path d="M30 75 Q270 68 270 245 Q270 422 30 415" fill="none" stroke="rgba(0,43,92,.55)" stroke-width="2.5"/>
       <path d="M870 75 Q630 68 630 245 Q630 422 870 415" fill="none" stroke="rgba(0,43,92,.55)" stroke-width="2.5"/>
-      <!-- Baskets -->
       <circle cx="68" cy="245" r="17" fill="none" stroke="rgba(0,43,92,.85)" stroke-width="2.5"/>
       <line x1="30" y1="245" x2="85" y2="245" stroke="rgba(0,43,92,.65)" stroke-width="2"/>
       <circle cx="832" cy="245" r="17" fill="none" stroke="rgba(0,43,92,.85)" stroke-width="2.5"/>
       <line x1="815" y1="245" x2="870" y2="245" stroke="rgba(0,43,92,.65)" stroke-width="2"/>
-      <!-- Jazz wordmark — change text here -->
       <text x="450" y="254" text-anchor="middle" font-size="30" font-family="Georgia,serif" font-weight="bold" fill="rgba(0,43,92,.3)" letter-spacing="6">JAZZ</text>
     </svg>
-    <!-- Spawn characters are injected here by JS -->
   </div>
   <div class="map-legend">
     <div class="leg-item"><div class="leg-dot" style="background:var(--common)"></div>Common</div>
     <div class="leg-item"><div class="leg-dot" style="background:var(--rare)"></div>Rare</div>
     <div class="leg-item"><div class="leg-dot" style="background:var(--epic)"></div>Epic</div>
     <div class="leg-item"><div class="leg-dot" style="background:var(--legendary)"></div>Legendary</div>
-    <span class="map-hint">Tap a player to catch — rare ones vanish fast!</span>
+    <span class="map-hint">Players respawn — catch multiples for duplicates!</span>
   </div>
 </div>
 
-<!-- ═══════ CARDS VIEW ═══════ -->
+<!-- ═══════ CARDS ═══════ -->
 <div id="cards-view" class="view">
-  <div>
+  <div class="view-inner">
     <div class="view-title">Player Cards</div>
     <div class="cards-grid" id="cards-grid"></div>
   </div>
 </div>
 
-<!-- ═══════ JAZZDEX VIEW ═══════ -->
+<!-- ═══════ JAZZDEX ═══════ -->
 <div id="dex-view" class="view">
-  <div>
+  <div class="view-inner">
     <div class="view-title">JazzDex</div>
     <div class="dex-bar-wrap">
       <div class="dex-track"><div class="dex-fill" id="dex-fill" style="width:0%"></div></div>
-      <div class="dex-frac"><span id="dex-n">0</span>/12</div>
+      <div class="dex-frac"><span id="dex-n">0</span>/<span id="dex-total">18</span></div>
     </div>
     <div class="dex-grid" id="dex-grid"></div>
   </div>
 </div>
 
-<!-- ═══════ COURT VIEW ═══════ -->
+<!-- ═══════ COURT ═══════ -->
 <div id="court-view" class="view">
   <div class="roam-court" id="roam-court">
-    <!-- Same floor SVG as map (copy-paste) -->
     <svg class="floor" viewBox="0 0 900 490" xmlns="http://www.w3.org/2000/svg">
       <defs><radialGradient id="fg2" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#D4A520"/><stop offset="100%" stop-color="#9A7010"/></radialGradient></defs>
       <rect width="900" height="490" fill="url(#fg2)"/>
@@ -378,22 +329,85 @@ canvas#hoop-cv { width:100%; height:150px; display:block; border-radius:8px; bac
       <circle cx="832" cy="245" r="17" fill="none" stroke="rgba(0,43,92,.85)" stroke-width="2.5"/>
       <text x="450" y="254" text-anchor="middle" font-size="30" font-family="Georgia,serif" font-weight="bold" fill="rgba(0,43,92,.3)" letter-spacing="6">JAZZ</text>
     </svg>
-    <!-- canvas goes above player divs — see z-index in CSS -->
     <canvas id="court-cv"></canvas>
-    <!-- Roamer divs are injected here by JS -->
   </div>
-  <div class="court-footer" id="court-footer">Catch players on the map to see them roam here!</div>
+  <div class="court-footer">
+    <div class="court-footer-top" id="court-footer-top">Catch players to see them roam here!</div>
+    <div class="roster-selector" id="roster-selector"></div>
+    <div class="roster-hint" id="roster-hint"></div>
+  </div>
 </div>
 
-<!-- ═══════ FACES VIEW ═══════ -->
+<!-- ═══════ FACES ═══════ -->
 <div id="faces-view" class="view">
-  <div>
+  <div class="view-inner">
     <div class="view-title">Upload Player Faces</div>
-    <div class="faces-info">
-      Upload a photo for each player and their face will fill their head in-game and on the front of their card.
-      Square crops or headshots work best. Tap any slot to choose a photo.
-    </div>
+    <p style="font-family:'Barlow Condensed',sans-serif;font-size:.95rem;color:rgba(245,240,232,.55);margin-bottom:16px;line-height:1.6">
+      Upload a headshot for each player. Their face fills their in-game head and the front of their card. Square crops work best.
+    </p>
     <div class="faces-grid" id="faces-grid"></div>
+  </div>
+</div>
+
+<!-- ═══════ CUSTOM PLAYER ═══════ -->
+<div id="custom-view" class="view">
+  <div class="view-inner">
+    <div class="view-title">My Player</div>
+    <div class="custom-creator">
+      <div class="custom-preview-area" id="custom-preview"></div>
+      <div class="form-grid">
+        <div class="form-field">
+          <label>Name</label>
+          <input type="text" id="cp-name" placeholder="Your name" maxlength="20">
+        </div>
+        <div class="form-field">
+          <label>Jersey #</label>
+          <input type="text" id="cp-num" placeholder="00" maxlength="3">
+        </div>
+        <div class="form-field">
+          <label>PPG</label>
+          <input type="number" id="cp-ppg" placeholder="0.0" step="0.1" min="0" max="99">
+        </div>
+        <div class="form-field">
+          <label>APG</label>
+          <input type="number" id="cp-apg" placeholder="0.0" step="0.1" min="0" max="99">
+        </div>
+        <div class="form-field">
+          <label>RPG</label>
+          <input type="number" id="cp-rpg" placeholder="0.0" step="0.1" min="0" max="99">
+        </div>
+        <div class="form-field">
+          <label>Jersey Color</label>
+          <select id="cp-rarity">
+            <option value="common">Teal (Common)</option>
+            <option value="rare">Purple (Rare)</option>
+            <option value="epic">Orange (Epic)</option>
+            <option value="legendary">Gold (Legendary)</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-grid wide" style="margin-top:12px">
+        <div class="form-field">
+          <label>Quote / Motto</label>
+          <input type="text" id="cp-quote" placeholder="Your catchphrase..." maxlength="60">
+        </div>
+      </div>
+      <label class="face-upload-btn" style="margin-top:12px">
+        📷 Upload Your Face Photo
+        <input type="file" accept="image/*" id="cp-face-input" onchange="loadCustomFace(this)">
+      </label>
+      <button class="save-player-btn" onclick="saveCustomPlayer()">💾 SAVE MY PLAYER</button>
+      <div class="saved-badge" id="cp-saved">✓ Player saved!</div>
+    </div>
+    <div class="custom-card-display" id="custom-card-display"></div>
+  </div>
+</div>
+
+<!-- ═══════ JAZZ BEAR ═══════ -->
+<div id="bear-view" class="view">
+  <div class="view-inner">
+    <div class="view-title">Jazz Bear</div>
+    <div id="bear-content"></div>
   </div>
 </div>
 
@@ -405,207 +419,228 @@ canvas#hoop-cv { width:100%; height:150px; display:block; border-radius:8px; bac
   </div>
 </div>
 
+<!-- ═══════ PLAYER PICKER ═══════ -->
+<div class="picker-overlay" id="picker-overlay">
+  <div class="picker-modal">
+    <button class="picker-close" onclick="closePicker()">✕</button>
+    <div class="picker-title">Choose a Player</div>
+    <div class="picker-grid" id="picker-grid"></div>
+  </div>
+</div>
+
 
 <script>
-/* ═══════════════════════════════════════════════════════════════
-   ██████╗  █████╗ ████████╗ █████╗
-   ██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗
-   ██║  ██║███████║   ██║   ███████║
-   ██║  ██║██╔══██║   ██║   ██╔══██║
-   ██████╔╝██║  ██║   ██║   ██║  ██║
-   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝
-   ═══════════════════════════════════════════════════════════════
+/* ══════════════════════════════════════════════════════════
+   ▶ RARITY / SHIRT COLORS
+   ══════════════════════════════════════════════════════════ */
+const RARITY_COLORS = {common:'#00B2A9',rare:'#7C4DFF',epic:'#FF6D00',legendary:'#F9A01B'};
+const SHIRT_COLORS  = {common:'#00868a',rare:'#5533aa',epic:'#aa3300',legendary:'#aa7700'};
 
-   ▶  WANT TO ADD OR EDIT A PLAYER?
-      Find the PLAYERS array below and follow the template.
-      Required fields: id, name, short, rarity, era, ppg, apg, rpg, blk, quote, num
-
-   ▶  WANT TO CHANGE RARITY SPAWN BEHAVIOR?
-      Find RARITY_SPAWN below — adjust interval (how often) and
-      duration (how long they stay visible).
-
-   ▶  WANT TO CHANGE CHARACTER APPEARANCE?
-      Find buildChar() — edit the SVG inside to change the body.
-      Shirt colors are in SHIRT_COLORS.
-
-   ▶  WANT TO CHANGE COLORS?
-      Edit the :root CSS variables at the top of <style>.
-   ═══════════════════════════════════════════════════════════════ */
-
-
-/* ─────────────────────────────────────────────────────────────
-   RARITY COLOR MAP
-   These map rarity names → hex color used for glows, borders, tags.
-   Change a value here to update all uses of that rarity's color.
-   ───────────────────────────────────────────────────────────── */
-const RARITY_COLORS = {
-  common:    '#00B2A9',
-  rare:      '#7C4DFF',
-  epic:      '#FF6D00',
-  legendary: '#F9A01B',
-};
-
-/* ─────────────────────────────────────────────────────────────
-   SHIRT COLORS — the jersey body color per rarity tier.
-   Change these to give different tiers different uniform looks.
-   ───────────────────────────────────────────────────────────── */
-const SHIRT_COLORS = {
-  common:    '#00868a',  /* teal-ish */
-  rare:      '#5533aa',  /* purple   */
-  epic:      '#aa3300',  /* burnt orange */
-  legendary: '#aa7700',  /* deep gold */
-};
-
-/* ─────────────────────────────────────────────────────────────
-   RARITY SPAWN CONFIG
-   interval : ms between spawn attempts (longer = rarer feel)
-   duration : ms the player stays visible before vanishing
-   Higher rarity = longer interval, shorter duration = harder to catch
-   ───────────────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════
+   ▶ RARITY SPAWN CONFIG
+   interval  = ms between spawn cycles
+   duration  = ms each player stays visible
+   ══════════════════════════════════════════════════════════ */
 const RARITY_SPAWN = {
-  common:    { interval: 8000,  duration: 18000 },
-  rare:      { interval: 14000, duration: 9000  },
-  epic:      { interval: 24000, duration: 6000  },
-  legendary: { interval: 42000, duration: 3500  },
+  common:   {interval:7000, duration:18000},
+  rare:     {interval:13000,duration:9000},
+  epic:     {interval:22000,duration:6000},
+  legendary:{interval:40000,duration:3500},
 };
 
-/* ─────────────────────────────────────────────────────────────
-   PLAYERS ARRAY
-   ▶ To add a player: copy any object, give it a unique id, fill fields.
-   ▶ To remove a player: delete the object and update the "/12" counts
-     in the HTML header and DEX section.
-
-   Fields:
-     id       – unique number (1–N)
-     name     – full display name
-     short    – short name for tags and dex
-     rarity   – 'common' | 'rare' | 'epic' | 'legendary'
-     era      – years with the team (shown on card back)
-     ppg/apg/rpg/blk – career stats with Jazz
-     quote    – flavor text on card back
-     num      – jersey number shown on body
-   ───────────────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════
+   ▶ PLAYERS ARRAY
+   To add a player: copy a block, give unique id, fill fields.
+   To remove: delete the block and update the /18 in the header.
+   id, name, short, rarity, era, ppg, apg, rpg, blk, quote, num
+   ══════════════════════════════════════════════════════════ */
 const PLAYERS = [
-  { id:1,  name:'Karl Malone',      short:'Malone',   rarity:'legendary', era:'1985–2003', ppg:25.0, apg:3.6,  rpg:10.1, blk:1.0, quote:'The Mailman always delivers.', num:'32' },
-  { id:2,  name:'John Stockton',    short:'Stockton', rarity:'legendary', era:'1984–2003', ppg:13.1, apg:10.5, rpg:2.7,  blk:0.2, quote:'Greatest PG in NBA history.',  num:'12' },
-  { id:3,  name:'Pete Maravich',    short:'Pistol',   rarity:'epic',      era:'1974–1980', ppg:24.4, apg:5.4,  rpg:4.2,  blk:0.2, quote:'Pistol Pete — pure magic.',   num:'7'  },
-  { id:4,  name:'Adrian Dantley',   short:'Dantley',  rarity:'epic',      era:'1979–1986', ppg:26.6, apg:2.9,  rpg:5.7,  blk:0.3, quote:'A scoring machine.',           num:'4'  },
-  { id:5,  name:'Donovan Mitchell', short:'Spida',    rarity:'rare',      era:'2017–2021', ppg:23.9, apg:4.4,  rpg:4.4,  blk:0.5, quote:'Spida climbs any wall.',       num:'45' },
-  { id:6,  name:'Rudy Gobert',      short:'Gobert',   rarity:'rare',      era:'2013–2022', ppg:14.3, apg:1.3,  rpg:13.5, blk:2.3, quote:'The Stifle Tower.',            num:'27' },
-  { id:7,  name:'Mark Eaton',       short:'Eaton',    rarity:'rare',      era:'1982–1993', ppg:6.0,  apg:0.6,  rpg:7.9,  blk:3.5, quote:'No easy buckets.',             num:'53' },
-  { id:8,  name:'Jeff Hornacek',    short:'Hornacek', rarity:'common',    era:'1994–2000', ppg:16.6, apg:4.7,  rpg:3.3,  blk:0.2, quote:"A clutch shooter's shooter.",  num:'14' },
-  { id:9,  name:'Joe Ingles',       short:'Ingles',   rarity:'common',    era:'2014–2022', ppg:8.5,  apg:3.3,  rpg:3.1,  blk:0.3, quote:'Aussie wit & threes.',         num:'2'  },
-  { id:10, name:'Bojan Bogdanovic', short:'Bojan',    rarity:'common',    era:'2019–2022', ppg:18.2, apg:2.1,  rpg:3.7,  blk:0.2, quote:'Automatic from corner.',       num:'44' },
-  { id:11, name:'Darrell Griffith', short:'Griff',    rarity:'rare',      era:'1980–1991', ppg:16.2, apg:2.2,  rpg:3.6,  blk:0.5, quote:'Dr. Dunkenstein flies.',       num:'35' },
-  { id:12, name:'Jordan Clarkson',  short:'Clarkson', rarity:'common',    era:'2019–Now',  ppg:17.4, apg:2.5,  rpg:3.3,  blk:0.2, quote:'Sixth Man energy.',            num:'00' },
+  // ── LEGENDARY ──
+  {id:1,  name:'Karl Malone',       short:'Malone',    rarity:'legendary',era:'1985–2003',ppg:25.0,apg:3.6, rpg:10.1,blk:1.0, quote:'The Mailman always delivers.',      num:'32'},
+  {id:2,  name:'John Stockton',     short:'Stockton',  rarity:'legendary',era:'1984–2003',ppg:13.1,apg:10.5,rpg:2.7, blk:0.2, quote:'Greatest PG of all time.',           num:'12'},
+  // ── EPIC ──
+  {id:3,  name:'Pete Maravich',     short:'Pistol',    rarity:'epic',     era:'1974–1980',ppg:24.4,apg:5.4, rpg:4.2, blk:0.2, quote:'Pistol Pete — pure magic.',          num:'7'},
+  {id:4,  name:'Adrian Dantley',    short:'Dantley',   rarity:'epic',     era:'1979–1986',ppg:26.6,apg:2.9, rpg:5.7, blk:0.3, quote:'A scoring machine.',                 num:'4'},
+  {id:5,  name:'Donovan Mitchell',  short:'Spida',     rarity:'epic',     era:'2017–2021',ppg:23.9,apg:4.4, rpg:4.4, blk:0.5, quote:'Spida climbs any wall.',             num:'45'},
+  // ── RARE ──
+  {id:6,  name:'Rudy Gobert',       short:'Gobert',    rarity:'rare',     era:'2013–2022',ppg:14.3,apg:1.3, rpg:13.5,blk:2.3, quote:'The Stifle Tower.',                  num:'27'},
+  {id:7,  name:'Mark Eaton',        short:'Eaton',     rarity:'rare',     era:'1982–1993',ppg:6.0, apg:0.6, rpg:7.9, blk:3.5, quote:'No easy buckets.',                   num:'53'},
+  {id:8,  name:'Darrell Griffith',  short:'Griff',     rarity:'rare',     era:'1980–1991',ppg:16.2,apg:2.2, rpg:3.6, blk:0.5, quote:'Dr. Dunkenstein takes flight.',      num:'35'},
+  {id:9,  name:'Thurl Bailey',      short:'T.Bailey',  rarity:'rare',     era:'1983–1991',ppg:13.3,apg:1.3, rpg:6.1, blk:1.6, quote:'Big T — heart of gold.',             num:'41'},
+  {id:10, name:'Mehmet Okur',       short:'Okur',      rarity:'rare',     era:'2004–2011',ppg:14.6,apg:1.8, rpg:7.3, blk:1.2, quote:'The Turkish Hammer.',                num:'13'},
+  // ── COMMON ──
+  {id:11, name:'Jeff Hornacek',     short:'Hornacek',  rarity:'common',   era:'1994–2000',ppg:16.6,apg:4.7, rpg:3.3, blk:0.2, quote:"A clutch shooter's shooter.",        num:'14'},
+  {id:12, name:'Joe Ingles',        short:'Ingles',    rarity:'common',   era:'2014–2022',ppg:8.5, apg:3.3, rpg:3.1, blk:0.3, quote:'Aussie wit & threes.',               num:'2'},
+  {id:13, name:'Bojan Bogdanovic',  short:'Bojan',     rarity:'common',   era:'2019–2022',ppg:18.2,apg:2.1, rpg:3.7, blk:0.2, quote:'Automatic from corner.',             num:'44'},
+  {id:14, name:'Jordan Clarkson',   short:'Clarkson',  rarity:'common',   era:'2019–Now', ppg:17.4,apg:2.5, rpg:3.3, blk:0.2, quote:'Sixth Man energy.',                  num:'00'},
+  {id:15, name:'Kyle Korver',       short:'Korver',    rarity:'common',   era:'2007–2010',ppg:11.5,apg:1.5, rpg:3.0, blk:0.2, quote:'The most dangerous shooter alive.',  num:'26'},
+  {id:16, name:'Deron Williams',    short:'D-Will',    rarity:'rare',     era:'2005–2011',ppg:18.8,apg:9.3, rpg:3.7, blk:0.3, quote:'D-Will was something special.',      num:'8'},
+  {id:17, name:'Carlos Boozer',     short:'Boozer',    rarity:'common',   era:'2004–2010',ppg:16.5,apg:1.8, rpg:9.6, blk:0.6, quote:'Power and finesse combined.',        num:'5'},
+  {id:18, name:'Andrei Kirilenko',  short:'AK-47',     rarity:'rare',     era:'2001–2011',ppg:12.2,apg:3.2, rpg:6.4, blk:2.2, quote:'AK-47 — one of a kind.',             num:'47'},
 ];
 
+/* ══════════════════════════════════════════════════════════
+   ▶ JAZZ BEAR — special secret character, unlocks when all
+     regular players have been caught at least once.
+   ══════════════════════════════════════════════════════════ */
+const BEAR = {
+  id:999, name:'Jazz Bear', short:'Jazz Bear', rarity:'legendary',
+  era:'1994–Now', ppg:0, apg:0, rpg:0, blk:999,
+  quote:'The heart and soul of Delta Center.', num:'🐻',
+  isBear: true,
+};
 
-/* ─────────────────────────────────────────────────────────────
-   GAME STATE
-   These track what the player has caught, face uploads,
-   active spawns on the map, and court animation handles.
-   ───────────────────────────────────────────────────────────── */
-let caught       = new Set();   // Set of caught player IDs
-let faceImages   = {};          // { [playerId]: dataURL }
-let activeSpawns = {};          // { [playerId]: { el, roamId, despawnId } }
-let roamPos      = {};          // { [playerId]: { x%, y% } } — court positions
-let roamTimer    = null;        // interval handle for court roaming
-let courtAF      = null;        // requestAnimationFrame handle for court canvas
-let currentTarget= null;        // player currently being caught
-let hoopAF       = null;        // requestAnimationFrame handle for hoop game
+/* ══════════════════════════════════════════════════════════
+   STATE — all persisted to localStorage
+   ══════════════════════════════════════════════════════════ */
+let caught       = new Set();        // Set of caught player ids
+let cardCounts   = {};               // {id: count} — how many of each card
+let faceImages   = {};               // {id: dataURL}
+let activeSpawns = {};               // currently visible on map
+let roamPos      = {};               // {id: {x%, y%}} court positions
+let roamTimer    = null;
+let courtAF      = null;
+let currentTarget= null;
+let hoopAF       = null;
+let courtRoster  = [];               // ids of players on court (max 5)
+let bearUnlocked = false;
+let customPlayer = null;             // the "My Player" object
+let customFaceImg= null;             // dataURL for custom player face
 
+/* ══════════════════════════════════════════════════════════
+   ▶ LOCAL STORAGE SAVE / LOAD
+   Keys: jazzdex_caught, jazzdex_counts, jazzdex_faces,
+         jazzdex_roster, jazzdex_bear, jazzdex_custom,
+         jazzdex_customface, jazzdex_roampos
+   ══════════════════════════════════════════════════════════ */
+function saveState() {
+  try {
+    localStorage.setItem('jazzdex_caught',  JSON.stringify([...caught]));
+    localStorage.setItem('jazzdex_counts',  JSON.stringify(cardCounts));
+    localStorage.setItem('jazzdex_faces',   JSON.stringify(faceImages));
+    localStorage.setItem('jazzdex_roster',  JSON.stringify(courtRoster));
+    localStorage.setItem('jazzdex_bear',    JSON.stringify(bearUnlocked));
+    localStorage.setItem('jazzdex_custom',  JSON.stringify(customPlayer));
+    localStorage.setItem('jazzdex_customface', customFaceImg || '');
+    localStorage.setItem('jazzdex_roampos', JSON.stringify(roamPos));
+    flashSaveBadge();
+  } catch(e) { console.warn('Save failed', e); }
+}
 
-/* ═══════════════════════════════════════════════════════════════
-   CHARACTER SVG BUILDER
-   ▶ This is the main function that draws each player figure.
-   ▶ The head is a circle filled with the player's uploaded face photo,
-     or a plain circle if no photo has been uploaded yet.
-   ▶ To change body proportions: edit the SVG coordinates below.
-   ▶ size parameter = rendered px width/height (viewBox is 0 0 56 60).
-   ═══════════════════════════════════════════════════════════════ */
-function buildChar(p, size = 56) {
-  const shirt = SHIRT_COLORS[p.rarity];   // jersey color
-  const glow  = RARITY_COLORS[p.rarity]; // rarity glow color
-  const face  = faceImages[p.id] || null;
-  // Each player bobs at a slightly different speed — staggered by id
+function loadState() {
+  try {
+    const c  = localStorage.getItem('jazzdex_caught');
+    const cc = localStorage.getItem('jazzdex_counts');
+    const f  = localStorage.getItem('jazzdex_faces');
+    const r  = localStorage.getItem('jazzdex_roster');
+    const b  = localStorage.getItem('jazzdex_bear');
+    const cp = localStorage.getItem('jazzdex_custom');
+    const cf = localStorage.getItem('jazzdex_customface');
+    const rp = localStorage.getItem('jazzdex_roampos');
+    if (c)  caught = new Set(JSON.parse(c));
+    if (cc) cardCounts = JSON.parse(cc);
+    if (f)  faceImages = JSON.parse(f);
+    if (r)  courtRoster = JSON.parse(r).filter(id => caught.has(id));
+    if (b)  bearUnlocked = JSON.parse(b);
+    if (cp) customPlayer = JSON.parse(cp);
+    if (cf) customFaceImg = cf || null;
+    if (rp) roamPos = JSON.parse(rp);
+  } catch(e) { console.warn('Load failed', e); }
+}
+
+function flashSaveBadge() {
+  const b = document.getElementById('save-badge');
+  if (!b) return;
+  b.style.opacity = '1';
+  b.textContent = '💾 saved';
+  setTimeout(() => { b.style.opacity = '0'; }, 2000);
+}
+
+/* ══════════════════════════════════════════════════════════
+   ▶ CHARACTER SVG BUILDER
+   Builds the bobblehead figure SVG. Full face fills the head circle.
+   ▶ To change body shape: edit the SVG rects/ellipses below.
+   ▶ To change animation speed: edit bobDur calculation.
+   ══════════════════════════════════════════════════════════ */
+function buildChar(p, size=56) {
+  const shirt  = SHIRT_COLORS[p.rarity] || '#00868a';
+  const glow   = RARITY_COLORS[p.rarity] || '#00B2A9';
+  const face   = (p.id === 999) ? null : (p.isCustom ? customFaceImg : faceImages[p.id] || null);
   const bobDur = (1.4 + (p.id % 5) * 0.18) + 's';
+  const headFill = face ? 'transparent' : (p.isBear ? '#8B4513' : '#dfc090');
 
-  /* HEAD CONTENT:
-     If a face photo has been uploaded, fill the entire head circle with it.
-     Otherwise show a blank head circle. */
-  const headFill = face ? 'transparent' : '#dfc090';
-  const faceEl   = face
+  // Bear gets a special bear-face placeholder
+  const bearFace = p.isBear ? `
+    <!-- Bear ears -->
+    <circle cx="17" cy="7"  r="5" fill="#6B3410"/>
+    <circle cx="39" cy="7"  r="5" fill="#6B3410"/>
+    <circle cx="17" cy="7"  r="3" fill="#8B4513"/>
+    <circle cx="39" cy="7"  r="3" fill="#8B4513"/>
+    <!-- Bear snout -->
+    <ellipse cx="28" cy="22" rx="7" ry="5" fill="#c8956a"/>
+    <!-- Bear nose -->
+    <ellipse cx="28" cy="19" rx="3" ry="2" fill="#1a0a00"/>
+    <!-- Bear eyes -->
+    <circle cx="23" cy="15" r="2.5" fill="#1a0a00"/>
+    <circle cx="33" cy="15" r="2.5" fill="#1a0a00"/>
+    <circle cx="23.7" cy="14.2" r=".8" fill="white"/>
+    <circle cx="33.7" cy="14.2" r=".8" fill="white"/>
+    <!-- Bear mouth -->
+    <path d="M24 23 Q28 27 32 23" stroke="#5a2a10" stroke-width="1.2" fill="none" stroke-linecap="round"/>` : '';
+
+  const faceEl = face
     ? `<image href="${face}" x="13" y="3" width="30" height="30" clip-path="url(#hc${p.id})"/>`
-    : `<!-- No face uploaded — default blank head -->`;
+    : (p.isBear ? bearFace : `<!-- no face uploaded -->`);
 
-  return `<svg width="${size}" height="${Math.round(size * 1.07)}" viewBox="0 0 56 60"
+  return `<svg width="${size}" height="${Math.round(size*1.07)}" viewBox="0 0 56 60"
     xmlns="http://www.w3.org/2000/svg" style="overflow:visible;display:block">
-  <defs>
-    <!-- Circular clip for the face photo — matches the head circle -->
-    <clipPath id="hc${p.id}"><circle cx="28" cy="18" r="15"/></clipPath>
-  </defs>
-
-  <!-- ── WHOLE-BODY BOB (up/down) ── -->
+  <defs><clipPath id="hc${p.id}"><circle cx="28" cy="18" r="15"/></clipPath></defs>
   <g style="animation:chbob${p.id} ${bobDur} ease-in-out infinite">
     <style>@keyframes chbob${p.id}{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}</style>
-
-    <!-- ── SHOES ── change fill to change shoe color -->
-    <ellipse cx="20" cy="59" rx="7"   ry="2.8" fill="#111"/>
-    <ellipse cx="36" cy="59" rx="7"   ry="2.8" fill="#111"/>
-    <!-- ── LEGS ── -->
+    <!-- Shoes -->
+    <ellipse cx="20" cy="59" rx="7" ry="2.8" fill="#111"/>
+    <ellipse cx="36" cy="59" rx="7" ry="2.8" fill="#111"/>
+    <!-- Legs -->
     <rect x="16" y="46" width="9"  height="14" rx="4" fill="${shirt}" opacity=".85"/>
     <rect x="31" y="46" width="9"  height="14" rx="4" fill="${shirt}" opacity=".85"/>
-    <!-- ── TORSO ── -->
+    <!-- Torso -->
     <rect x="13" y="29" width="30" height="20" rx="7" fill="${shirt}"/>
-    <!-- ── JERSEY NUMBER ── change font-size to resize the number -->
-    <text x="28" y="43" text-anchor="middle" font-size="7"
+    <!-- Jersey number / emoji -->
+    <text x="28" y="43" text-anchor="middle" font-size="${p.isBear?9:7}"
       font-family="Arial Black,sans-serif" font-weight="900"
       fill="rgba(255,255,255,.88)">${p.num}</text>
-    <!-- ── ARMS ── -->
+    <!-- Arms -->
     <rect x="4"  y="30" width="11" height="7" rx="3.5" fill="${shirt}" opacity=".9"/>
     <rect x="41" y="30" width="11" height="7" rx="3.5" fill="${shirt}" opacity=".9"/>
-    <!-- ── NECK ── change fill to change skin color -->
-    <rect x="24" y="26" width="8"  height="6" rx="3"   fill="#dfc090"/>
-
-    <!-- ── HEAD — bobble: sways independently from the body ── -->
+    <!-- Neck -->
+    <rect x="24" y="26" width="8" height="6" rx="3" fill="${headFill}"/>
+    <!-- HEAD — bobble -->
     <g style="animation:hdsway${p.id} ${bobDur} ease-in-out infinite;transform-origin:28px 18px">
       <style>@keyframes hdsway${p.id}{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}</style>
-
-      <!-- Head circle — this is where the face fills in -->
       <circle cx="28" cy="18" r="15" fill="${headFill}"/>
-      <!-- Face photo (clipped to circle) -->
       ${faceEl}
-      <!-- Subtle outline so head reads cleanly against any background -->
       <circle cx="28" cy="18" r="15" fill="none" stroke="rgba(0,0,0,.12)" stroke-width="1"/>
-      <!-- Hair strip across the top — same color as jersey -->
-      <path d="M13 11 Q28 2 43 11" fill="${shirt}" opacity=".55"/>
+      ${!p.isBear ? `<path d="M13 11 Q28 2 43 11" fill="${shirt}" opacity=".55"/>` : ''}
     </g>
-
-    <!-- ── RARITY BADGE (top-right corner) ── -->
-    ${p.rarity === 'legendary' ? `<text x="47" y="7" font-size="8" fill="${glow}">★</text>` : ''}
-    ${p.rarity === 'epic'      ? `<text x="47" y="7" font-size="7" fill="${glow}">◆</text>` : ''}
+    <!-- Rarity sparkle -->
+    ${p.rarity==='legendary'?`<text x="47" y="7" font-size="8" fill="${glow}">★</text>`:''}
+    ${p.rarity==='epic'?`<text x="47" y="7" font-size="7" fill="${glow}">◆</text>`:''}
   </g>
 </svg>`;
 }
 
-
-/* ═══════════════════════════════════════════════════════════════
-   FACES UPLOAD PANEL
-   Renders the grid of upload slots. Each slot stores the image as a
-   dataURL in faceImages[id] and refreshes all open views.
-   ═══════════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════
+   FACES PANEL
+   ══════════════════════════════════════════════════════════ */
 function renderFaces() {
   const grid = document.getElementById('faces-grid');
   if (!grid) return;
   grid.innerHTML = PLAYERS.map(p => {
-    const col     = RARITY_COLORS[p.rarity];
+    const col = RARITY_COLORS[p.rarity];
     const hasFace = !!faceImages[p.id];
     return `<div class="face-slot" style="border-color:${col}55">
       <label>
-        <div class="face-preview" id="fp-${p.id}">
-          ${hasFace ? `<img src="${faceImages[p.id]}"/>` : '📷'}
-        </div>
+        <div class="face-preview" id="fp-${p.id}">${hasFace?`<img src="${faceImages[p.id]}"/>`:'📷'}</div>
         <div class="face-pname">${p.short}</div>
         <div class="face-sub" style="color:${col}">${p.rarity}</div>
         <input type="file" accept="image/*" onchange="loadFace(${p.id},this)">
@@ -615,72 +650,250 @@ function renderFaces() {
 }
 
 function loadFace(id, input) {
-  const file = input.files[0];
-  if (!file) return;
+  const file = input.files[0]; if (!file) return;
   const reader = new FileReader();
   reader.onload = e => {
-    faceImages[id] = e.target.result;  // save dataURL
-
-    // Update the preview thumbnail in the faces panel
-    const prev = document.getElementById('fp-' + id);
+    faceImages[id] = e.target.result;
+    const prev = document.getElementById('fp-'+id);
     if (prev) prev.innerHTML = `<img src="${e.target.result}"/>`;
-
-    // Refresh whichever view is currently active
+    saveState();
     if (document.getElementById('cards-view').classList.contains('active')) renderCards();
     if (document.getElementById('dex-view').classList.contains('active'))   renderDex();
     if (document.getElementById('court-view').classList.contains('active')) rebuildRoamers();
-
-    // Update the character in any open catch modal
     const mc = document.getElementById('modal-char');
-    if (mc && currentTarget && currentTarget.id === id)
-      mc.innerHTML = buildChar(currentTarget, 68);
-
-    // Update the character on the map if still spawned
-    const spawnBody = document.querySelector(`.spawn-char[data-id="${id}"] .char-body`);
-    if (spawnBody) spawnBody.innerHTML = buildChar(PLAYERS.find(pl => pl.id === id), 50);
+    if (mc && currentTarget && currentTarget.id===id) mc.innerHTML = buildChar(currentTarget,68);
+    const sb = document.querySelector(`.spawn-char[data-id="${id}"] .char-body`);
+    if (sb) sb.innerHTML = buildChar(PLAYERS.find(pl=>pl.id===id),50);
   };
   reader.readAsDataURL(file);
 }
 
+/* ══════════════════════════════════════════════════════════
+   CUSTOM PLAYER
+   ══════════════════════════════════════════════════════════ */
+function loadCustomFace(input) {
+  const file = input.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    customFaceImg = e.target.result;
+    refreshCustomPreview();
+  };
+  reader.readAsDataURL(file);
+}
 
-/* ═══════════════════════════════════════════════════════════════
-   SPAWN SYSTEM
-   Each player has their own schedule. On first load they get a
-   random initial delay so they don't all pop at once.
-   After each appearance, the next one is re-scheduled.
-   ═══════════════════════════════════════════════════════════════ */
-function scheduleAll() {
-  PLAYERS.forEach(p => {
-    // Stagger initial spawns randomly within the first interval window
-    const initialDelay = Math.random() * RARITY_SPAWN[p.rarity].interval * 0.7;
-    setTimeout(() => trySpawn(p), initialDelay);
+function refreshCustomPreview() {
+  const name   = document.getElementById('cp-name')?.value || 'My Player';
+  const num    = document.getElementById('cp-num')?.value  || '00';
+  const rarity = document.getElementById('cp-rarity')?.value || 'common';
+  const preview= document.getElementById('custom-preview');
+  if (!preview) return;
+  const fakePl = {id:'cp', name, short:name.split(' ')[0], rarity, num, isCustom:true};
+  preview.innerHTML = buildChar(fakePl, 80);
+}
+
+function saveCustomPlayer() {
+  const name  = document.getElementById('cp-name')?.value?.trim()  || 'My Player';
+  const num   = document.getElementById('cp-num')?.value?.trim()   || '00';
+  const ppg   = parseFloat(document.getElementById('cp-ppg')?.value)  || 0;
+  const apg   = parseFloat(document.getElementById('cp-apg')?.value)  || 0;
+  const rpg   = parseFloat(document.getElementById('cp-rpg')?.value)  || 0;
+  const rarity= document.getElementById('cp-rarity')?.value || 'common';
+  const quote = document.getElementById('cp-quote')?.value?.trim()  || 'Built different.';
+
+  customPlayer = {
+    id:'cp', name, short:name.split(' ')[0], rarity,
+    era: `Joined ${new Date().getFullYear()}`,
+    ppg, apg, rpg, blk:0, quote, num,
+    isCustom:true,
+    joinedDate: new Date().toLocaleDateString(),
+  };
+  saveState();
+  const badge = document.getElementById('cp-saved');
+  if (badge) { badge.style.display='block'; setTimeout(()=>{badge.style.display='none';},2500); }
+  renderCustomCard();
+}
+
+function renderCustomCard() {
+  const area = document.getElementById('custom-card-display');
+  if (!area || !customPlayer) { if(area) area.innerHTML=''; return; }
+  const p = customPlayer;
+  const face = customFaceImg;
+  const col  = RARITY_COLORS[p.rarity];
+  area.innerHTML = `
+    <div style="margin-top:20px">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:rgba(245,240,232,.4);text-align:center;margin-bottom:12px;letter-spacing:1px">YOUR CARD</div>
+      <div class="cards-grid" style="max-width:220px;margin:0 auto">
+        <div class="card-flip-wrap" data-r="${p.rarity}" onclick="this.classList.toggle('flipped')">
+          <div class="card-inner">
+            <div class="card-face card-front">
+              ${face
+                ? `<img class="card-front-img" src="${face}"/>
+                   <div class="card-front-overlay">
+                     <div class="card-pname">${p.name}</div>
+                     <span class="card-rbadge rarity-${p.rarity}">${p.rarity}</span>
+                   </div>`
+                : `<div class="card-front-noimg">
+                     <div class="card-char">${buildChar(p,70)}</div>
+                     <div class="card-pname">${p.name}</div>
+                     <div class="card-era">${p.era}</div>
+                     <span class="card-rbadge rarity-${p.rarity}" style="margin-top:2px">${p.rarity}</span>
+                   </div>`}
+            </div>
+            <div class="card-face card-back">
+              <div class="card-back-inner">
+                <div class="card-back-name">${p.name}</div>
+                <div class="card-back-era">${p.era}</div>
+                <div style="font-family:'Barlow Condensed',sans-serif;font-size:.7rem;color:rgba(245,240,232,.4);margin-bottom:8px">Joined: ${p.joinedDate}</div>
+                <div class="card-back-stats">
+                  <div class="srow"><span class="sl">PPG</span><span class="sv">${p.ppg}</span></div>
+                  <div class="srow"><span class="sl">APG</span><span class="sv">${p.apg}</span></div>
+                  <div class="srow"><span class="sl">RPG</span><span class="sv">${p.rpg}</span></div>
+                </div>
+                <div class="card-back-quote">"${p.quote}"</div>
+                <div class="card-back-hint">tap to flip back</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function initCustomView() {
+  if (customPlayer) {
+    document.getElementById('cp-name').value   = customPlayer.name || '';
+    document.getElementById('cp-num').value    = customPlayer.num  || '';
+    document.getElementById('cp-ppg').value    = customPlayer.ppg  || '';
+    document.getElementById('cp-apg').value    = customPlayer.apg  || '';
+    document.getElementById('cp-rpg').value    = customPlayer.rpg  || '';
+    document.getElementById('cp-rarity').value = customPlayer.rarity || 'common';
+    document.getElementById('cp-quote').value  = customPlayer.quote || '';
+  }
+  refreshCustomPreview();
+  renderCustomCard();
+  // Live preview on input change
+  ['cp-name','cp-num','cp-rarity'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', refreshCustomPreview);
   });
 }
 
+/* ══════════════════════════════════════════════════════════
+   JAZZ BEAR
+   ══════════════════════════════════════════════════════════ */
+function checkBearUnlock() {
+  const total = PLAYERS.length;
+  const caughtAll = PLAYERS.every(p => caught.has(p.id));
+  if (caughtAll && !bearUnlocked) {
+    bearUnlocked = true;
+    if (!caught.has(BEAR.id)) { caught.add(BEAR.id); cardCounts[BEAR.id] = 1; }
+    saveState();
+    showBearUnlock();
+  }
+  const bearNav = document.getElementById('bear-nav');
+  if (bearNav) {
+    if (bearUnlocked) bearNav.classList.remove('bear-locked');
+    else bearNav.classList.add('bear-locked');
+  }
+}
+
+function showBearUnlock() {
+  // Show a flash notification
+  const flash = document.createElement('div');
+  flash.style.cssText = 'position:fixed;top:80px;left:50%;transform:translateX(-50%);z-index:500;background:linear-gradient(135deg,#F9A01B,#aa7700);color:#002B5C;font-family:"Bebas Neue",sans-serif;font-size:1.2rem;letter-spacing:2px;padding:12px 28px;border-radius:8px;box-shadow:0 4px 30px rgba(249,160,27,.6);animation:burst .4s ease 2';
+  flash.textContent = '🐻 JAZZ BEAR UNLOCKED!';
+  document.body.appendChild(flash);
+  setTimeout(() => flash.remove(), 3000);
+}
+
+function renderBearView() {
+  const area = document.getElementById('bear-content');
+  if (!area) return;
+  const caughtCount = PLAYERS.filter(p => caught.has(p.id)).length;
+  const total = PLAYERS.length;
+  if (bearUnlocked) {
+    area.innerHTML = `
+      <div class="bear-unlock-msg">
+        <h2>🐻 You Found Jazz Bear!</h2>
+        <p>Congratulations! You caught all ${total} Jazz legends and unlocked the most spirited member of the Utah Jazz family.</p>
+      </div>
+      <div class="bear-char">${buildChar(BEAR, 100)}</div>
+      <div class="cards-grid" style="max-width:220px;margin:20px auto">
+        <div class="card-flip-wrap" data-r="legendary" onclick="this.classList.toggle('flipped')">
+          <div class="card-inner">
+            <div class="card-face card-front">
+              <div class="card-front-noimg">
+                <div class="card-char">${buildChar(BEAR,70)}</div>
+                <div class="card-pname">Jazz Bear</div>
+                <div class="card-era">1994–Now</div>
+                <span class="card-rbadge rarity-legendary" style="margin-top:2px">legendary</span>
+              </div>
+            </div>
+            <div class="card-face card-back">
+              <div class="card-back-inner">
+                <div class="card-back-name">Jazz Bear</div>
+                <div class="card-back-era">1994 – Now</div>
+                <div class="card-back-stats">
+                  <div class="srow"><span class="sl">PPG</span><span class="sv">🐻</span></div>
+                  <div class="srow"><span class="sl">APG</span><span class="sv">🐻</span></div>
+                  <div class="srow"><span class="sl">RPG</span><span class="sv">🐻</span></div>
+                  <div class="srow"><span class="sl">BLK</span><span class="sv">999</span></div>
+                </div>
+                <div class="card-back-quote">"The heart and soul of Delta Center."</div>
+                <div class="card-back-hint">tap to flip back</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  } else {
+    area.innerHTML = `
+      <div class="bear-unlock-msg" style="opacity:.6">
+        <h2>🔒 Jazz Bear is Hiding...</h2>
+        <p>Catch every single Utah Jazz player to unlock Jazz Bear as a secret character!</p>
+      </div>
+      <div class="bear-progress">${caughtCount} / ${total}</div>
+      <div class="bear-locked-msg">Keep catching players on the Map to get closer!</div>`;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   SPAWN SYSTEM — players keep respawning forever
+   ══════════════════════════════════════════════════════════ */
+function scheduleAll() {
+  PLAYERS.forEach(p => {
+    const delay = Math.random() * RARITY_SPAWN[p.rarity].interval * 0.7;
+    setTimeout(() => spawnLoop(p), delay);
+  });
+}
+
+function spawnLoop(p) {
+  // Always respawn — no "caught" check so duplicates are possible
+  if (!activeSpawns[p.id]) trySpawn(p);
+  const cfg = RARITY_SPAWN[p.rarity];
+  const nextIn = cfg.interval * (0.8 + Math.random() * 0.6);
+  setTimeout(() => spawnLoop(p), cfg.duration + nextIn);
+}
+
 function trySpawn(p) {
-  if (caught.has(p.id)) return;    // already caught — never spawn again
-  if (activeSpawns[p.id]) return;  // already on map
+  if (activeSpawns[p.id]) return;
   const cfg  = RARITY_SPAWN[p.rarity];
   const glow = RARITY_COLORS[p.rarity];
-  const court = document.getElementById('court-map');
-
-  // Random start position (keep away from edges)
+  const court= document.getElementById('court-map');
   let x = 12 + Math.random() * 76;
   let y = 14 + Math.random() * 72;
 
-  // Build the DOM element
   const wrap = document.createElement('div');
   wrap.className = 'spawn-char';
   wrap.dataset.id = p.id;
-  wrap.style.cssText = `left:${x}%;top:${y}%;filter:drop-shadow(0 0 ${p.rarity === 'legendary' ? '12' : '6'}px ${glow})`;
+  wrap.style.cssText = `left:${x}%;top:${y}%;filter:drop-shadow(0 0 ${p.rarity==='legendary'?'12':'6'}px ${glow})`;
 
   const body = document.createElement('div');
   body.className = 'char-body';
-  body.innerHTML = buildChar(p, 50);
+  body.innerHTML = buildChar(p,50);
 
   const shadow = document.createElement('div');
   shadow.className = 'char-shadow';
-
   const tag = document.createElement('div');
   tag.className = 'char-tag';
   tag.style.color = glow;
@@ -693,63 +906,51 @@ function trySpawn(p) {
   requestAnimationFrame(() => wrap.classList.add('popin'));
   wrap.addEventListener('click', () => openCatch(p.id));
 
-  // Slowly roam while visible
   const roamId = setInterval(() => {
     if (!activeSpawns[p.id]) return;
-    x = Math.max(8,  Math.min(92, x + (Math.random() - 0.5) * 10));
-    y = Math.max(10, Math.min(88, y + (Math.random() - 0.5) * 10));
-    wrap.style.left = x + '%';
-    wrap.style.top  = y + '%';
+    x = Math.max(8, Math.min(92, x + (Math.random()-.5)*10));
+    y = Math.max(10, Math.min(88, y + (Math.random()-.5)*10));
+    wrap.style.left = x+'%'; wrap.style.top = y+'%';
   }, 3200);
 
-  // Auto-despawn after duration
   const despawnId = setTimeout(() => doDeSpawn(p.id), cfg.duration);
-  activeSpawns[p.id] = { el: wrap, roamId, despawnId };
-
-  // Schedule the next appearance after this one is gone
-  const nextIn = cfg.interval * (0.8 + Math.random() * 0.6);
-  setTimeout(() => { if (!caught.has(p.id)) trySpawn(p); }, cfg.duration + nextIn);
+  activeSpawns[p.id] = {el:wrap, roamId, despawnId};
 }
 
 function doDeSpawn(id) {
-  const s = activeSpawns[id];
-  if (!s) return;
-  clearInterval(s.roamId);
-  clearTimeout(s.despawnId);
+  const s = activeSpawns[id]; if (!s) return;
+  clearInterval(s.roamId); clearTimeout(s.despawnId);
   s.el.classList.add('popout');
   setTimeout(() => s.el.remove(), 350);
   delete activeSpawns[id];
 }
 
-
-/* ═══════════════════════════════════════════════════════════════
-   CATCH MODAL
-   Opens when a player is tapped on the map.
-   Only shows name + rarity — no stats (per request).
-   ═══════════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════
+   CATCH MODAL — 3 shots, auto-catch on first make
+   ▶ AIM_SPEEDS: how fast arc oscillates per rarity
+   ▶ sweetW: tolerance window (bigger = easier)
+   ══════════════════════════════════════════════════════════ */
 function openCatch(id) {
   currentTarget = PLAYERS.find(p => p.id === id);
   const p = currentTarget;
+  // Build 3 pip indicators
+  const pips = [0,1,2].map(i => `<div class="shot-pip pending" id="sp${i}">🏀</div>`).join('');
 
   document.getElementById('modal-body').innerHTML = `
     <div class="modal-header">
-      <div class="modal-char" id="modal-char">${buildChar(p, 68)}</div>
+      <div class="modal-char" id="modal-char">${buildChar(p,68)}</div>
       <div class="modal-info">
         <div class="modal-name">${p.name}</div>
         <span class="modal-rbadge rarity-${p.rarity}">${p.rarity.toUpperCase()}</span>
-        <!-- Stats intentionally NOT shown here — they live on the card back -->
       </div>
     </div>
     <div class="hoop-section">
-      <div class="hoop-title">MAKE THE SHOT TO CATCH!</div>
-      <div class="shot-row">
-        <div class="shot-pip" id="sp0">🏀</div>
-      </div>
+      <div class="hoop-title">MAKE A BASKET — 3 chances, first make auto-catches!</div>
+      <div class="shot-row">${pips}</div>
       <canvas id="hoop-cv" width="380" height="150"></canvas>
       <button class="throw-btn" id="throw-btn" onclick="doThrow()">🏀 THROW</button>
     </div>
-    <button class="catch-btn" id="catch-btn" onclick="doCatch()">⚡ CATCH ${p.short.toUpperCase()}!</button>
-    <div class="fail-msg" id="fail-msg">😓 Missed the shot — they got away!</div>
+    <div class="fail-msg" id="fail-msg">😓 All 3 missed — they got away!</div>
     <div class="success-screen" id="success-screen">
       <span class="burst">🎉</span>
       <h3>CAUGHT!</h3>
@@ -760,243 +961,180 @@ function openCatch(id) {
   initHoop();
 }
 
-
-/* ═══════════════════════════════════════════════════════════════
-   HOOP MINI-GAME
-   A single shot. An arc oscillates side to side.
-   When it turns gold you're in the sweet spot — press THROW.
-   Rarer players = faster oscillation = harder shot.
-
-   ▶ To change the sweet-spot size: edit sweetW (pixels of tolerance)
-   ▶ To change oscillation speed per rarity: edit AIM_SPEEDS
-   ═══════════════════════════════════════════════════════════════ */
 function initHoop() {
   const canvas = document.getElementById('hoop-cv');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   const W = canvas.width, H = canvas.height;
+  const hoopX = W * 0.75, hoopY = H * 0.30, rimR = 20;
+  const ballX = W * 0.14,  ballY = H * 0.84;
 
-  // Hoop position — fixed on right side of canvas
-  const hoopX = W * 0.75;
-  const hoopY = H * 0.30;
-  const rimR  = 20;
-
-  // Ball starts at bottom-left
-  const ballX = W * 0.14;
-  const ballY = H * 0.84;
-
-  /* ▶ TWEAK THESE to make catching easier/harder:
-     sweetW   — half-width of the "in" zone (bigger = more forgiving)
-     AIM_SPEEDS — how fast the arc oscillates per rarity */
+  /* ▶ Tune difficulty here */
   const sweetW     = 22;
-  const AIM_SPEEDS = { common: 0.016, rare: 0.026, epic: 0.036, legendary: 0.050 };
+  const AIM_SPEEDS = {common:0.016, rare:0.026, epic:0.036, legendary:0.050};
   const speed      = AIM_SPEEDS[currentTarget.rarity];
 
-  let aimAngle = 0;           // drives sin() oscillation
-  let phase    = 'aim';       // 'aim' | 'fly'
-  let flyT     = 0;
-  let flyScatter = 0;
-  let swish    = 0;           // flash intensity after a make
+  let aimAngle = 0;
+  let phase = 'aim';   // 'aim' | 'fly' | 'between'
+  let flyT = 0, flyScatter = 0, swish = 0;
+  let shotsDone = 0;   // 0–2 (max 3 attempts)
 
-  // Current scatter: how far off-target the arc is (px)
   function scatter() { return Math.sin(aimAngle) * 58; }
 
-  // Quadratic bezier from ball to target (hoopX + scatter offset)
-  function arcPoint(t, sc) {
-    const tx  = hoopX + sc;
+  function arcPt(t, sc) {
+    const tx = hoopX + sc;
     const cpX = (ballX + tx) * 0.5;
     const cpY = Math.min(ballY, hoopY) - H * 0.55;
     return {
-      bx: (1-t)*(1-t)*ballX + 2*(1-t)*t*cpX + t*t*tx,
-      by: (1-t)*(1-t)*ballY + 2*(1-t)*t*cpY + t*t*hoopY,
+      bx:(1-t)*(1-t)*ballX + 2*(1-t)*t*cpX + t*t*tx,
+      by:(1-t)*(1-t)*ballY + 2*(1-t)*t*cpY + t*t*hoopY,
     };
   }
 
-  // Draw a basketball circle with gradient and seams
-  function drawBall(x, y, r = 11) {
-    const g = ctx.createRadialGradient(x - r*.35, y - r*.35, r*.1, x, y, r);
-    g.addColorStop(0, '#ffb347');
-    g.addColorStop(1, '#c84800');
-    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.fillStyle = g; ctx.fill();
-    ctx.strokeStyle = 'rgba(0,0,0,.3)'; ctx.lineWidth = 1.2;
-    ctx.beginPath(); ctx.arc(x, y, r, -0.5, 0.5); ctx.stroke();
-    ctx.beginPath(); ctx.arc(x, y, r, Math.PI - .5, Math.PI + .5); ctx.stroke();
+  function drawBall(x,y,r=11) {
+    const g = ctx.createRadialGradient(x-r*.35,y-r*.35,r*.1,x,y,r);
+    g.addColorStop(0,'#ffb347'); g.addColorStop(1,'#c84800');
+    ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fillStyle=g; ctx.fill();
+    ctx.strokeStyle='rgba(0,0,0,.3)'; ctx.lineWidth=1.2;
+    ctx.beginPath(); ctx.arc(x,y,r,-0.5,0.5); ctx.stroke();
+    ctx.beginPath(); ctx.arc(x,y,r,Math.PI-.5,Math.PI+.5); ctx.stroke();
   }
 
   function drawHoop() {
-    // Backboard
-    ctx.fillStyle = '#e0d8c0';
-    ctx.fillRect(hoopX + rimR + 3, hoopY - 28, 7, 50);
-    ctx.strokeStyle = '#bbb'; ctx.lineWidth = 1;
-    ctx.strokeRect(hoopX + rimR + 3, hoopY - 28, 7, 50);
-    // Net lines
-    ctx.strokeStyle = 'rgba(255,255,255,.4)'; ctx.lineWidth = 1;
-    for (let i = 0; i <= 4; i++) {
-      const nx = hoopX - rimR + (rimR * 2 / 4) * i;
-      ctx.beginPath();
-      ctx.moveTo(nx, hoopY + 4);
-      ctx.lineTo(hoopX + (nx - hoopX) * 0.4, hoopY + 26);
-      ctx.stroke();
+    ctx.fillStyle='#e0d8c0'; ctx.fillRect(hoopX+rimR+3,hoopY-28,7,50);
+    ctx.strokeStyle='#bbb'; ctx.lineWidth=1; ctx.strokeRect(hoopX+rimR+3,hoopY-28,7,50);
+    ctx.strokeStyle='rgba(255,255,255,.4)'; ctx.lineWidth=1;
+    for (let i=0;i<=4;i++) {
+      const nx=hoopX-rimR+(rimR*2/4)*i;
+      ctx.beginPath(); ctx.moveTo(nx,hoopY+4); ctx.lineTo(hoopX+(nx-hoopX)*.4,hoopY+26); ctx.stroke();
     }
-    ctx.beginPath();
-    ctx.moveTo(hoopX - rimR * .5, hoopY + 26);
-    ctx.lineTo(hoopX + rimR * .5, hoopY + 26);
-    ctx.stroke();
-    // Rim
-    ctx.strokeStyle = '#E05500'; ctx.lineWidth = 4.5;
-    ctx.beginPath(); ctx.ellipse(hoopX, hoopY, rimR, 5, 0, 0, Math.PI * 2); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(hoopX-rimR*.5,hoopY+26); ctx.lineTo(hoopX+rimR*.5,hoopY+26); ctx.stroke();
+    ctx.strokeStyle='#E05500'; ctx.lineWidth=4.5;
+    ctx.beginPath(); ctx.ellipse(hoopX,hoopY,rimR,5,0,0,Math.PI*2); ctx.stroke();
   }
 
   function frame() {
-    ctx.clearRect(0, 0, W, H);
-    drawHoop();
-
-    // Gold swish flash after a make
-    if (swish > 0) {
-      ctx.globalAlpha = swish * 0.45;
-      ctx.fillStyle = '#F9A01B';
-      ctx.beginPath(); ctx.arc(hoopX, hoopY, rimR + 16, 0, Math.PI * 2); ctx.fill();
-      ctx.globalAlpha = 1;
-      swish = Math.max(0, swish - 0.06);
+    ctx.clearRect(0,0,W,H); drawHoop();
+    if (swish>0) {
+      ctx.globalAlpha=swish*.45; ctx.fillStyle='#F9A01B';
+      ctx.beginPath(); ctx.arc(hoopX,hoopY,rimR+16,0,Math.PI*2); ctx.fill();
+      ctx.globalAlpha=1; swish=Math.max(0,swish-.06);
     }
-
-    if (phase === 'aim') {
+    if (phase==='aim') {
       aimAngle += speed;
-      const sc      = scatter();
-      const inZone  = Math.abs(sc) < sweetW;
-
-      // Draw the trajectory arc (gold = in zone, dim white = outside)
-      ctx.save();
-      ctx.setLineDash([5, 5]);
-      ctx.strokeStyle = inZone ? 'rgba(249,160,27,.95)' : 'rgba(255,255,255,.3)';
-      ctx.lineWidth   = inZone ? 2.4 : 1.5;
+      const sc = scatter();
+      const inZone = Math.abs(sc)<sweetW;
+      ctx.save(); ctx.setLineDash([5,5]);
+      ctx.strokeStyle = inZone?'rgba(249,160,27,.95)':'rgba(255,255,255,.3)';
+      ctx.lineWidth   = inZone?2.4:1.5;
       ctx.beginPath();
-      for (let i = 0; i <= 40; i++) {
-        const { bx, by } = arcPoint(i / 40, sc);
-        i === 0 ? ctx.moveTo(bx, by) : ctx.lineTo(bx, by);
-      }
-      ctx.stroke();
-      ctx.setLineDash([]);
-      ctx.restore();
-
-      // Highlight ring on hoop when in zone
+      for (let i=0;i<=40;i++) { const {bx,by}=arcPt(i/40,sc); i===0?ctx.moveTo(bx,by):ctx.lineTo(bx,by); }
+      ctx.stroke(); ctx.setLineDash([]); ctx.restore();
       if (inZone) {
-        ctx.strokeStyle = 'rgba(249,160,27,.5)'; ctx.lineWidth = 3;
-        ctx.beginPath(); ctx.ellipse(hoopX, hoopY, rimR + 7, 8, 0, 0, Math.PI * 2); ctx.stroke();
+        ctx.strokeStyle='rgba(249,160,27,.5)'; ctx.lineWidth=3;
+        ctx.beginPath(); ctx.ellipse(hoopX,hoopY,rimR+7,8,0,0,Math.PI*2); ctx.stroke();
       }
-
-      drawBall(ballX, ballY);
-      hoopAF = requestAnimationFrame(frame);
-
-    } else if (phase === 'fly') {
-      flyT += 0.032;
-      const { bx, by } = arcPoint(flyT, flyScatter);
-      drawBall(bx, by);
-
-      if (flyT < 1) {
-        hoopAF = requestAnimationFrame(frame);
-      } else {
-        // Resolve: made if scatter was within sweet zone when thrown
-        resolveShot(Math.abs(flyScatter) < sweetW);
-      }
+      drawBall(ballX,ballY);
+      hoopAF=requestAnimationFrame(frame);
+    } else if (phase==='fly') {
+      flyT+=0.032;
+      const {bx,by}=arcPt(flyT,flyScatter);
+      drawBall(bx,by);
+      if (flyT<1) { hoopAF=requestAnimationFrame(frame); }
+      else resolveShot(Math.abs(flyScatter)<sweetW);
+    } else {
+      drawBall(ballX,ballY);
+      hoopAF=requestAnimationFrame(frame);
     }
   }
 
   function resolveShot(made) {
-    const pip = document.getElementById('sp0');
+    const pip = document.getElementById('sp'+shotsDone);
+    shotsDone++;
     if (made) {
-      if (pip) { pip.classList.add('made'); pip.textContent = '✓'; }
-      swish = 1;
-      // Short delay then unlock catch button
+      if (pip) { pip.classList.remove('pending'); pip.classList.add('made'); pip.textContent='✓'; }
+      swish=1;
       cancelAnimationFrame(hoopAF);
-      const tb = document.getElementById('throw-btn');
-      if (tb) tb.disabled = true;
-      // Draw final swish frame, then show catch button
-      ctx.clearRect(0, 0, W, H); drawHoop();
-      ctx.globalAlpha = 0.4; ctx.fillStyle = '#F9A01B';
-      ctx.beginPath(); ctx.arc(hoopX, hoopY, rimR + 16, 0, Math.PI * 2); ctx.fill();
-      ctx.globalAlpha = 1;
-      setTimeout(() => {
-        const cb = document.getElementById('catch-btn');
-        if (cb) cb.style.display = 'block';
-      }, 350);
+      // Auto-catch immediately on make
+      ctx.clearRect(0,0,W,H); drawHoop();
+      ctx.globalAlpha=.4; ctx.fillStyle='#F9A01B';
+      ctx.beginPath(); ctx.arc(hoopX,hoopY,rimR+16,0,Math.PI*2); ctx.fill(); ctx.globalAlpha=1;
+      document.getElementById('throw-btn').disabled=true;
+      setTimeout(autoCatch, 600);
     } else {
-      if (pip) { pip.classList.add('miss'); pip.textContent = '✗'; }
-      cancelAnimationFrame(hoopAF);
-      const tb = document.getElementById('throw-btn');
-      if (tb) tb.disabled = true;
-      setTimeout(() => {
-        const fm = document.getElementById('fail-msg');
-        if (fm) fm.style.display = 'block';
-        setTimeout(closeModal, 1600);
-      }, 300);
+      if (pip) { pip.classList.remove('pending'); pip.classList.add('miss'); pip.textContent='✗'; }
+      if (shotsDone>=3) {
+        cancelAnimationFrame(hoopAF);
+        document.getElementById('throw-btn').disabled=true;
+        setTimeout(()=>{
+          document.getElementById('fail-msg').style.display='block';
+          setTimeout(closeModal,1800);
+        },300);
+      } else {
+        phase='between';
+        hoopAF=requestAnimationFrame(frame);
+        setTimeout(()=>{ phase='aim'; },500);
+      }
     }
   }
 
-  // Called by THROW button — capture current scatter and launch the ball
+  function autoCatch() {
+    const p = currentTarget; if (!p) return;
+    const firstTime = !caught.has(p.id);
+    caught.add(p.id);
+    cardCounts[p.id] = (cardCounts[p.id]||0) + 1;
+    updateCounts();
+    doDeSpawn(p.id);
+    saveState();
+    checkBearUnlock();
+    if (hoopAF) cancelAnimationFrame(hoopAF);
+    document.getElementById('success-screen').style.display='block';
+    setTimeout(closeModal,1900);
+    if (document.getElementById('court-view').classList.contains('active')) rebuildRoamers();
+  }
+
   window._doThrow = () => {
-    if (phase !== 'aim') return;
-    flyScatter = scatter();
-    flyT   = 0;
-    phase  = 'fly';
+    if (phase!=='aim') return;
+    flyScatter=scatter(); flyT=0; phase='fly';
   };
-
-  hoopAF = requestAnimationFrame(frame);
+  hoopAF=requestAnimationFrame(frame);
 }
 
-function doThrow()  { if (window._doThrow) window._doThrow(); }
-
-function doCatch() {
-  const p = currentTarget;
-  caught.add(p.id);
-  updateCounts();
-  doDeSpawn(p.id);  // remove from map
-  if (hoopAF) cancelAnimationFrame(hoopAF);
-  document.getElementById('catch-btn').style.display = 'none';
-  document.getElementById('success-screen').style.display = 'block';
-  setTimeout(closeModal, 1900);
-  // Refresh court if it's open
-  if (document.getElementById('court-view').classList.contains('active')) rebuildRoamers();
-}
+function doThrow() { if (window._doThrow) window._doThrow(); }
 
 function closeModal() {
   if (hoopAF) cancelAnimationFrame(hoopAF);
   document.getElementById('catch-modal').classList.remove('open');
-  window._doThrow = null;
-  currentTarget   = null;
+  window._doThrow=null; currentTarget=null;
 }
 
-
-/* ─────────────────────────────────────────────────────────────
-   UPDATE CAUGHT COUNT (header + dex progress bar)
-   ───────────────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════
+   UPDATE COUNTS
+   ══════════════════════════════════════════════════════════ */
 function updateCounts() {
-  const n = caught.size;
-  document.getElementById('caught-count').textContent = n;
-  const dn = document.getElementById('dex-n');
-  if (dn) dn.textContent = n;
-  const df = document.getElementById('dex-fill');
-  if (df) df.style.width = (n / 12 * 100) + '%';
+  const uniqueCaught = PLAYERS.filter(p=>caught.has(p.id)).length;
+  document.getElementById('caught-count').textContent = uniqueCaught;
+  const dn=document.getElementById('dex-n'); if(dn) dn.textContent=uniqueCaught;
+  const df=document.getElementById('dex-fill'); if(df) df.style.width=(uniqueCaught/PLAYERS.length*100)+'%';
 }
 
-
-/* ═══════════════════════════════════════════════════════════════
-   PLAYER CARDS — flip on click
-   Front shows the player photo (or character sprite if no photo).
-   Back shows era, stats, and flavor quote.
-   ═══════════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════
+   CARDS VIEW — only shows caught cards + placeholder for rest
+   ══════════════════════════════════════════════════════════ */
 function renderCards() {
   const grid = document.getElementById('cards-grid');
   if (!grid) return;
-
+  // All players: caught ones get flip cards, uncaught get placeholder
   grid.innerHTML = PLAYERS.map(p => {
-    const got   = caught.has(p.id);
-    const face  = faceImages[p.id];
-
-    /* FRONT FACE:
-       If a face photo exists → full-bleed image with name overlay.
-       Otherwise → character sprite with name/era text. */
+    const got  = caught.has(p.id);
+    const count= cardCounts[p.id]||0;
+    if (!got) {
+      return `<div class="card-not-caught">
+        <div class="q-mark">?</div>
+        <div>Once caught, this player's card will appear here.</div>
+      </div>`;
+    }
+    const face = faceImages[p.id];
     const frontFace = face
       ? `<div class="card-face card-front">
            <img class="card-front-img" src="${face}" alt="${p.name}"/>
@@ -1007,282 +1145,338 @@ function renderCards() {
          </div>`
       : `<div class="card-face card-front">
            <div class="card-front-noimg">
-             <div class="card-char">${buildChar(p, 70)}</div>
+             <div class="card-char">${buildChar(p,70)}</div>
              <div class="card-pname">${p.name}</div>
              <div class="card-era">${p.era}</div>
              <span class="card-rbadge rarity-${p.rarity}" style="margin-top:2px">${p.rarity}</span>
            </div>
          </div>`;
-
-    /* BACK FACE: stats + quote */
-    const backFace = `<div class="card-face card-back">
-      <div class="card-back-inner">
-        <div class="card-back-num">#${String(p.id).padStart(3,'0')}</div>
-        <div class="card-back-name">${p.name}</div>
-        <div class="card-back-era">${p.era}</div>
-        <div class="card-back-stats">
-          <div class="srow"><span class="sl">PPG</span><span class="sv">${p.ppg}</span></div>
-          <div class="srow"><span class="sl">APG</span><span class="sv">${p.apg}</span></div>
-          <div class="srow"><span class="sl">RPG</span><span class="sv">${p.rpg}</span></div>
-          <div class="srow"><span class="sl">BLK</span><span class="sv">${p.blk}</span></div>
-        </div>
-        <div class="card-back-quote">"${p.quote}"</div>
-        <div class="card-back-hint">tap to flip back</div>
-      </div>
-    </div>`;
-
-    return `<div class="card-flip-wrap ${!got ? 'locked' : ''}" data-r="${p.rarity}"
-              onclick="this.classList.toggle('flipped')">
+    return `<div class="card-flip-wrap" data-r="${p.rarity}" onclick="this.classList.toggle('flipped')">
+      ${count>1?`<div class="card-count-badge">×${count}</div>`:''}
       <div class="card-inner">
         ${frontFace}
-        ${backFace}
+        <div class="card-face card-back">
+          <div class="card-back-inner">
+            <div class="card-back-num">#${String(p.id).padStart(3,'0')}</div>
+            <div class="card-back-name">${p.name}</div>
+            <div class="card-back-era">${p.era}</div>
+            <div class="card-back-stats">
+              <div class="srow"><span class="sl">PPG</span><span class="sv">${p.ppg}</span></div>
+              <div class="srow"><span class="sl">APG</span><span class="sv">${p.apg}</span></div>
+              <div class="srow"><span class="sl">RPG</span><span class="sv">${p.rpg}</span></div>
+              <div class="srow"><span class="sl">BLK</span><span class="sv">${p.blk}</span></div>
+            </div>
+            <div class="card-back-quote">"${p.quote}"</div>
+            <div class="card-back-hint">tap to flip back</div>
+          </div>
+        </div>
       </div>
     </div>`;
   }).join('');
 }
 
-
-/* ═══════════════════════════════════════════════════════════════
-   JAZZDEX GRID
-   ═══════════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════
+   DEX
+   ══════════════════════════════════════════════════════════ */
 function renderDex() {
   const grid = document.getElementById('dex-grid');
   if (!grid) return;
   updateCounts();
   grid.innerHTML = PLAYERS.map(p => {
     const got = caught.has(p.id);
-    return `<div class="dex-slot ${got ? 'got' : ''}">
-      <div class="dex-char">${buildChar(p, 42)}</div>
-      <div class="dex-pname">${got ? p.short : '???'}</div>
+    return `<div class="dex-slot ${got?'got':''}">
+      <div class="dex-char">${buildChar(p,42)}</div>
+      <div class="dex-pname">${got?p.short:'???'}</div>
     </div>`;
   }).join('');
 }
 
-
-/* ═══════════════════════════════════════════════════════════════
-   COURT VIEW — roaming players + canvas ball animation
-
-   The canvas element has a higher z-index than the player divs,
-   so the ball always renders in front of all characters.
-
-   With 1 player  → dribbling animation (ball bounces at their feet)
-   With 2+ players → passing animation (arc between players)
-   ═══════════════════════════════════════════════════════════════ */
-function rebuildRoamers() {
-  const court   = document.getElementById('roam-court');
-  const footer  = document.getElementById('court-footer');
-  const players = PLAYERS.filter(p => caught.has(p.id));
-
-  // Stop any existing animations
-  court.querySelectorAll('.roamer-div').forEach(r => r.remove());
-  if (courtAF)   { cancelAnimationFrame(courtAF); courtAF = null; }
-  if (roamTimer) { clearInterval(roamTimer); roamTimer = null; }
-
-  // Size the canvas to match the court element
-  const cv = document.getElementById('court-cv');
-  if (cv) { cv.width = court.offsetWidth || 900; cv.height = court.offsetHeight || 490; }
-
-  if (players.length === 0) {
-    footer.textContent = 'Catch players on the map to see them roam here!';
-    return;
+/* ══════════════════════════════════════════════════════════
+   COURT — roster selector (click to place, max 5)
+   ══════════════════════════════════════════════════════════ */
+function renderRosterSelector() {
+  const sel   = document.getElementById('roster-selector');
+  const hint  = document.getElementById('roster-hint');
+  if (!sel) return;
+  const MAX   = 5;
+  // Show 5 slots
+  let html = '';
+  for (let i=0; i<MAX; i++) {
+    const pid = courtRoster[i];
+    if (pid !== undefined) {
+      const p = pid==='cp' ? customPlayer : (pid===999 ? BEAR : PLAYERS.find(pl=>pl.id===pid));
+      if (p) {
+        const col = RARITY_COLORS[p.rarity]||'#F9A01B';
+        html += `<div class="roster-slot filled" title="${p.name} — tap to remove" onclick="removeFromRoster(${JSON.stringify(pid)})" style="border-color:${col}">
+          ${buildChar(p,36)}
+        </div>`;
+      } else { html += `<div class="roster-slot" onclick="openPicker(${i})">+</div>`; }
+    } else {
+      html += `<div class="roster-slot" onclick="openPicker(${i})">+</div>`;
+    }
   }
+  sel.innerHTML = html;
+  if (hint) hint.textContent = courtRoster.length===0
+    ? 'Tap + to add players to the court (up to 5)'
+    : 'Tap a player icon to remove them. Tap + to add.';
+}
 
-  footer.textContent = players.length === 1
+function removeFromRoster(pid) {
+  courtRoster = courtRoster.filter(id => id !== pid);
+  saveState(); rebuildRoamers(); renderRosterSelector();
+}
+
+let pickerSlotIdx = null;
+function openPicker(slotIdx) {
+  pickerSlotIdx = slotIdx;
+  const grid = document.getElementById('picker-grid');
+  if (!grid) return;
+  // All caught players (including custom and bear)
+  const available = PLAYERS.filter(p => caught.has(p.id));
+  if (customPlayer) available.push({...customPlayer});
+  if (bearUnlocked)  available.push(BEAR);
+
+  grid.innerHTML = available.map(p => {
+    const onCourt = courtRoster.includes(p.id);
+    return `<div class="picker-item ${onCourt?'on-court':''}" onclick="addToRoster(${JSON.stringify(p.id)})">
+      <div class="pi-char">${buildChar(p,40)}</div>
+      <div class="pi-name">${p.short}</div>
+      ${onCourt?'<div style="font-size:.5rem;color:var(--gold);font-family:\'Barlow Condensed\',sans-serif">ON COURT</div>':''}
+    </div>`;
+  }).join('');
+
+  if (!available.length) grid.innerHTML = '<div style="font-family:\'Barlow Condensed\',sans-serif;color:rgba(245,240,232,.5);padding:20px;text-align:center">Catch players first!</div>';
+  document.getElementById('picker-overlay').classList.add('open');
+}
+
+function addToRoster(pid) {
+  if (courtRoster.includes(pid)) {
+    // Toggle off if already on court
+    courtRoster = courtRoster.filter(id => id !== pid);
+  } else {
+    if (courtRoster.length >= 5) courtRoster.shift(); // remove oldest if full
+    courtRoster.push(pid);
+  }
+  closePicker();
+  saveState();
+  rebuildRoamers();
+  renderRosterSelector();
+}
+
+function closePicker() {
+  document.getElementById('picker-overlay').classList.remove('open');
+  pickerSlotIdx = null;
+}
+
+/* ══════════════════════════════════════════════════════════
+   COURT — roamers + ball animation
+   Canvas z-index:3 keeps ball in FRONT of all player divs.
+   ══════════════════════════════════════════════════════════ */
+function rebuildRoamers() {
+  const court  = document.getElementById('roam-court');
+  const footer = document.getElementById('court-footer-top');
+  const players = courtRoster
+    .map(id => id==='cp' ? customPlayer : (id===999 ? BEAR : PLAYERS.find(p=>p.id===id)))
+    .filter(Boolean);
+
+  court.querySelectorAll('.roamer-div').forEach(r=>r.remove());
+  if (courtAF)   { cancelAnimationFrame(courtAF); courtAF=null; }
+  if (roamTimer) { clearInterval(roamTimer); roamTimer=null; }
+
+  const cv = document.getElementById('court-cv');
+  if (cv) { cv.width=court.offsetWidth||900; cv.height=court.offsetHeight||490; }
+
+  if (players.length===0) {
+    if (footer) footer.textContent = 'Use the slots below to put players on the court!';
+    renderRosterSelector(); return;
+  }
+  if (footer) footer.textContent = players.length===1
     ? `${players[0].short} is warming up! 🏀`
-    : `${players.length} players are running drills 🏀`;
+    : `${players.map(p=>p.short).join(', ')} running drills 🏀`;
 
-  // Place each player on the court
   players.forEach(p => {
-    if (!roamPos[p.id]) roamPos[p.id] = { x: 20 + Math.random() * 60, y: 20 + Math.random() * 60 };
+    if (!roamPos[p.id]) roamPos[p.id]={x:20+Math.random()*60,y:20+Math.random()*60};
     const el = document.createElement('div');
-    el.className = 'roamer-div';
-    el.id = 'rv-' + p.id;
-    el.style.left = roamPos[p.id].x + '%';
-    el.style.top  = roamPos[p.id].y + '%';
-    el.innerHTML  = `${buildChar(p, 50)}
-      <div class="roamer-tag" style="color:${RARITY_COLORS[p.rarity]}">${p.short}</div>`;
+    el.className='roamer-div'; el.id='rv-'+p.id;
+    el.style.left=roamPos[p.id].x+'%'; el.style.top=roamPos[p.id].y+'%';
+    el.innerHTML=`${buildChar(p,50)}<div class="roamer-tag" style="color:${RARITY_COLORS[p.rarity]||'#F9A01B'}">${p.short}</div>`;
     court.appendChild(el);
   });
 
-  // Roam positions update every ~4.5s (CSS transition handles smoothing)
   roamTimer = setInterval(() => {
     players.forEach(p => {
-      const pos = roamPos[p.id];
-      if (!pos) return;
-      pos.x = Math.max(8,  Math.min(92, pos.x + (Math.random() - 0.5) * 14));
-      pos.y = Math.max(10, Math.min(90, pos.y + (Math.random() - 0.5) * 14));
-      const el = document.getElementById('rv-' + p.id);
-      if (el) { el.style.left = pos.x + '%'; el.style.top = pos.y + '%'; }
+      const pos=roamPos[p.id]; if(!pos) return;
+      pos.x=Math.max(8,Math.min(92,pos.x+(Math.random()-.5)*14));
+      pos.y=Math.max(10,Math.min(90,pos.y+(Math.random()-.5)*14));
+      const el=document.getElementById('rv-'+p.id);
+      if(el){el.style.left=pos.x+'%';el.style.top=pos.y+'%';}
     });
-  }, 4500);
+  },4500);
 
-  // Start the ball animation on the canvas (in front of all players)
-  if (players.length === 1) {
-    startDribble(players[0]);
-  } else {
-    startPassing(players);
-  }
+  if (players.length===1) startDribble(players[0]);
+  else startPassing(players);
+
+  renderRosterSelector();
 }
 
-/* ─────────────────────────────────────────────────────────────
-   DRIBBLE ANIMATION — single player bounces ball at their feet
-   ───────────────────────────────────────────────────────────── */
+/* ─────────────────────────────
+   DRIBBLE (1 player)
+   ───────────────────────────── */
 function startDribble(player) {
-  const canvas = document.getElementById('court-cv');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let t = 0; // drives the bounce (0 → 1 → 0 cycling)
-  let tDir = 1;
-  const BOUNCE_SPEED = 0.045; // ▶ change to speed up/slow down dribble
+  const canvas=document.getElementById('court-cv'); if(!canvas) return;
+  const ctx=canvas.getContext('2d');
+  let t=0, tDir=1;
+  const SPEED=0.045; // ▶ bounce speed
 
   function getPos() {
-    const pos = roamPos[player.id] || { x: 50, y: 50 };
-    return {
-      x: (pos.x / 100) * canvas.width,
-      y: (pos.y / 100) * canvas.height,
-    };
+    const pos=roamPos[player.id]||{x:50,y:50};
+    return {x:(pos.x/100)*canvas.width,y:(pos.y/100)*canvas.height};
   }
-
-  function drawBall(x, y) {
-    const r = 9;
-    const g = ctx.createRadialGradient(x - r*.3, y - r*.3, r*.12, x, y, r);
-    g.addColorStop(0, '#ffb347'); g.addColorStop(1, '#c84800');
-    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.fillStyle = g; ctx.fill();
-    ctx.strokeStyle = 'rgba(0,0,0,.25)'; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.arc(x, y, r, -0.4, 0.4); ctx.stroke();
+  function drawBall(x,y) {
+    const r=9;
+    const g=ctx.createRadialGradient(x-r*.3,y-r*.3,r*.12,x,y,r);
+    g.addColorStop(0,'#ffb347'); g.addColorStop(1,'#c84800');
+    ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fillStyle=g; ctx.fill();
+    ctx.strokeStyle='rgba(0,0,0,.25)'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.arc(x,y,r,-0.4,0.4); ctx.stroke();
   }
-
   function frame() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const { x, y } = getPos();
-
-    // Ball bounces between hand-height and floor using a parabolic ease
-    const eased  = Math.pow(t, 0.6); // squish toward floor
-    const ballY  = y - 5 + eased * 30; // 30px = bounce height
-    const ballX  = x + 8; // slightly to the right
-
-    // Shadow squishes on floor as ball hits
-    const shadowScale = 0.5 + 0.5 * eased;
-    ctx.globalAlpha = 0.25 * eased;
-    ctx.fillStyle   = '#000';
-    ctx.beginPath();
-    ctx.ellipse(ballX, y + 4, 9 * shadowScale, 3 * shadowScale, 0, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.globalAlpha = 1;
-
-    drawBall(ballX, ballY);
-
-    // Ping-pong t between 0 and 1
-    t += tDir * BOUNCE_SPEED;
-    if (t >= 1) { t = 1; tDir = -1; }
-    if (t <= 0) { t = 0; tDir =  1; }
-
-    courtAF = requestAnimationFrame(frame);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    const {x,y}=getPos();
+    const eased=Math.pow(t,.6);
+    const bx=x+8, by=y-5+eased*30;
+    // shadow
+    ctx.globalAlpha=0.25*eased; ctx.fillStyle='#000';
+    ctx.beginPath(); ctx.ellipse(bx,y+4,9*(.5+.5*eased),3*(.5+.5*eased),0,0,Math.PI*2); ctx.fill();
+    ctx.globalAlpha=1;
+    drawBall(bx,by);
+    t+=tDir*SPEED;
+    if(t>=1){t=1;tDir=-1;} if(t<=0){t=0;tDir=1;}
+    courtAF=requestAnimationFrame(frame);
   }
-  courtAF = requestAnimationFrame(frame);
+  courtAF=requestAnimationFrame(frame);
 }
 
-/* ─────────────────────────────────────────────────────────────
-   PASSING ANIMATION — ball arcs between 2+ players
-   Canvas z-index:3 ensures ball renders in front of all player divs.
-   ───────────────────────────────────────────────────────────── */
+/* ─────────────────────────────
+   PASSING (2+ players)
+   Canvas z-index:3 ensures ball renders in front of player divs.
+   ───────────────────────────── */
 function startPassing(players) {
-  const canvas = document.getElementById('court-cv');
-  if (!canvas) return;
-  const ctx    = canvas.getContext('2d');
-  let fromIdx  = 0;
-  let toIdx    = 1;
-  let t        = 0;
-  const PASS_SPEED = 0.012; // ▶ change to speed up/slow down passes
+  const canvas=document.getElementById('court-cv'); if(!canvas) return;
+  const ctx=canvas.getContext('2d');
+  let fromIdx=0, toIdx=1, t=0;
+  const SPEED=0.012; // ▶ pass speed
 
   function getPos(p) {
-    const pos = roamPos[p.id] || { x: 50, y: 50 };
-    return { x: (pos.x / 100) * canvas.width, y: (pos.y / 100) * canvas.height };
+    const pos=roamPos[p.id]||{x:50,y:50};
+    return {x:(pos.x/100)*canvas.width,y:(pos.y/100)*canvas.height};
   }
-
-  // Quadratic bezier arc between two positions
-  function arcPt(t, f, to) {
-    const cpX = (f.x + to.x) * 0.5;
-    const cpY = Math.min(f.y, to.y) - canvas.height * 0.28; // arc height
+  function arcPt(t,f,to) {
+    const cpX=(f.x+to.x)*.5;
+    const cpY=Math.min(f.y,to.y)-canvas.height*.28;
     return {
-      x: (1-t)*(1-t)*f.x + 2*(1-t)*t*cpX + t*t*to.x,
-      y: (1-t)*(1-t)*f.y + 2*(1-t)*t*cpY + t*t*to.y,
+      x:(1-t)*(1-t)*f.x+2*(1-t)*t*cpX+t*t*to.x,
+      y:(1-t)*(1-t)*f.y+2*(1-t)*t*cpY+t*t*to.y,
     };
   }
-
-  function drawBall(x, y) {
-    const r = 9;
-    const g = ctx.createRadialGradient(x - r*.3, y - r*.3, r*.12, x, y, r);
-    g.addColorStop(0, '#ffb347'); g.addColorStop(1, '#c84800');
-    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.fillStyle = g; ctx.fill();
-    ctx.strokeStyle = 'rgba(0,0,0,.25)'; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.arc(x, y, r, -0.4, 0.4); ctx.stroke();
+  function drawBall(x,y) {
+    const r=9;
+    const g=ctx.createRadialGradient(x-r*.3,y-r*.3,r*.12,x,y,r);
+    g.addColorStop(0,'#ffb347'); g.addColorStop(1,'#c84800');
+    ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fillStyle=g; ctx.fill();
+    ctx.strokeStyle='rgba(0,0,0,.25)'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.arc(x,y,r,-0.4,0.4); ctx.stroke();
   }
-
   function frame() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const from = players[fromIdx];
-    const to   = players[toIdx];
-    if (!from || !to) { courtAF = requestAnimationFrame(frame); return; }
-
-    const fp = getPos(from);
-    const tp = getPos(to);
-    t += PASS_SPEED;
-
-    const { x: bx, y: by } = arcPt(t, fp, tp);
-
-    // Floor shadow (lerps between sender/receiver floor Y)
-    const floorY = fp.y + (tp.y - fp.y) * t;
-    const ht     = Math.sin(Math.PI * t); // 0 at ends, 1 at peak
-    ctx.save();
-    ctx.globalAlpha = 0.22 * ht;
-    ctx.fillStyle   = '#000';
-    ctx.beginPath();
-    ctx.ellipse(bx, floorY + 6, 10 * (.4 + .6 * ht), 3, 0, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.restore();
-
-    drawBall(bx, by);
-
-    if (t >= 1) {
-      // Pass complete — pick a new random recipient
-      t       = 0;
-      fromIdx = toIdx;
-      const others = players.map((_, i) => i).filter(i => i !== fromIdx);
-      toIdx   = others[Math.floor(Math.random() * others.length)];
-      setTimeout(() => { courtAF = requestAnimationFrame(frame); }, 500);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    const from=players[fromIdx], to=players[toIdx];
+    if(!from||!to){courtAF=requestAnimationFrame(frame);return;}
+    const fp=getPos(from), tp=getPos(to);
+    t+=SPEED;
+    const {x:bx,y:by}=arcPt(t,fp,tp);
+    // floor shadow
+    const floorY=fp.y+(tp.y-fp.y)*t;
+    const ht=Math.sin(Math.PI*t);
+    ctx.save(); ctx.globalAlpha=0.22*ht; ctx.fillStyle='#000';
+    ctx.beginPath(); ctx.ellipse(bx,floorY+6,10*(.4+.6*ht),3,0,0,Math.PI*2); ctx.fill(); ctx.restore();
+    drawBall(bx,by);
+    if(t>=1) {
+      t=0; fromIdx=toIdx;
+      const others=players.map((_,i)=>i).filter(i=>i!==fromIdx);
+      toIdx=others[Math.floor(Math.random()*others.length)];
+      setTimeout(()=>{courtAF=requestAnimationFrame(frame);},500);
       return;
     }
-    courtAF = requestAnimationFrame(frame);
+    courtAF=requestAnimationFrame(frame);
   }
-  courtAF = requestAnimationFrame(frame);
+  courtAF=requestAnimationFrame(frame);
 }
 
-
-/* ═══════════════════════════════════════════════════════════════
-   VIEW SWITCHER — handles nav button clicks
-   ═══════════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════
+   VIEW SWITCHER
+   ══════════════════════════════════════════════════════════ */
 function showView(id, btn) {
-  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   btn.classList.add('active');
-  if (id === 'court-view')  rebuildRoamers();
-  if (id === 'dex-view')    renderDex();
-  if (id === 'cards-view')  renderCards();
-  if (id === 'faces-view')  renderFaces();
+  if (id==='court-view')  rebuildRoamers();
+  if (id==='dex-view')    renderDex();
+  if (id==='cards-view')  renderCards();
+  if (id==='faces-view')  renderFaces();
+  if (id==='custom-view') initCustomView();
+  if (id==='bear-view')   renderBearView();
 }
 
+/* ══════════════════════════════════════════════════════════
+   ════════════════════════════════════════
+   FEATURE STUBS — needs backend to implement
+   ════════════════════════════════════════
 
-/* ═══════════════════════════════════════════════════════════════
-   INIT — runs on page load
-   ═══════════════════════════════════════════════════════════════ */
+   🔒 SIGN-IN / ACCOUNTS
+   Plan: Use Firebase Auth or Supabase.
+   Benefits: Cross-device save, custom player cloud sync, friend lists.
+   Stub: localStorage handles single-device saves for now.
+
+   🔒 FIND OTHER USERS / TRADING
+   Plan: WebSocket server (e.g. Socket.io) or Firebase Realtime DB.
+   Each user has a uid, cards are JSON objects. Trade = atomic swap.
+   Stub: exportCard() / importCard() below simulate the data shape.
+
+   🔒 CUSTOM PLAYER STATS (time played, last on, when befriended)
+   Plan: Track with timestamps in user profile document in Firestore.
+   Stub: joinedDate is saved locally.
+   ════════════════════════════════════════ */
+
+// Export shape for future trading system
+function exportCard(playerId) {
+  const p = PLAYERS.find(pl=>pl.id===playerId);
+  if (!p) return null;
+  return {
+    playerId, count: cardCounts[playerId]||0,
+    faceImage: faceImages[playerId]||null,
+    exportedAt: new Date().toISOString(),
+    // TODO: add ownerId (uid) when accounts are implemented
+  };
+}
+
+/* ══════════════════════════════════════════════════════════
+   INIT
+   ══════════════════════════════════════════════════════════ */
+loadState();
+updateCounts();
+checkBearUnlock();
 renderCards();
 renderDex();
 renderFaces();
-scheduleAll();   // kick off the spawn timers
+// Set the total counts in the UI
+document.getElementById('total-count').textContent = PLAYERS.length;
+document.getElementById('dex-total').textContent   = PLAYERS.length;
+// Update save badge opacity to 0 initially
+const sb = document.getElementById('save-badge');
+if (sb) sb.style.opacity='0';
+// Start spawning
+scheduleAll();
 </script>
 </body>
 </html>
