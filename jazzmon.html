@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JazzDex</title>
+localStorage.clear();
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ══════════════════════════════════════════
@@ -257,7 +258,6 @@ canvas#hoop-cv{width:100%;height:150px;display:block;border-radius:8px;backgroun
   <button class="nav-btn"           onclick="showView('court-view',this)">🏟 Court</button>
   <button class="nav-btn"           onclick="showView('faces-view',this)">📸 Faces</button>
   <button class="nav-btn"           onclick="showView('custom-view',this)">⭐ My Player</button>
-  <button class="nav-btn bear-locked" id="bear-nav" onclick="showView('bear-view',this)">🐻 Jazz Bear</button>
 </nav>
 
 <!-- ═══════ MAP ═══════ -->
@@ -846,15 +846,7 @@ function renderBearView() {
           </div>
         </div>
       </div>`;
-  } else {
-    area.innerHTML = `
-      <div class="bear-unlock-msg" style="opacity:.6">
-        <h2>🔒 Jazz Bear is Hiding...</h2>
-        <p>Catch every single Utah Jazz player to unlock Jazz Bear as a secret character!</p>
-      </div>
-      <div class="bear-progress">${caughtCount} / ${total}</div>
-      <div class="bear-locked-msg">Keep catching players on the Map to get closer!</div>`;
-  }
+    }
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -876,6 +868,9 @@ function spawnLoop(p) {
 }
 
 function trySpawn(p) {
+  const maxActive = 5;
+  if(Object.keys(activeSpawns).length >= maxActive) return;
+
   if (activeSpawns[p.id]) return;
   const cfg  = RARITY_SPAWN[p.rarity];
   const glow = RARITY_COLORS[p.rarity];
@@ -1128,12 +1123,7 @@ function renderCards() {
   grid.innerHTML = PLAYERS.map(p => {
     const got  = caught.has(p.id);
     const count= cardCounts[p.id]||0;
-    if (!got) {
-      return `<div class="card-not-caught">
-        <div class="q-mark">?</div>
-        <div>Once caught, this player's card will appear here.</div>
-      </div>`;
-    }
+  
     const face = faceImages[p.id];
     const frontFace = face
       ? `<div class="card-face card-front">
