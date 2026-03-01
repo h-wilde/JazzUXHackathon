@@ -1422,5 +1422,29 @@ setInterval(saveState, 120000);
 scheduleAll();
 if(bearUnlocked) scheduleBear();
 </script>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAnvxjxvAz4tj6FlOziXU8UTIyUWbSSsSo",
+    authDomain: "jazzdex.firebaseapp.com",
+    projectId: "jazzdex",
+    storageBucket: "jazzdex.firebasestorage.app",
+    messagingSenderId: "257047661012",
+    appId: "1:257047661012:web:33afe587caef2cf391ae41",
+    measurementId: "G-GEVG5XNNB9"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 </body>
 </html>
