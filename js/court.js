@@ -128,11 +128,13 @@ function rebuildRoamers() {
   if (courtAF)    { cancelAnimationFrame(courtAF); courtAF = null; }
   if (roamTimer)  { clearInterval(roamTimer);      roamTimer = null; }
 
-  const cv = document.getElementById('court-cv');
-  if (cv) {
-    cv.width  = court.offsetWidth  || 900;
-    cv.height = court.offsetHeight || 490;
-  }
+// AFTER
+const cv = document.getElementById('court-cv');
+const courtImg = court.querySelector('img');
+if (cv && courtImg) {
+  cv.width  = courtImg.offsetWidth;
+  cv.height = courtImg.offsetHeight;
+}
 
   if (!players.length) {
     if (footer) footer.textContent = 'Use the slots below to put players on the court!';
