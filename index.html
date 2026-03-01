@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JazzDex</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/cards.css">
+<link rel="stylesheet" href="css/modal.css">
+<link rel="stylesheet" href="css/court.css">
+<link rel="stylesheet" href="css/views.css">
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="logo">Jazz<span>Dex</span></div>
+  <div class="hdr-right">
+    <div class="hdr-stats">
+      <span>CAUGHT <strong id="caught-count">0</strong></span>
+      <span>/ <span id="total-count">18</span></span>
+    </div>
+    <div class="save-badge" id="save-badge">💾 saved</div>
+  </div>
+</header>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <button class="nav-btn active"  onclick="showView('map-view',this)">🗺 Map</button>
+  <button class="nav-btn"         onclick="showView('cards-view',this)">🃏 Cards</button>
+  <button class="nav-btn"         onclick="showView('dex-view',this)">📋 JazzDex</button>
+  <button class="nav-btn"         onclick="showView('court-view',this)">🏟 Court</button>
+  <button class="nav-btn"         onclick="showView('faces-view',this)">📸 Faces</button>
+  <button class="nav-btn"         onclick="showView('custom-view',this)">⭐ My Player</button>
+  <button class="nav-btn"         onclick="showView('social-view',this)">🤝 Social</button>
+</nav>
+
+<!-- ══ MAP ══ -->
+<div id="map-view" class="view active">
+  <div class="court-wrap" id="court-map">
+    <svg class="floor" viewBox="0 0 900 490" xmlns="http://www.w3.org/2000/svg">
+      <defs><radialGradient id="fg" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#D4A520"/><stop offset="100%" stop-color="#9A7010"/></radialGradient></defs>
+      <rect width="940" height="500" fill="url(#fg)"/>
+      <g opacity=".06" stroke="#000" stroke-width="1.5"><line x1="0" y1="40" x2="900" y2="40"/><line x1="0" y1="80" x2="900" y2="80"/><line x1="0" y1="120" x2="900" y2="120"/><line x1="0" y1="160" x2="900" y2="160"/><line x1="0" y1="200" x2="900" y2="200"/><line x1="0" y1="240" x2="900" y2="240"/><line x1="0" y1="280" x2="900" y2="280"/><line x1="0" y1="320" x2="900" y2="320"/><line x1="0" y1="360" x2="900" y2="360"/><line x1="0" y1="400" x2="900" y2="400"/><line x1="0" y1="440" x2="900" y2="440"/></g>
+      <rect x="30" y="20" width="840" height="450" fill="none" stroke="rgba(0,43,92,.8)" stroke-width="3" rx="3"/>
+      <circle cx="450" cy="245" r="65" fill="rgba(0,43,92,.15)" stroke="rgba(0,43,92,.65)" stroke-width="2.5"/>
+      <circle cx="450" cy="245" r="4" fill="rgba(0,43,92,.6)"/>
+      <line x1="450" y1="20" x2="450" y2="470" stroke="rgba(0,43,92,.55)" stroke-width="2.5"/>
+      <rect x="30" y="158" width="185" height="174" fill="rgba(0,43,92,.2)" stroke="rgba(0,43,92,.65)" stroke-width="2.5"/>
+      <rect x="685" y="158" width="185" height="174" fill="rgba(0,43,92,.2)" stroke="rgba(0,43,92,.65)" stroke-width="2.5"/>
+      <path d="M30 158 A92 92 0 0 1 215 158" fill="none" stroke="rgba(0,43,92,.65)" stroke-width="2.5"/>
+      <path d="M685 158 A92 92 0 0 0 870 158" fill="none" stroke="rgba(0,43,92,.65)" stroke-width="2.5"/>
+      <path d="M30 75 Q270 68 270 245 Q270 422 30 415" fill="none" stroke="rgba(0,43,92,.55)" stroke-width="2.5"/>
+      <path d="M870 75 Q630 68 630 245 Q630 422 870 415" fill="none" stroke="rgba(0,43,92,.55)" stroke-width="2.5"/>
+      <circle cx="68" cy="245" r="17" fill="none" stroke="rgba(0,43,92,.85)" stroke-width="2.5"/>
+      <line x1="30" y1="245" x2="85" y2="245" stroke="rgba(0,43,92,.65)" stroke-width="2"/>
+      <circle cx="832" cy="245" r="17" fill="none" stroke="rgba(0,43,92,.85)" stroke-width="2.5"/>
+      <line x1="815" y1="245" x2="870" y2="245" stroke="rgba(0,43,92,.65)" stroke-width="2"/>
+      <text x="450" y="254" text-anchor="middle" font-size="30" font-family="Georgia,serif" font-weight="bold" fill="rgba(0,43,92,.3)" letter-spacing="6">JAZZ</text>
+    </svg>
+  </div>
+  <div class="map-legend">
+    <div class="leg-item"><div class="leg-dot" style="background:var(--common)"></div>Common</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--rare)"></div>Rare</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--epic)"></div>Epic</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--legendary)"></div>Legendary</div>
+    <span class="map-hint">Players respawn — catch multiples!</span>
+  </div>
+</div>
+
+<!-- ══ CARDS ══ -->
+<div id="cards-view" class="view">
+  <div class="view-inner">
+    <div class="view-title">Player Cards</div>
+    <div class="cards-grid" id="cards-grid"></div>
+  </div>
+</div>
+
+<!-- ══ DEX ══ -->
+<div id="dex-view" class="view">
+  <div class="view-inner">
+    <div class="view-title">JazzDex</div>
+    <div class="dex-bar-wrap">
+      <div class="dex-track"><div class="dex-fill" id="dex-fill" style="width:0%"></div></div>
+      <div class="dex-frac"><span id="dex-n">0</span>/<span id="dex-total">18</span></div>
+    </div>
+    <div class="dex-grid" id="dex-grid"></div>
+  </div>
+</div>
+
+<!-- ══ COURT ══ -->
+<div id="court-view" class="view">
+  <div class="roam-court" id="roam-court">
+    <img src="images/jazz-court.png" alt="Court">
+<canvas id="court-cv"></canvas>
+    <canvas id="court-cv"></canvas>
+  </div>
+  <div class="court-footer">
+    <div class="court-footer-top" id="court-footer-top">
+      Catch players to see them roam here!
+    </div>
+    <div class="roster-bar" id="roster-bar"></div>
+    <div class="roster-hint" id="roster-hint">
+      Tap + to add up to 5 players
+    </div>
+  </div>
+</div>
+
+<!-- ══ FACES ══ -->
+<div id="faces-view" class="view">
+  <div class="view-inner">
+    <div class="view-title">Upload Player Faces</div>
+    <p style="font-family:'Barlow Condensed',sans-serif;font-size:.9rem;color:rgba(245,240,232,.5);margin-bottom:16px;line-height:1.6">Upload a headshot for each player — fills their in-game head and card front. Square crops work best.</p>
+    <div class="faces-grid" id="faces-grid"></div>
+  </div>
+</div>
+
+<!-- ══ MY PLAYER ══ -->
+<div id="custom-view" class="view">
+  <div class="view-inner">
+    <div class="view-title">My Player</div>
+    <div class="custom-creator">
+      <div class="custom-preview-area" id="custom-preview-area">
+        <div id="custom-preview"></div>
+        <div class="cp-live-stats" id="cp-live-stats"></div>
+      </div>
+      <div class="form-grid">
+        <div class="form-field"><label>Name</label>       <input type="text"   id="cp-name"   placeholder="Your name"  maxlength="20"></div>
+        <div class="form-field"><label>Jersey #</label>   <input type="text"   id="cp-num"    placeholder="00"         maxlength="3"></div>
+        <div class="form-field"><label>PPG</label>        <input type="number" id="cp-ppg"    placeholder="0.0" step="0.1" min="0" max="99"></div>
+        <div class="form-field"><label>APG</label>        <input type="number" id="cp-apg"    placeholder="0.0" step="0.1" min="0" max="99"></div>
+        <div class="form-field"><label>RPG</label>        <input type="number" id="cp-rpg"    placeholder="0.0" step="0.1" min="0" max="99"></div>
+        <div class="form-field"><label>Jersey Color</label>
+          <select id="cp-rarity">
+            <option value="common">Teal (Common)</option>
+            <option value="rare">Purple (Rare)</option>
+            <option value="epic">Orange (Epic)</option>
+            <option value="legendary">Gold (Legendary)</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-grid wide" style="margin-top:12px">
+        <div class="form-field"><label>Quote / Motto</label><input type="text" id="cp-quote" placeholder="Your catchphrase..." maxlength="60"></div>
+      </div>
+      <label class="face-upload-btn" style="margin-top:12px">
+        📷 Upload Your Face Photo
+        <input type="file" accept="image/*" id="cp-face-input" onchange="loadCustomFace(this)">
+      </label>
+      <button class="save-player-btn" onclick="saveCustomPlayer()">💾 SAVE MY PLAYER</button>
+      <div class="saved-badge" id="cp-saved">✓ Player saved!</div>
+    </div>
+    <div id="cp-stats-section"></div>
+    <div class="custom-card-display" id="custom-card-display"></div>
+  </div>
+</div>
+
+<!-- ══ SOCIAL ══ -->
+<div id="social-view" class="view">
+  <div class="view-inner">
+    <div class="view-title">Social</div>
+    <div class="social-stub">
+      <span class="coming-soon">COMING SOON</span>
+      <h3>Connect with Friends</h3>
+      <p>These features are planned and ready to build — they need a backend server to go live. Here's what's coming:</p>
+      <div class="social-feature">
+        <h4>🔐 Sign In / Accounts</h4>
+        <p>Create an account to save your progress across devices, build your custom player, and connect with friends.</p>
+        <p class="tech-note">Tech: Firebase Auth or Supabase → free tier handles thousands of users</p>
+      </div>
+      <div class="social-feature">
+        <h4>👥 Find Other Users</h4>
+        <p>Search by username, see their JazzDex completion, and send friend requests.</p>
+        <p class="tech-note">Tech: Firestore user collection + friend-request subcollection</p>
+      </div>
+      <div class="social-feature">
+        <h4>🔄 Trade Cards &amp; Custom Players</h4>
+        <p>Offer duplicates from your collection to friends. Both parties confirm before cards swap.</p>
+        <p class="tech-note">Tech: Atomic Firestore transaction — both card counts update simultaneously</p>
+      </div>
+      <div class="social-feature">
+        <h4>📊 Friend Stats</h4>
+        <p>See when you became friends, time played, last active, and head-to-head completion.</p>
+        <p class="tech-note">Tech: User profile doc with sessionTime, lastSeen, friendedAt timestamps</p>
+      </div>
+      <div class="social-feature" style="border-left:3px solid #00B2A9;margin-top:16px;">
+        <h4>🗄️ Seagate Lyve Cloud — Recommended Storage Backend</h4>
+        <p>S3-compatible object storage for player card images, face uploads, and game state exports. Face photos upload to a Lyve bucket and a URL is stored instead of a heavy base64 blob — keeps saves fast even with a full roster of faces.</p>
+        <p class="tech-note">Pair with Cloudflare Workers or a small Node server for per-user auth. All data shapes are already stubbed in state.js — when the backend is ready it's mostly swapping localStorage calls for fetch() calls.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CATCH MODAL ══ -->
+<div class="modal-overlay" id="catch-modal">
+  <div class="catch-modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<!-- ══ PLAYER PICKER ══ -->
+<div class="picker-overlay" id="picker-overlay">
+  <div class="picker-modal">
+    <button class="picker-close" onclick="closePicker()">✕</button>
+    <div class="picker-title">Choose a Player</div>
+    <div class="picker-sub">Tap to add or remove from court slot</div>
+    <div class="picker-grid" id="picker-grid"></div>
+  </div>
+</div>
+
+<!-- ══ BEAR TOAST ══ -->
+<div class="bear-toast" id="bear-toast">🐻 JAZZ BEAR UNLOCKED!</div>
+
+<!-- ══ SCRIPTS — order matters ══ -->
+<script src="js/data.js"></script>
+<script src="js/state.js"></script>
+<script src="js/char.js"></script>
+<script src="js/spawn.js"></script>
+<script src="js/catch.js"></script>
+<script src="js/cards.js"></script>
+<script src="js/court.js"></script>
+<script src="js/dex.js"></script>
+<script src="js/faces.js"></script>
+<script src="js/custom.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

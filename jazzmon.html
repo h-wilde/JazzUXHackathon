@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -217,55 +217,21 @@ canvas#hoop-cv{width:100%;height:150px;display:block;border-radius:8px;backgroun
 .cp-stat-label{color:rgba(245,240,232,.45);}
 .cp-stat-val{color:var(--cream);font-weight:600;}
 
-/* (social styles moved to main CSS) */
+/* SOCIAL STUB */
+.social-stub{background:rgba(0,20,50,.5);border:2px solid rgba(124,77,255,.3);border-radius:16px;padding:24px;text-align:center;}
+.social-stub h3{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:3px;color:#a87fff;margin-bottom:8px;}
+.social-stub p{font-family:'Barlow Condensed',sans-serif;font-size:.9rem;color:rgba(245,240,232,.55);line-height:1.7;margin-bottom:12px;}
+.social-stub .coming-soon{display:inline-block;background:rgba(124,77,255,.2);border:1px solid rgba(124,77,255,.4);border-radius:20px;padding:4px 14px;font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:2px;color:#a87fff;margin-bottom:12px;}
+.social-feature{background:rgba(0,10,30,.4);border-radius:10px;padding:12px 16px;margin-top:10px;text-align:left;}
+.social-feature h4{font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:700;color:var(--teal);margin-bottom:4px;}
+.social-feature p{font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:rgba(245,240,232,.45);line-height:1.5;}
+.social-feature .tech-note{font-size:.72rem;color:rgba(245,240,232,.25);margin-top:4px;font-style:italic;}
 
 /* RARITY BADGES */
 .rarity-common{color:var(--common);background:rgba(0,178,169,.15);}
 .rarity-rare{color:#a87fff;background:rgba(124,77,255,.15);}
 .rarity-epic{color:#ff9940;background:rgba(255,109,0,.15);}
 .rarity-legendary{color:var(--gold);background:rgba(249,160,27,.15);}
-
-/* AUTH BUTTONS */
-.auth-btn{background:linear-gradient(135deg,var(--gold),#c87c00);color:var(--navy);border:none;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:1px;padding:7px 14px;border-radius:6px;cursor:pointer;white-space:nowrap;transition:opacity .2s;}
-.auth-btn.outline{background:transparent;border:2px solid rgba(249,160,27,.4);color:var(--gold);}
-.auth-btn.gold{background:linear-gradient(135deg,var(--gold),#c87c00);color:var(--navy);}
-.auth-btn.wide{width:100%;font-size:1rem;padding:10px;text-align:center;}
-.auth-btn:hover{opacity:.85;}
-.auth-btn:disabled{opacity:.35;cursor:not-allowed;}
-.auth-btn-sm{background:transparent;border:1px solid rgba(249,160,27,.3);color:rgba(245,240,232,.6);font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;padding:4px 10px;border-radius:4px;cursor:pointer;}
-.auth-btn-sm.gold{background:var(--gold);color:var(--navy);border-color:var(--gold);}
-.auth-tab{flex:1;background:transparent;border:none;color:rgba(245,240,232,.4);font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:1px;padding:8px;cursor:pointer;transition:all .2s;text-transform:uppercase;}
-.auth-tab.active{background:rgba(249,160,27,.15);color:var(--gold);}
-
-/* SOCIAL SECTIONS */
-.social-section{background:rgba(0,20,50,.5);border:1px solid rgba(249,160,27,.15);border-radius:12px;padding:18px;margin-bottom:16px;}
-.social-section-title{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;color:var(--gold);margin-bottom:12px;}
-.social-loading,.social-empty{font-family:'Barlow Condensed',sans-serif;font-size:.85rem;color:rgba(245,240,232,.35);padding:10px 0;}
-.user-result{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);}
-.user-result:last-child{border-bottom:none;}
-.user-result-name{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;flex:1;}
-.user-result-sub{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:rgba(245,240,232,.4);min-width:70px;}
-.user-result-btn{background:transparent;border:1px solid rgba(249,160,27,.35);color:var(--gold);font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:700;padding:5px 12px;border-radius:5px;cursor:pointer;white-space:nowrap;}
-.user-result-btn.gold{background:var(--gold);color:var(--navy);border-color:var(--gold);}
-.user-result-btn:hover{opacity:.8;}
-.user-profile-panel{padding:4px 0;}
-.profile-back{background:none;border:none;color:rgba(245,240,232,.4);font-family:'Barlow Condensed',sans-serif;font-size:.82rem;cursor:pointer;margin-bottom:10px;padding:0;}
-.profile-back:hover{color:var(--cream);}
-.trade-card{border:2px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 4px;text-align:center;cursor:pointer;transition:all .2s;background:rgba(0,20,50,.5);}
-.trade-card:hover{border-color:var(--teal);}
-.trade-card.selected{border-color:var(--gold);background:rgba(249,160,27,.1);}
-.trade-card.low-count{opacity:.6;}
-.trade-incoming{background:rgba(0,0,0,.3);border-radius:8px;padding:12px;margin-bottom:8px;}
-.trade-from{font-family:'Barlow Condensed',sans-serif;font-size:.78rem;color:rgba(245,240,232,.4);}
-.trade-card-name{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--cream);margin-top:2px;}
-
-/* GAME TOAST */
-#game-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);z-index:600;
-  background:linear-gradient(135deg,#002244,#001830);border:2px solid var(--teal);
-  color:var(--cream);font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:600;
-  padding:12px 24px;border-radius:10px;box-shadow:0 4px 30px rgba(0,178,169,.3);
-  opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;white-space:nowrap;}
-#game-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
 /* BEAR UNLOCK TOAST */
 .bear-toast{position:fixed;top:70px;left:50%;transform:translateX(-50%) translateY(-20px);z-index:500;
@@ -286,7 +252,6 @@ canvas#hoop-cv{width:100%;height:150px;display:block;border-radius:8px;backgroun
       <span>CAUGHT <strong id="caught-count">0</strong></span>
       <span>/ <span id="total-count">18</span></span>
     </div>
-    <div id="auth-bar" style="display:flex;gap:6px;align-items:center"></div>
     <div class="save-badge" id="save-badge">💾 saved</div>
   </div>
 </header>
@@ -306,7 +271,7 @@ canvas#hoop-cv{width:100%;height:150px;display:block;border-radius:8px;backgroun
   <div class="court-wrap" id="court-map">
     <svg class="floor" viewBox="0 0 900 490" xmlns="http://www.w3.org/2000/svg">
       <defs><radialGradient id="fg" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#D4A520"/><stop offset="100%" stop-color="#9A7010"/></radialGradient></defs>
-      <rect width="900" height="490" fill="url(#fg)"/>
+      <rect width="940" height="500" fill="url(#fg)"/>
       <g opacity=".06" stroke="#000" stroke-width="1.5"><line x1="0" y1="40" x2="900" y2="40"/><line x1="0" y1="80" x2="900" y2="80"/><line x1="0" y1="120" x2="900" y2="120"/><line x1="0" y1="160" x2="900" y2="160"/><line x1="0" y1="200" x2="900" y2="200"/><line x1="0" y1="240" x2="900" y2="240"/><line x1="0" y1="280" x2="900" y2="280"/><line x1="0" y1="320" x2="900" y2="320"/><line x1="0" y1="360" x2="900" y2="360"/><line x1="0" y1="400" x2="900" y2="400"/><line x1="0" y1="440" x2="900" y2="440"/></g>
       <rect x="30" y="20" width="840" height="450" fill="none" stroke="rgba(0,43,92,.8)" stroke-width="3" rx="3"/>
       <circle cx="450" cy="245" r="65" fill="rgba(0,43,92,.15)" stroke="rgba(0,43,92,.65)" stroke-width="2.5"/>
@@ -332,7 +297,6 @@ canvas#hoop-cv{width:100%;height:150px;display:block;border-radius:8px;backgroun
     <div class="leg-item"><div class="leg-dot" style="background:var(--legendary)"></div>Legendary</div>
     <span class="map-hint">Players respawn — catch multiples!</span>
   </div>
-  <div class="map-legend" id="map-legend-missing" style="padding-top:6px;padding-bottom:6px;min-height:0"></div>
 </div>
 
 <!-- CARDS -->
@@ -454,103 +418,42 @@ canvas#hoop-cv{width:100%;height:150px;display:block;border-radius:8px;backgroun
 <div id="social-view" class="view">
   <div class="view-inner">
     <div class="view-title">Social</div>
-
-    <!-- Sign-in benefits banner for guests -->
-    <div id="guest-banner" style="display:none;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,178,169,.15));border:1px solid rgba(124,77,255,.35);border-radius:12px;padding:14px 18px;margin-bottom:18px;font-family:'Barlow Condensed',sans-serif;">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;color:#a87fff;margin-bottom:6px">Playing as Guest</div>
-      <p style="font-size:.85rem;color:rgba(245,240,232,.65);line-height:1.6;margin-bottom:10px">
-        Sign in to unlock: <strong style="color:var(--teal)">cloud saves</strong> across devices,
-        <strong style="color:var(--teal)">custom player</strong> sync,
-        <strong style="color:var(--teal)">friend search</strong>, and
-        <strong style="color:var(--teal)">card trading</strong>.
+    <div class="social-stub">
+      <span class="coming-soon">COMING SOON</span>
+      <h3>Connect with Friends</h3>
+      <p>These features are planned and ready to build — they need a backend server to go live. Here's what's coming:</p>
+      <div class="social-feature">
+        <h4>🔐 Sign In / Accounts</h4>
+        <p>Create an account to save your progress across devices, build your custom player, and connect with friends.</p>
+        <p class="tech-note">Tech: Firebase Auth or Supabase → free tier handles thousands of users</p>
+      </div>
+      <div class="social-feature">
+        <h4>👥 Find Other Users</h4>
+        <p>Search by username, see their JazzDex completion, and send friend requests.</p>
+        <p class="tech-note">Tech: Firestore user collection + friend-request subcollection</p>
+      </div>
+      <div class="social-feature">
+        <h4>🔄 Trade Cards & Custom Players</h4>
+        <p>Offer duplicates from your collection to friends. Both parties confirm before cards swap. Custom players can be shared too.</p>
+        <p class="tech-note">Tech: Atomic Firestore transaction — both card counts update simultaneously</p>
+      </div>
+      <div class="social-feature">
+        <h4>📊 Friend Stats</h4>
+        <p>See when you became friends, time each of you has played, last active, and head-to-head completion.</p>
+        <p class="tech-note">Tech: User profile doc with sessionTime, lastSeen, friendedAt timestamps</p>
+      </div>
+      <div class="social-feature" style="border-left:3px solid #00B2A9;margin-top:16px;">
+        <h4>🗄️ Seagate Lyve Cloud — Recommended Storage Backend</h4>
+        <p>Seagate Lyve Cloud is an S3-compatible object storage service — great for storing player card images, face uploads, and exported game state files. Since JazzDex already stores face photos as base64 data URLs, Lyve Cloud can offload that weight so saves stay fast even with a full roster of faces uploaded.</p>
+        <p style="margin-top:6px">How it fits in:</p>
+        <p>• <strong style="color:var(--teal)">Face photos</strong> → upload to a Lyve bucket, store the URL instead of the base64 blob in localStorage</p>
+        <p>• <strong style="color:var(--teal)">Game state exports</strong> → save each user's JSON snapshot to Lyve for cross-device restore</p>
+        <p>• <strong style="color:var(--teal)">Card trades</strong> → both users' state files swap atomically via a small API layer in front of Lyve</p>
+        <p class="tech-note">Lyve Cloud uses standard S3 API calls — any S3 SDK works. Pair with a thin auth layer (Cloudflare Workers or a small Node server) to gate access per user. Lyve's free tier handles early traffic well.</p>
+      </div>
+      <p style="margin-top:16px;font-size:.78rem;color:rgba(245,240,232,.3)">
+        All the data shapes are already stubbed in the JS — when the backend is ready, it's mostly a matter of swapping localStorage calls for fetch() calls to your Lyve-backed API.
       </p>
-      <div style="display:flex;gap:8px">
-        <button class="auth-btn" onclick="openAuthModal('register')">Create Account</button>
-        <button class="auth-btn outline" onclick="openAuthModal('login')">Sign In</button>
-      </div>
-    </div>
-
-    <!-- Find Users -->
-    <div class="social-section">
-      <div class="social-section-title">👥 Find Players</div>
-      <div style="display:flex;gap:8px;margin-bottom:12px">
-        <input id="user-search-input" type="text" placeholder="Search by username…" style="flex:1;background:rgba(0,0,0,.4);border:1px solid rgba(249,160,27,.25);border-radius:6px;padding:8px 12px;color:var(--cream);font-family:'Barlow Condensed',sans-serif;font-size:.95rem;" onkeydown="if(event.key==='Enter')searchUsers()">
-        <button class="auth-btn" onclick="searchUsers()">Search</button>
-      </div>
-      <div id="user-search-results"></div>
-    </div>
-
-    <!-- Trade Panel (hidden until a trade is initiated) -->
-    <div id="trade-panel" style="display:none" class="social-section">
-      <div class="social-section-title">🔄 Trade with <span id="trade-target-name"></span></div>
-      <p style="font-family:'Barlow Condensed',sans-serif;font-size:.82rem;color:rgba(245,240,232,.45);margin-bottom:12px">Select a card to offer. They'll receive a notification and can accept or decline.</p>
-      <div id="trade-offer-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:8px;margin-bottom:12px"></div>
-      <div id="trade-status" style="font-family:'Barlow Condensed',sans-serif;font-size:.82rem;color:var(--teal);margin-bottom:8px"></div>
-      <div style="display:flex;gap:8px">
-        <button id="send-trade-btn" class="auth-btn gold" disabled onclick="sendTradeOffer()">Send Offer</button>
-        <button class="auth-btn outline" onclick="cancelTrade()">Cancel</button>
-      </div>
-    </div>
-
-    <!-- Incoming Trades -->
-    <div class="social-section">
-      <div class="social-section-title">📬 Incoming Trade Offers</div>
-      <div id="incoming-trades"><div class="social-empty">Sign in to see trade offers.</div></div>
-      <button class="auth-btn outline" style="margin-top:10px;font-size:.8rem" onclick="loadIncomingTrades()">Refresh</button>
-    </div>
-
-    <!-- Seagate Lyve note -->
-    <div class="social-section" style="border-color:rgba(0,178,169,.3)">
-      <div class="social-section-title" style="color:var(--teal)">🗄️ Storage: Seagate Lyve Cloud</div>
-      <p style="font-family:'Barlow Condensed',sans-serif;font-size:.82rem;color:rgba(245,240,232,.5);line-height:1.6">
-        Face photo uploads and game-state snapshots can be offloaded to a Lyve Cloud bucket (S3-compatible).
-        Currently using Firebase Firestore for saves and Firestore for trade messages.
-        To integrate Lyve: swap face-image base64 storage with presigned S3 PUT calls to your Lyve bucket,
-        then store the returned URL instead of the raw dataURL.
-      </p>
-    </div>
-  </div>
-</div>
-
-<!-- AUTH MODAL -->
-<div class="modal-overlay" id="auth-modal">
-  <div class="catch-modal" style="max-width:380px">
-    <button class="modal-close" onclick="closeAuthModal()">✕</button>
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:3px;color:var(--gold);margin-bottom:14px">JazzDex Account</div>
-    <div style="display:flex;gap:0;margin-bottom:16px;border:1px solid rgba(249,160,27,.2);border-radius:6px;overflow:hidden">
-      <button id="atab-login"    class="auth-tab active" onclick="switchAuthTab('login')">Sign In</button>
-      <button id="atab-register" class="auth-tab"        onclick="switchAuthTab('register')">Create Account</button>
-    </div>
-    <div id="apanel-login">
-      <div class="form-field" style="margin-bottom:10px">
-        <label style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:rgba(245,240,232,.5);font-weight:700;letter-spacing:1px;text-transform:uppercase">Email</label>
-        <input id="auth-email" type="email" placeholder="your@email.com" style="background:rgba(0,0,0,.4);border:1px solid rgba(249,160,27,.25);border-radius:6px;padding:9px 12px;color:var(--cream);font-family:'Barlow Condensed',sans-serif;font-size:.95rem;width:100%">
-      </div>
-      <div class="form-field" style="margin-bottom:14px">
-        <label style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:rgba(245,240,232,.5);font-weight:700;letter-spacing:1px;text-transform:uppercase">Password</label>
-        <input id="auth-pass" type="password" placeholder="••••••••" style="background:rgba(0,0,0,.4);border:1px solid rgba(249,160,27,.25);border-radius:6px;padding:9px 12px;color:var(--cream);font-family:'Barlow Condensed',sans-serif;font-size:.95rem;width:100%">
-      </div>
-      <div id="auth-err" style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:var(--red);margin-bottom:10px;min-height:18px"></div>
-      <button class="auth-btn gold wide" onclick="authAction('login')">Sign In</button>
-      <div style="text-align:center;margin:12px 0;font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:rgba(245,240,232,.3)">— or —</div>
-      <button class="auth-btn outline wide" onclick="authAction('guest')">Continue as Guest</button>
-      <p style="font-family:'Barlow Condensed',sans-serif;font-size:.7rem;color:rgba(245,240,232,.25);text-align:center;margin-top:10px;line-height:1.5">Guest progress saves locally only. Sign in to sync across devices and trade with friends.</p>
-    </div>
-    <div id="apanel-register" style="display:none">
-      <div class="form-field" style="margin-bottom:10px">
-        <label style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:rgba(245,240,232,.5);font-weight:700;letter-spacing:1px;text-transform:uppercase">Display Name</label>
-        <input id="auth-name" type="text" placeholder="JazzFan99" maxlength="24" style="background:rgba(0,0,0,.4);border:1px solid rgba(249,160,27,.25);border-radius:6px;padding:9px 12px;color:var(--cream);font-family:'Barlow Condensed',sans-serif;font-size:.95rem;width:100%">
-      </div>
-      <div class="form-field" style="margin-bottom:10px">
-        <label style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:rgba(245,240,232,.5);font-weight:700;letter-spacing:1px;text-transform:uppercase">Email</label>
-        <input id="auth-email" type="email" placeholder="your@email.com" style="background:rgba(0,0,0,.4);border:1px solid rgba(249,160,27,.25);border-radius:6px;padding:9px 12px;color:var(--cream);font-family:'Barlow Condensed',sans-serif;font-size:.95rem;width:100%">
-      </div>
-      <div class="form-field" style="margin-bottom:14px">
-        <label style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:rgba(245,240,232,.5);font-weight:700;letter-spacing:1px;text-transform:uppercase">Password</label>
-        <input id="auth-pass" type="password" placeholder="min 6 characters" style="background:rgba(0,0,0,.4);border:1px solid rgba(249,160,27,.25);border-radius:6px;padding:9px 12px;color:var(--cream);font-family:'Barlow Condensed',sans-serif;font-size:.95rem;width:100%">
-      </div>
-      <div id="auth-err" style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:var(--red);margin-bottom:10px;min-height:18px"></div>
-      <button class="auth-btn gold wide" onclick="authAction('register')">Create Account</button>
     </div>
   </div>
 </div>
@@ -576,320 +479,7 @@ canvas#hoop-cv{width:100%;height:150px;display:block;border-radius:8px;backgroun
 <!-- BEAR TOAST -->
 <div class="bear-toast" id="bear-toast">🐻 JAZZ BEAR UNLOCKED!</div>
 
-<script type="module">
-
-// ── Firebase imports ──────────────────────────────────────────────
-import { initializeApp }
-  from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-import { getAuth, signInAnonymously, signInWithEmailAndPassword,
-         createUserWithEmailAndPassword, updateProfile, signOut,
-         onAuthStateChanged }
-  from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc, getDocs,
-         collection, query, where, updateDoc, arrayUnion,
-         arrayRemove, deleteField, serverTimestamp, addDoc,
-         onSnapshot, orderBy, limit }
-  from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAnvxjxvAz4tj6FlOziXU8UTIyUWbSSsSo",
-  authDomain: "jazzdex.firebaseapp.com",
-  projectId: "jazzdex",
-  storageBucket: "jazzdex.firebasestorage.app",
-  messagingSenderId: "257047661012",
-  appId: "1:257047661012:web:33afe587caef2cf391ae41",
-  measurementId: "G-GEVG5XNNB9"
-};
-
-const app  = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db   = getFirestore(app);
-
-// ── Auth state ────────────────────────────────────────────────────
-let currentUID = null;
-let currentDisplayName = 'Player';
-
-onAuthStateChanged(auth, async (user) => {
-  if (!user) {
-    currentUID = null;
-    renderAuthUI();
-    return;
-  }
-  currentUID = user.uid;
-  currentDisplayName = user.displayName || user.email || 'Anonymous';
-  renderAuthUI();
-
-  // Try to load cloud save
-  try {
-    const snap = await getDoc(doc(db,'saves',user.uid));
-    if (snap.exists()) {
-      applyCloudSave(snap.data());
-    } else {
-      // Push local save to cloud for new sessions
-      await saveState();
-    }
-  } catch(e) { console.warn('Cloud load failed, using local', e); }
-
-  updateCounts(); renderCards(); renderDex(); renderFaces();
-  checkBearUnlock();
-});
-
-// ── Auth UI actions (exposed to HTML) ─────────────────────────────
-window.authAction = async function(mode) {
-  const email = document.getElementById('auth-email')?.value?.trim();
-  const pass  = document.getElementById('auth-pass')?.value;
-  const name  = document.getElementById('auth-name')?.value?.trim();
-  const err   = document.getElementById('auth-err');
-  if(err) err.textContent='';
-  try {
-    if (mode==='register') {
-      if (!name) { if(err) err.textContent='Display name required'; return; }
-      const cred = await createUserWithEmailAndPassword(auth, email, pass);
-      await updateProfile(cred.user, {displayName: name});
-      // Write user profile doc for discovery
-      await setDoc(doc(db,'users',cred.user.uid), {
-        uid: cred.user.uid, displayName: name,
-        email: email, joinedAt: serverTimestamp(),
-        caughtCount: 0,
-      });
-    } else if (mode==='login') {
-      await signInWithEmailAndPassword(auth, email, pass);
-    } else if (mode==='guest') {
-      await signInAnonymously(auth);
-    } else if (mode==='logout') {
-      await signOut(auth);
-    }
-    closeAuthModal();
-  } catch(e) {
-    if(err) err.textContent = e.message.replace('Firebase: ','').replace(/\(.*\)/,'').trim();
-  }
-};
-
-window.openAuthModal = function(tab='login') {
-  const m = document.getElementById('auth-modal');
-  if(m) { m.classList.add('open'); switchAuthTab(tab); }
-};
-
-window.closeAuthModal = function() {
-  const m = document.getElementById('auth-modal');
-  if(m) m.classList.remove('open');
-};
-
-window.switchAuthTab = function(tab) {
-  document.querySelectorAll('.auth-tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.auth-panel').forEach(p=>p.style.display='none');
-  const tb=document.getElementById('atab-'+tab);
-  const pn=document.getElementById('apanel-'+tab);
-  if(tb) tb.classList.add('active');
-  if(pn) pn.style.display='block';
-};
-
-function renderAuthUI() {
-  const bar = document.getElementById('auth-bar');
-  if (!bar) return;
-  if (currentUID && auth.currentUser && !auth.currentUser.isAnonymous) {
-    bar.innerHTML=`<span style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:rgba(245,240,232,.55)">👤 ${currentDisplayName}</span>
-      <button class="auth-btn-sm" onclick="openAuthModal('logout')">Sign Out</button>`;
-  } else if (currentUID && auth.currentUser?.isAnonymous) {
-    bar.innerHTML=`<span style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:rgba(245,240,232,.35)">Guest</span>
-      <button class="auth-btn-sm" onclick="openAuthModal('register')">Sign Up to Save</button>`;
-  } else {
-    bar.innerHTML=`<button class="auth-btn-sm" onclick="openAuthModal('login')">Sign In</button>
-      <button class="auth-btn-sm gold" onclick="openAuthModal('register')">Create Account</button>`;
-  }
-}
-
-// ── Social: Find users ────────────────────────────────────────────
-window.searchUsers = async function() {
-  const q = document.getElementById('user-search-input')?.value?.trim();
-  const res = document.getElementById('user-search-results');
-  if (!q || !res) return;
-  res.innerHTML = '<div class="social-loading">Searching…</div>';
-  try {
-    const snap = await getDocs(query(
-      collection(db,'users'),
-      where('displayName','>=',q),
-      where('displayName','<=',q+'\uf8ff'),
-      limit(10)
-    ));
-    if (snap.empty) { res.innerHTML='<div class="social-empty">No users found.</div>'; return; }
-    res.innerHTML = snap.docs
-      .filter(d=>d.id!==currentUID)
-      .map(d=>{
-        const u=d.data();
-        return `<div class="user-result">
-          <div class="user-result-name">${u.displayName}</div>
-          <div class="user-result-sub">Caught ${u.caughtCount||0}/18</div>
-          <button class="user-result-btn" onclick="viewUserProfile('${d.id}','${u.displayName}')">View</button>
-          <button class="user-result-btn gold" onclick="initiateTrade('${d.id}','${u.displayName}')">Trade</button>
-        </div>`;
-      }).join('');
-  } catch(e) { res.innerHTML='<div class="social-empty">Search failed — check network.</div>'; }
-};
-
-window.viewUserProfile = async function(uid, name) {
-  const area = document.getElementById('user-search-results');
-  if (!area) return;
-  try {
-    const snap = await getDoc(doc(db,'saves',uid));
-    const data = snap.exists() ? snap.data() : {};
-    const caughtList = data.caught||[];
-    area.innerHTML=`<div class="user-profile-panel">
-      <button onclick="closeUserProfile()" class="profile-back">← Back</button>
-      <h3 style="font-family:'Bebas Neue',sans-serif;letter-spacing:2px;color:var(--gold)">${name}</h3>
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:.85rem;color:rgba(245,240,232,.5);margin:6px 0 14px">Caught ${caughtList.length}/18 players</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(62px,1fr));gap:6px">
-        ${PLAYERS.map(p=>{
-          const has = caughtList.includes(p.id)||caughtList.includes(String(p.id));
-          return `<div style="text-align:center;opacity:${has?1:.25}">
-            <div style="filter:${has?'none':'brightness(0)'}">${buildChar(p,32)}</div>
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.55rem;margin-top:2px">${has?p.short:'???'}</div>
-          </div>`;
-        }).join('')}
-      </div>
-      <button class="save-player-btn" style="margin-top:16px;font-size:1rem;padding:10px" onclick="initiateTrade('${uid}','${name}')">🔄 Offer a Trade</button>
-    </div>`;
-  } catch(e) { area.innerHTML='<div class="social-empty">Could not load profile.</div>'; }
-};
-
-window.closeUserProfile = function() {
-  const area = document.getElementById('user-search-results');
-  if(area) area.innerHTML='';
-};
-
-// ── Social: Trading ───────────────────────────────────────────────
-let tradeTargetUID = null, tradeTargetName = null;
-
-window.initiateTrade = function(uid, name) {
-  tradeTargetUID = uid; tradeTargetName = name;
-  const panel = document.getElementById('trade-panel');
-  if (!panel) return;
-  panel.style.display = 'block';
-  document.getElementById('trade-target-name').textContent = name;
-  renderTradeOfferList();
-};
-
-window.cancelTrade = function() {
-  tradeTargetUID = null; tradeTargetName = null;
-  const panel = document.getElementById('trade-panel');
-  if(panel) panel.style.display='none';
-  const status = document.getElementById('trade-status');
-  if(status) status.textContent='';
-};
-
-let tradeSelectedId = null;
-function renderTradeOfferList() {
-  const grid = document.getElementById('trade-offer-grid');
-  if (!grid) return;
-  const options = [...caught].map(id=>{
-    if (id===999) return BEAR;
-    if (id==='cp') return customPlayer;
-    return PLAYERS.find(p=>p.id===id);
-  }).filter(Boolean);
-  grid.innerHTML = options.map(p=>{
-    const count = cardCounts[p.id]||1;
-    const sel = tradeSelectedId===p.id;
-    return `<div class="trade-card ${sel?'selected':''} ${count<2&&!sel?'low-count':''}"
-      onclick="selectTradeCard(${JSON.stringify(p.id)})" title="${count<2?'Only 1 — trade carefully!':''}">
-      ${buildChar(p,36)}
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:.6rem;font-weight:700;margin-top:2px">${p.short}</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:.75rem;color:var(--gold)">×${count}</div>
-    </div>`;
-  }).join('');
-  if (!options.length) grid.innerHTML='<div style="color:rgba(245,240,232,.35);font-family:\'Barlow Condensed\',sans-serif;font-size:.85rem;padding:20px;text-align:center">Catch players first to trade them!</div>';
-}
-
-window.selectTradeCard = function(id) {
-  tradeSelectedId = id;
-  renderTradeOfferList();
-  const btn = document.getElementById('send-trade-btn');
-  if(btn) btn.disabled = false;
-};
-
-window.sendTradeOffer = async function() {
-  if (!tradeSelectedId || !tradeTargetUID || !currentUID) return;
-  const status = document.getElementById('trade-status');
-  try {
-    if(status) status.textContent = 'Sending offer…';
-    await addDoc(collection(db,'trades'), {
-      fromUID: currentUID,
-      fromName: currentDisplayName,
-      toUID: tradeTargetUID,
-      toName: tradeTargetName,
-      offeredCardId: tradeSelectedId,
-      offeredCardCount: cardCounts[tradeSelectedId]||1,
-      status: 'pending',
-      createdAt: serverTimestamp(),
-    });
-    if(status) status.textContent = `✓ Trade offer sent to ${tradeTargetName}!`;
-    tradeSelectedId=null; renderTradeOfferList();
-    const btn=document.getElementById('send-trade-btn'); if(btn) btn.disabled=true;
-    loadIncomingTrades();
-  } catch(e) {
-    if(status) status.textContent='Failed to send: '+e.message;
-  }
-};
-
-async function loadIncomingTrades() {
-  window.loadIncomingTrades = loadIncomingTrades;
-  if (!currentUID) return;
-  const panel = document.getElementById('incoming-trades');
-  if (!panel) return;
-  try {
-    const snap = await getDocs(query(
-      collection(db,'trades'),
-      where('toUID','==',currentUID),
-      where('status','==','pending'),
-      orderBy('createdAt','desc'), limit(10)
-    ));
-    if (snap.empty) { panel.innerHTML='<div class="social-empty">No pending trades.</div>'; return; }
-    panel.innerHTML = snap.docs.map(d=>{
-      const t=d.data();
-      const p = t.offeredCardId===999 ? BEAR
-        : t.offeredCardId==='cp' ? {name:'Custom Player',short:'Custom',rarity:'common'}
-        : PLAYERS.find(pl=>pl.id===t.offeredCardId);
-      return `<div class="trade-incoming">
-        <div class="trade-from">${t.fromName} offers:</div>
-        <div class="trade-card-name">${p?.name||'Unknown'} <span style="color:rgba(245,240,232,.4)">×${t.offeredCardCount}</span></div>
-        <div style="display:flex;gap:6px;margin-top:8px">
-          <button class="user-result-btn gold" onclick="acceptTrade('${d.id}',${JSON.stringify(t.offeredCardId)})">Accept</button>
-          <button class="user-result-btn" onclick="declineTrade('${d.id}')">Decline</button>
-        </div>
-      </div>`;
-    }).join('');
-  } catch(e) { panel.innerHTML='<div class="social-empty">Could not load trades.</div>'; }
-}
-
-window.acceptTrade = async function(tradeDocId, cardId) {
-  try {
-    // Add card to current user's collection
-    caught.add(cardId);
-    cardCounts[cardId] = (cardCounts[cardId]||0)+1;
-    // Mark trade accepted
-    await updateDoc(doc(db,'trades',tradeDocId), {status:'accepted', acceptedAt: serverTimestamp()});
-    await saveState();
-    updateCounts(); renderCards();
-    loadIncomingTrades();
-    showToast('🎉 Trade accepted! Card added to your collection.');
-  } catch(e) { showToast('Trade failed: '+e.message); }
-};
-
-window.declineTrade = async function(tradeDocId) {
-  try {
-    await updateDoc(doc(db,'trades',tradeDocId), {status:'declined'});
-    loadIncomingTrades();
-  } catch(e){}
-};
-
-function showToast(msg, dur=3500) {
-  let t = document.getElementById('game-toast');
-  if(!t){ t=document.createElement('div'); t.id='game-toast'; document.body.appendChild(t); }
-  t.textContent=msg; t.classList.add('show');
-  clearTimeout(t._timer);
-  t._timer=setTimeout(()=>t.classList.remove('show'),dur);
-}
-window.showToast = showToast;
-
+<script>
 /* ══════════════════════════════════════════════
    RARITY / SHIRT COLORS
    ══════════════════════════════════════════════ */
@@ -981,10 +571,10 @@ let lastSeen     = null;
 /* ══════════════════════════════════════════════
    LOCAL STORAGE
    ══════════════════════════════════════════════ */
-/* ── SAVE: writes to Firestore + localStorage fallback ── */
-async function saveState() {
-  // Always write localStorage so offline/guest play persists
+function saveState() {
   try {
+    totalPlayMs += Date.now() - sessionStart;
+    sessionStart = Date.now();
     localStorage.setItem('jd_caught',    JSON.stringify([...caught]));
     localStorage.setItem('jd_counts',   JSON.stringify(cardCounts));
     localStorage.setItem('jd_faces',    JSON.stringify(faceImages));
@@ -993,32 +583,24 @@ async function saveState() {
     localStorage.setItem('jd_custom',   JSON.stringify(customPlayer));
     localStorage.setItem('jd_cface',    customFaceImg||'');
     localStorage.setItem('jd_roampos',  JSON.stringify(roamPos));
-    const nowMs = totalPlayMs + (Date.now()-sessionStart);
-    sessionStart = Date.now(); totalPlayMs = nowMs;
-    localStorage.setItem('jd_playtime', nowMs.toString());
+    localStorage.setItem('jd_playtime', totalPlayMs.toString());
     localStorage.setItem('jd_lastseen', new Date().toISOString());
-    lastSeen = new Date().toISOString();
+    flashSave();
   } catch(e){}
-  flashSave();
-
-  // Firestore cloud save (if signed in)
-  try {
-    const user = auth.currentUser;
-    if (!user) return;
-    await setDoc(doc(db, 'saves', user.uid), {
-      caught: [...caught], cardCounts,
-      roster: courtRoster, bearUnlocked,
-      customPlayer, totalPlayMs,
-      lastSeen: new Date().toISOString(),
-      uid: user.uid,
-      displayName: user.displayName||user.email||'Anonymous',
-    }, {merge:true});
-  } catch(e){ console.warn('Cloud save failed', e); }
 }
 
-function loadFromLocal() {
+function loadState() {
   try {
-  
+    const c  = localStorage.getItem('jd_caught');
+    const cc = localStorage.getItem('jd_counts');
+    const f  = localStorage.getItem('jd_faces');
+    const r  = localStorage.getItem('jd_roster');
+    const b  = localStorage.getItem('jd_bear');
+    const cp = localStorage.getItem('jd_custom');
+    const cf = localStorage.getItem('jd_cface');
+    const rp = localStorage.getItem('jd_roampos');
+    const pt = localStorage.getItem('jd_playtime');
+    const ls = localStorage.getItem('jd_lastseen');
     if (c)  caught = new Set(JSON.parse(c));
     if (cc) cardCounts = JSON.parse(cc);
     if (f)  faceImages = JSON.parse(f);
@@ -1030,19 +612,6 @@ function loadFromLocal() {
     if (pt) totalPlayMs = parseInt(pt)||0;
     if (ls) lastSeen = ls;
   } catch(e){}
-}
-
-function applyCloudSave(data) {
-  if (!data) return;
-  caught = new Set(data.caught||[]);
-  cardCounts = data.cardCounts||{};
-  courtRoster = (data.roster||[]).filter(id=>id==='cp'||id===999||caught.has(id));
-  bearUnlocked = data.bearUnlocked||false;
-  customPlayer = data.customPlayer||null;
-  totalPlayMs = data.totalPlayMs||0;
-  lastSeen = data.lastSeen||null;
-  updateCounts(); renderCards(); renderDex(); renderFaces();
-  if(bearUnlocked&&!caught.has(999)){caught.add(999);cardCounts[999]=1;}
 }
 
 function flashSave() {
@@ -1251,8 +820,8 @@ function buildCardHTML(p, count) {
          <div class="card-jersey-badge">#${p.num}</div>
        </div>`;
 
-  const customDateRow = p.isCustom
-    ? `<div class="srow" style="grid-column:1/-1"><span class="sl">Joined</span><span class="sv" style="font-size:.75rem">${p.joinedDisplay||fmtDateNice(p.joinedISO)||'—'}</span></div>`
+  const customDateRow = p.isCustom&&p.joinedDisplay
+    ? `<div class="srow"><span class="sl">Joined</span><span class="sv" style="font-size:.72rem">${p.joinedDisplay}</span></div>`
     : '';
 
   return `<div class="card-flip-wrap" data-r="${p.rarity}" onclick="this.classList.toggle('flipped')">
@@ -1510,8 +1079,7 @@ function initHoop() {
     const p=currentTarget; if(!p) return;
     caught.add(p.id);
     cardCounts[p.id]=(cardCounts[p.id]||0)+1;
-    updateCounts(); doDeSpawn(p.id); saveState();
-    updateMapMissingBanner();
+    updateCounts();doDeSpawn(p.id);saveState();
     if(!p.isBear) checkBearUnlock();
     if(hoopAF) cancelAnimationFrame(hoopAF);
     document.getElementById('success-screen').style.display='block';
@@ -1570,34 +1138,24 @@ function renderDex() {
   let list = sortedPlayers(PLAYERS);
   if (bearUnlocked) list = [BEAR,...list];
 
-  grid.innerHTML=list.map(p=>{
+  const totalNeeded = PLAYERS.length;
+  const caughtCount = PLAYERS.filter(p=>caught.has(p.id)).length;
+  const missing = PLAYERS.filter(p=>!caught.has(p.id));
+  const nearComplete = caughtCount >= totalNeeded - 5; // highlight when 5 or fewer remain
+
+  // Show missing indicator banner when close to complete
+  const missingBanner = nearComplete && missing.length > 0
+    ? `<div class="dex-missing-label">🔴 <strong>${missing.length} remaining:</strong> ${missing.map(p=>p.short).join(', ')}</div>`
+    : '';
+
+  grid.innerHTML = missingBanner + list.map(p=>{
     const got=caught.has(p.id);
-    return `<div class="dex-slot ${got?'got':''}">
+    const isMissing = !got && nearComplete;
+    return `<div class="dex-slot ${got?'got':''} ${isMissing?'missing':''}">
       <div class="dex-char">${buildChar(p,42)}</div>
       <div class="dex-pname">${got?p.short:'???'}</div>
     </div>`;
   }).join('');
-}
-
-/* Show missing players as a subtle overlay on the MAP legend */
-function updateMapMissingBanner() {
-  const legend = document.getElementById('map-legend-missing');
-  if (!legend) return;
-  const missing = PLAYERS.filter(p=>!caught.has(p.id));
-  const total = PLAYERS.length;
-  const caught_n = total - missing.length;
-  if (missing.length === 0) {
-    legend.innerHTML = `<span style="color:var(--teal);font-family:'Barlow Condensed',sans-serif;font-size:.82rem">🏆 All ${total} players caught!</span>`;
-    return;
-  }
-  if (missing.length <= 5) {
-    legend.innerHTML = `<span style="color:var(--red);font-family:'Barlow Condensed',sans-serif;font-size:.78rem">
-      🔴 <strong style="color:#ff5555">${missing.length} left:</strong>
-      ${missing.map(p=>`<span style="color:rgba(245,240,232,.7)">${p.short}</span>`).join(' · ')}
-    </span>`;
-  } else {
-    legend.innerHTML = '';
-  }
 }
 
 /* ══════════════════════════════════════════════
@@ -1695,7 +1253,7 @@ function rebuildRoamers() {
   const players=courtRoster
     .filter(id=>id!==undefined)
     .map(id=>{
-      if(id==='cp') return customPlayer;
+      if(id==='cp') return customPlayer;  // custom player by string id
       if(id===999)  return BEAR;
       return PLAYERS.find(p=>p.id===id);
     })
@@ -1704,21 +1262,13 @@ function rebuildRoamers() {
   court.querySelectorAll('.roamer-div').forEach(r=>r.remove());
   if(courtAF){cancelAnimationFrame(courtAF);courtAF=null;}
   if(roamTimer){clearInterval(roamTimer);roamTimer=null;}
-
   const cv=document.getElementById('court-cv');
-  if(cv){
-    cv.width=court.offsetWidth||900;
-    cv.height=court.offsetHeight||490;
-    // Always clear canvas — prevents ghost ball when no players
-    const ctx=cv.getContext('2d');
-    ctx.clearRect(0,0,cv.width,cv.height);
-  }
+  if(cv){cv.width=court.offsetWidth||900;cv.height=court.offsetHeight||490;}
 
   if(!players.length){
     if(footer) footer.textContent='Use the slots below to put players on the court!';
     renderRosterBar(); return;
   }
-
   if(footer) footer.textContent=players.length===1
     ?`${players[0].short} is warming up! 🏀`
     :`${players.map(p=>p.short).join(', ')} running drills 🏀`;
@@ -1750,51 +1300,52 @@ function rebuildRoamers() {
 function startDribble(player) {
   const canvas=document.getElementById('court-cv'); if(!canvas) return;
   const ctx=canvas.getContext('2d');
-  let t=0, tDir=1;
-  const SPEED=0.048;
+  let t=0,tDir=1;
+  const SPEED=0.045;
+  // SVG viewBox is 56x60, character feet at bottom (y=60), arms at y≈33, hand tip at x≈52 y≈33
+  // We render at size 50 → scale factor = 50/56 ≈ 0.89
+  // Player div is positioned translate(-50%,-100%) so feet = courtY, head = courtY - charH
+  // charH at size50 = Math.round(50*1.07)=54px. Hand is roughly 54*(33/60)=29.7px from feet up
+  // Horizontal: right arm tip at 52/56 * 50 = 46px from left, center offset = 50/2=25, so hand is +21px right of center
+  const CHAR_H = Math.round(50*1.07); // rendered SVG height
+  const HAND_UP_FRAC = 33/60;         // hand y in SVG coords / total height
+  const HAND_X_OFFSET = 12;           // px right of character center (arm extends right)
 
-  // Character SVG is rendered at size=50. viewBox 0 0 56 60.
-  // The .roamer-div is transform:translate(-50%,-100%) so its anchor point = feet.
-  // Right arm outer tip in SVG: x≈52, y≈33  →  pixel offset from center:
-  //   xOff = (52-28)/56 * 50 = +21px   yOff from feet = (60-33)/60 * 54 = 24px up
-  const CHAR_RENDER = 50;
-  const CHAR_H = Math.round(CHAR_RENDER * 1.07); // ≈54px tall
-  const ARM_X_OFF = Math.round(((52-28)/56) * CHAR_RENDER); // +21px right of center
-  const ARM_Y_UP  = Math.round(((60-33)/60) * CHAR_H);      // ≈24px up from feet
-
-  function getHandPos() {
-    const pos = roamPos[player.id]||{x:50,y:50};
-    const feetX = (pos.x/100)*canvas.width;
-    const feetY = (pos.y/100)*canvas.height;
-    return { hx: feetX + ARM_X_OFF, hy: feetY - ARM_Y_UP, feetY };
+  function getPos(){
+    const pos=roamPos[player.id]||{x:50,y:50};
+    // feet position in canvas pixels
+    const feetX=(pos.x/100)*canvas.width;
+    const feetY=(pos.y/100)*canvas.height;
+    // hand position: right of center, partway up from feet
+    const handX = feetX + HAND_X_OFFSET;
+    const handY = feetY - CHAR_H * HAND_UP_FRAC;
+    return {handX, handY, feetY};
   }
 
-  function drawBall(x,y,r=9){
+  function drawBall(x,y){
+    const r=9;
     const g=ctx.createRadialGradient(x-r*.3,y-r*.3,r*.12,x,y,r);
     g.addColorStop(0,'#ffb347');g.addColorStop(1,'#c84800');
     ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
-    ctx.strokeStyle='rgba(0,0,0,.3)';ctx.lineWidth=1;
-    ctx.beginPath();ctx.arc(x,y,r,-.45,.45);ctx.stroke();
+    ctx.strokeStyle='rgba(0,0,0,.25)';ctx.lineWidth=1;
+    ctx.beginPath();ctx.arc(x,y,r,-.4,.4);ctx.stroke();
   }
 
   function frame(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    const {hx,hy,feetY} = getHandPos();
-    // t=0 → ball at hand; t=1 → ball at floor
-    // Use ease-in curve so ball spends more time near the hand (like a real dribble)
-    const eased = Math.pow(t, 0.55);
-    const bx = hx;
-    const by = hy + eased*(feetY - hy - 4);
-    // Ground shadow — fades in as ball approaches floor
-    ctx.globalAlpha = 0.1 + 0.25*eased;
-    ctx.fillStyle='#000';
-    ctx.beginPath();
-    ctx.ellipse(bx, feetY+1, 6+5*eased, 2.5, 0, 0, Math.PI*2);
-    ctx.fill();
+    const{handX,handY,feetY}=getPos();
+    // Ball bounces from hand (top) down to just above floor (bottom)
+    const eased=Math.pow(t,.55); // ease-in so it spends more time at top (hand)
+    const bx=handX;
+    const by=handY + eased*(feetY - handY - 6); // -6 so doesn't sink into floor
+    // Floor shadow grows as ball approaches ground
+    const shadowAlpha=0.15+0.2*eased;
+    const shadowW=7+5*eased;
+    ctx.globalAlpha=shadowAlpha;ctx.fillStyle='#000';
+    ctx.beginPath();ctx.ellipse(bx,feetY+2,shadowW,3,0,0,Math.PI*2);ctx.fill();
     ctx.globalAlpha=1;
-    drawBall(bx, by);
-    t += tDir*SPEED;
-    if(t>=1){t=1;tDir=-1;} if(t<=0){t=0;tDir=1;}
+    drawBall(bx,by);
+    t+=tDir*SPEED;if(t>=1){t=1;tDir=-1;}if(t<=0){t=0;tDir=1;}
     courtAF=requestAnimationFrame(frame);
   }
   courtAF=requestAnimationFrame(frame);
@@ -1836,13 +1387,6 @@ function showView(id,btn) {
   if(id==='cards-view')  renderCards();
   if(id==='faces-view')  renderFaces();
   if(id==='custom-view') initCustomView();
-  if(id==='map-view')    updateMapMissingBanner();
-  if(id==='social-view') {
-    renderAuthUI();
-    const banner=document.getElementById('guest-banner');
-    if(banner) banner.style.display=(currentUID&&auth.currentUser&&!auth.currentUser.isAnonymous)?'none':'block';
-    if(currentUID) loadIncomingTrades();
-  }
 }
 
 /* ══════════════════════════════════════════════
@@ -1860,21 +1404,12 @@ function exportPlayerData() {
   };
 }
 
-// Expose all functions called from HTML to window (required for type="module")
-window.showView=showView; window.openCatch=openCatch; window.closeModal=closeModal;
-window.doThrow=doThrow; window.openPicker=openPicker; window.closePicker=closePicker;
-window.selectInSlot=selectInSlot; window.clearSlot=clearSlot;
-window.loadFace=loadFace; window.loadCustomFace=loadCustomFace;
-window.saveCustomPlayer=saveCustomPlayer; window.refreshCustomPreview=refreshCustomPreview;
-window.renderDex=renderDex; window.renderCards=renderCards;
-
 /* ══════════════════════════════════════════════
    INIT
    ══════════════════════════════════════════════ */
-// 1. Immediately load local state so the game is playable offline/before Firebase resolves
-loadFromLocal();
+loadState();
 updateCounts();
-updateMapMissingBanner();
+// Bear nav tab is gone — bear unlocks secretly
 if(bearUnlocked && !caught.has(999)){caught.add(999);cardCounts[999]=1;}
 renderCards();
 renderDex();
@@ -1882,18 +1417,10 @@ renderFaces();
 document.getElementById('total-count').textContent=PLAYERS.length;
 document.getElementById('dex-total').textContent=PLAYERS.length;
 document.getElementById('save-badge').style.opacity='0';
-// Start spawning immediately
+// Autosave play time every 2 min
+setInterval(saveState, 120000);
 scheduleAll();
 if(bearUnlocked) scheduleBear();
-// Autosave every 2 min
-setInterval(saveState, 120000);
-// Show guest banner if not signed in after 1s
-setTimeout(()=>{
-  const banner = document.getElementById('guest-banner');
-  if(banner && !currentUID) banner.style.display='block';
-},1000);
-// Try anonymous sign-in for basic cloud access if not already signed in
-signInAnonymously(auth).catch(()=>{});
 </script>
 </body>
 </html>
