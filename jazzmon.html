@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -217,7 +217,15 @@ canvas#hoop-cv{width:100%;height:150px;display:block;border-radius:8px;backgroun
 .cp-stat-label{color:rgba(245,240,232,.45);}
 .cp-stat-val{color:var(--cream);font-weight:600;}
 
-/* (social styles moved to main CSS) */
+/* SOCIAL STUB */
+.social-stub{background:rgba(0,20,50,.5);border:2px solid rgba(124,77,255,.3);border-radius:16px;padding:24px;text-align:center;}
+.social-stub h3{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:3px;color:#a87fff;margin-bottom:8px;}
+.social-stub p{font-family:'Barlow Condensed',sans-serif;font-size:.9rem;color:rgba(245,240,232,.55);line-height:1.7;margin-bottom:12px;}
+.social-stub .coming-soon{display:inline-block;background:rgba(124,77,255,.2);border:1px solid rgba(124,77,255,.4);border-radius:20px;padding:4px 14px;font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:2px;color:#a87fff;margin-bottom:12px;}
+.social-feature{background:rgba(0,10,30,.4);border-radius:10px;padding:12px 16px;margin-top:10px;text-align:left;}
+.social-feature h4{font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:700;color:var(--teal);margin-bottom:4px;}
+.social-feature p{font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:rgba(245,240,232,.45);line-height:1.5;}
+.social-feature .tech-note{font-size:.72rem;color:rgba(245,240,232,.25);margin-top:4px;font-style:italic;}
 
 /* RARITY BADGES */
 .rarity-common{color:var(--common);background:rgba(0,178,169,.15);}
@@ -225,56 +233,74 @@ canvas#hoop-cv{width:100%;height:150px;display:block;border-radius:8px;backgroun
 .rarity-epic{color:#ff9940;background:rgba(255,109,0,.15);}
 .rarity-legendary{color:var(--gold);background:rgba(249,160,27,.15);}
 
-/* AUTH BUTTONS */
-.auth-btn{background:linear-gradient(135deg,var(--gold),#c87c00);color:var(--navy);border:none;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:1px;padding:7px 14px;border-radius:6px;cursor:pointer;white-space:nowrap;transition:opacity .2s;}
-.auth-btn.outline{background:transparent;border:2px solid rgba(249,160,27,.4);color:var(--gold);}
-.auth-btn.gold{background:linear-gradient(135deg,var(--gold),#c87c00);color:var(--navy);}
-.auth-btn.wide{width:100%;font-size:1rem;padding:10px;text-align:center;}
-.auth-btn:hover{opacity:.85;}
-.auth-btn:disabled{opacity:.35;cursor:not-allowed;}
-.auth-btn-sm{background:transparent;border:1px solid rgba(249,160,27,.3);color:rgba(245,240,232,.6);font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;padding:4px 10px;border-radius:4px;cursor:pointer;}
-.auth-btn-sm.gold{background:var(--gold);color:var(--navy);border-color:var(--gold);}
-.auth-tab{flex:1;background:transparent;border:none;color:rgba(245,240,232,.4);font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:1px;padding:8px;cursor:pointer;transition:all .2s;text-transform:uppercase;}
-.auth-tab.active{background:rgba(249,160,27,.15);color:var(--gold);}
-
-/* SOCIAL SECTIONS */
-.social-section{background:rgba(0,20,50,.5);border:1px solid rgba(249,160,27,.15);border-radius:12px;padding:18px;margin-bottom:16px;}
-.social-section-title{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;color:var(--gold);margin-bottom:12px;}
-.social-loading,.social-empty{font-family:'Barlow Condensed',sans-serif;font-size:.85rem;color:rgba(245,240,232,.35);padding:10px 0;}
-.user-result{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);}
-.user-result:last-child{border-bottom:none;}
-.user-result-name{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;flex:1;}
-.user-result-sub{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:rgba(245,240,232,.4);min-width:70px;}
-.user-result-btn{background:transparent;border:1px solid rgba(249,160,27,.35);color:var(--gold);font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:700;padding:5px 12px;border-radius:5px;cursor:pointer;white-space:nowrap;}
-.user-result-btn.gold{background:var(--gold);color:var(--navy);border-color:var(--gold);}
-.user-result-btn:hover{opacity:.8;}
-.user-profile-panel{padding:4px 0;}
-.profile-back{background:none;border:none;color:rgba(245,240,232,.4);font-family:'Barlow Condensed',sans-serif;font-size:.82rem;cursor:pointer;margin-bottom:10px;padding:0;}
-.profile-back:hover{color:var(--cream);}
-.trade-card{border:2px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 4px;text-align:center;cursor:pointer;transition:all .2s;background:rgba(0,20,50,.5);}
-.trade-card:hover{border-color:var(--teal);}
-.trade-card.selected{border-color:var(--gold);background:rgba(249,160,27,.1);}
-.trade-card.low-count{opacity:.6;}
-.trade-incoming{background:rgba(0,0,0,.3);border-radius:8px;padding:12px;margin-bottom:8px;}
-.trade-from{font-family:'Barlow Condensed',sans-serif;font-size:.78rem;color:rgba(245,240,232,.4);}
-.trade-card-name{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--cream);margin-top:2px;}
-
-/* GAME TOAST */
-#game-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);z-index:600;
-  background:linear-gradient(135deg,#002244,#001830);border:2px solid var(--teal);
-  color:var(--cream);font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:600;
-  padding:12px 24px;border-radius:10px;box-shadow:0 4px 30px rgba(0,178,169,.3);
-  opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;white-space:nowrap;}
-#game-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-
 /* BEAR UNLOCK TOAST */
 .bear-toast{position:fixed;top:70px;left:50%;transform:translateX(-50%) translateY(-20px);z-index:500;
-  background:linear-gradient(135deg,#8B4513,#5a2a08);
-  border:2px solid var(--gold);color:var(--gold);
+  background:linear-gradient(135deg,#8B4513,#5a2a08);border:2px solid var(--gold);color:var(--gold);
   font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;
   padding:14px 32px;border-radius:12px;box-shadow:0 4px 40px rgba(249,160,27,.5);
   opacity:0;transition:opacity .4s,transform .4s;pointer-events:none;}
 .bear-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+/* GAME TOAST */
+#game-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(10px);z-index:600;
+  background:linear-gradient(135deg,#001830,#002244);border:2px solid var(--teal);
+  color:var(--cream);font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:600;
+  padding:11px 24px;border-radius:10px;box-shadow:0 4px 24px rgba(0,178,169,.3);
+  opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;white-space:nowrap;max-width:90vw;text-align:center;}
+#game-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+/* AUTH */
+.auth-btn-sm{background:transparent;border:1px solid rgba(249,160,27,.35);color:rgba(245,240,232,.65);
+  font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;
+  padding:4px 10px;border-radius:4px;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.auth-btn-sm:hover{border-color:var(--gold);color:var(--gold);}
+.auth-btn-sm.gold{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+.auth-tab-bar{display:flex;border:1px solid rgba(249,160,27,.2);border-radius:6px;overflow:hidden;margin-bottom:16px;}
+.auth-tab{flex:1;background:transparent;border:none;color:rgba(245,240,232,.4);
+  font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:1px;
+  padding:9px;cursor:pointer;transition:all .2s;text-transform:uppercase;}
+.auth-tab.active{background:rgba(249,160,27,.15);color:var(--gold);}
+.auth-input{background:rgba(0,0,0,.4);border:1px solid rgba(249,160,27,.25);border-radius:6px;
+  padding:9px 12px;color:var(--cream);font-family:'Barlow Condensed',sans-serif;font-size:.95rem;
+  width:100%;outline:none;transition:border-color .2s;margin-bottom:10px;}
+.auth-input:focus{border-color:var(--gold);}
+.auth-submit{width:100%;background:linear-gradient(135deg,var(--gold),#c87c00);color:var(--navy);
+  border:none;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:3px;
+  padding:11px;border-radius:8px;cursor:pointer;box-shadow:0 3px 14px rgba(249,160,27,.3);transition:opacity .15s;}
+.auth-submit:hover{opacity:.88;}
+.auth-divider{text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:.75rem;
+  color:rgba(245,240,232,.25);margin:12px 0;}
+.auth-guest{width:100%;background:transparent;border:2px solid rgba(245,240,232,.15);color:rgba(245,240,232,.5);
+  font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:1px;
+  padding:9px;border-radius:8px;cursor:pointer;transition:all .2s;}
+.auth-guest:hover{border-color:rgba(245,240,232,.35);color:var(--cream);}
+.auth-err{font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:var(--red);min-height:18px;margin-bottom:8px;}
+.auth-note{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;color:rgba(245,240,232,.22);text-align:center;margin-top:10px;line-height:1.5;}
+.auth-label{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;color:rgba(245,240,232,.45);letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:3px;}
+/* SOCIAL */
+.social-sec{background:rgba(0,18,44,.6);border:1px solid rgba(249,160,27,.15);border-radius:12px;padding:18px;margin-bottom:14px;}
+.social-sec-title{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:2px;color:var(--gold);margin-bottom:12px;}
+.social-empty{font-family:'Barlow Condensed',sans-serif;font-size:.85rem;color:rgba(245,240,232,.3);padding:8px 0;}
+.user-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05);}
+.user-row:last-child{border-bottom:none;}
+.user-row-name{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;flex:1;}
+.user-row-sub{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;color:rgba(245,240,232,.38);}
+.soc-btn{background:transparent;border:1px solid rgba(249,160,27,.35);color:var(--gold);
+  font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:700;padding:5px 12px;border-radius:5px;cursor:pointer;white-space:nowrap;transition:all .15s;}
+.soc-btn:hover{background:rgba(249,160,27,.12);}
+.soc-btn.teal{border-color:rgba(0,178,169,.4);color:var(--teal);}
+.soc-btn.teal:hover{background:rgba(0,178,169,.12);}
+.friend-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05);}
+.friend-row:last-child{border-bottom:none;}
+.friend-name{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;flex:1;}
+.friend-sub{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;color:rgba(245,240,232,.38);}
+.trade-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:8px;margin-bottom:10px;}
+.trade-card-opt{border:2px solid rgba(255,255,255,.1);border-radius:8px;padding:7px 4px;text-align:center;cursor:pointer;transition:all .2s;background:rgba(0,20,50,.5);}
+.trade-card-opt:hover{border-color:var(--teal);}
+.trade-card-opt.sel{border-color:var(--gold);background:rgba(249,160,27,.1);}
+.trade-card-opt.dimmed{opacity:.45;}
+.incoming-trade{background:rgba(0,0,0,.3);border-radius:8px;padding:12px 14px;margin-bottom:8px;}
+.it-from{font-family:'Barlow Condensed',sans-serif;font-size:.78rem;color:rgba(245,240,232,.4);margin-bottom:3px;}
+.it-card{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--cream);}
+.it-actions{display:flex;gap:6px;margin-top:8px;}
 </style>
 </head>
 <body>
@@ -286,7 +312,7 @@ canvas#hoop-cv{width:100%;height:150px;display:block;border-radius:8px;backgroun
       <span>CAUGHT <strong id="caught-count">0</strong></span>
       <span>/ <span id="total-count">18</span></span>
     </div>
-    <div id="auth-bar" style="display:flex;gap:6px;align-items:center"></div>
+    <div id="auth-bar" style="display:flex;gap:6px;align-items:center;flex-shrink:0"></div>
     <div class="save-badge" id="save-badge">💾 saved</div>
   </div>
 </header>
@@ -332,7 +358,6 @@ canvas#hoop-cv{width:100%;height:150px;display:block;border-radius:8px;backgroun
     <div class="leg-item"><div class="leg-dot" style="background:var(--legendary)"></div>Legendary</div>
     <span class="map-hint">Players respawn — catch multiples!</span>
   </div>
-  <div class="map-legend" id="map-legend-missing" style="padding-top:6px;padding-bottom:6px;min-height:0"></div>
 </div>
 
 <!-- CARDS -->
@@ -455,102 +480,84 @@ canvas#hoop-cv{width:100%;height:150px;display:block;border-radius:8px;backgroun
   <div class="view-inner">
     <div class="view-title">Social</div>
 
-    <!-- Sign-in benefits banner for guests -->
-    <div id="guest-banner" style="display:none;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,178,169,.15));border:1px solid rgba(124,77,255,.35);border-radius:12px;padding:14px 18px;margin-bottom:18px;font-family:'Barlow Condensed',sans-serif;">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;color:#a87fff;margin-bottom:6px">Playing as Guest</div>
-      <p style="font-size:.85rem;color:rgba(245,240,232,.65);line-height:1.6;margin-bottom:10px">
-        Sign in to unlock: <strong style="color:var(--teal)">cloud saves</strong> across devices,
-        <strong style="color:var(--teal)">custom player</strong> sync,
-        <strong style="color:var(--teal)">friend search</strong>, and
-        <strong style="color:var(--teal)">card trading</strong>.
-      </p>
-      <div style="display:flex;gap:8px">
-        <button class="auth-btn" onclick="openAuthModal('register')">Create Account</button>
-        <button class="auth-btn outline" onclick="openAuthModal('login')">Sign In</button>
+    <!-- Guest upsell -->
+    <div id="guest-upsell" style="display:none;background:linear-gradient(135deg,rgba(249,160,27,.12),rgba(0,178,169,.08));border:1px solid rgba(249,160,27,.25);border-radius:12px;padding:16px 20px;margin-bottom:16px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:2px;color:var(--gold);margin-bottom:6px">Playing as Guest</div>
+      <p style="font-family:'Barlow Condensed',sans-serif;font-size:.85rem;color:rgba(245,240,232,.6);line-height:1.6;margin-bottom:12px">Sign in or create an account to unlock <strong style="color:var(--teal)">cloud saves</strong>, <strong style="color:var(--teal)">find friends</strong>, and <strong style="color:var(--teal)">trade cards</strong>.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="auth-submit" style="width:auto;padding:8px 20px;font-size:1rem" onclick="openAuthModal('login')">Sign In</button>
+        <button class="auth-submit" style="width:auto;padding:8px 20px;font-size:1rem" onclick="openAuthModal('register')">Create Account</button>
       </div>
     </div>
 
-    <!-- Find Users -->
-    <div class="social-section">
-      <div class="social-section-title">👥 Find Players</div>
+    <!-- Friends list -->
+    <div class="social-sec">
+      <div class="social-sec-title">🤝 Friends</div>
+      <div id="friends-list"><div class="social-empty">Loading…</div></div>
+    </div>
+
+    <!-- Find players -->
+    <div class="social-sec">
+      <div class="social-sec-title">🔍 Find Players</div>
       <div style="display:flex;gap:8px;margin-bottom:12px">
-        <input id="user-search-input" type="text" placeholder="Search by username…" style="flex:1;background:rgba(0,0,0,.4);border:1px solid rgba(249,160,27,.25);border-radius:6px;padding:8px 12px;color:var(--cream);font-family:'Barlow Condensed',sans-serif;font-size:.95rem;" onkeydown="if(event.key==='Enter')searchUsers()">
-        <button class="auth-btn" onclick="searchUsers()">Search</button>
+        <input id="user-search-input" type="text" class="auth-input" style="margin-bottom:0;flex:1" placeholder="Search by username…" onkeydown="if(event.key==='Enter')searchUsers()">
+        <button class="soc-btn" onclick="searchUsers()">Search</button>
       </div>
-      <div id="user-search-results"></div>
+      <div id="search-results"></div>
+      <div id="suggested-users" style="margin-top:10px"></div>
     </div>
 
-    <!-- Trade Panel (hidden until a trade is initiated) -->
-    <div id="trade-panel" style="display:none" class="social-section">
-      <div class="social-section-title">🔄 Trade with <span id="trade-target-name"></span></div>
-      <p style="font-family:'Barlow Condensed',sans-serif;font-size:.82rem;color:rgba(245,240,232,.45);margin-bottom:12px">Select a card to offer. They'll receive a notification and can accept or decline.</p>
-      <div id="trade-offer-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:8px;margin-bottom:12px"></div>
-      <div id="trade-status" style="font-family:'Barlow Condensed',sans-serif;font-size:.82rem;color:var(--teal);margin-bottom:8px"></div>
+    <!-- Trade: send -->
+    <div class="social-sec" id="trade-send-panel" style="display:none">
+      <div class="social-sec-title">🔄 Send Card to <span id="trade-to-name" style="color:var(--teal)"></span></div>
+      <p style="font-family:'Barlow Condensed',sans-serif;font-size:.82rem;color:rgba(245,240,232,.45);margin-bottom:12px">Select a card to give. Your count decreases by 1. They receive it immediately — no confirmation needed.</p>
+      <div class="trade-grid" id="trade-card-grid"></div>
+      <div id="trade-send-status" style="font-family:'Barlow Condensed',sans-serif;font-size:.82rem;color:var(--teal);min-height:18px;margin-bottom:8px"></div>
       <div style="display:flex;gap:8px">
-        <button id="send-trade-btn" class="auth-btn gold" disabled onclick="sendTradeOffer()">Send Offer</button>
-        <button class="auth-btn outline" onclick="cancelTrade()">Cancel</button>
+        <button id="trade-send-btn" class="auth-submit" style="width:auto;padding:9px 22px;font-size:1rem" disabled onclick="confirmSendCard()">Send Card</button>
+        <button class="auth-guest" style="width:auto;padding:9px 18px" onclick="closeTrade()">Cancel</button>
       </div>
     </div>
 
-    <!-- Incoming Trades -->
-    <div class="social-section">
-      <div class="social-section-title">📬 Incoming Trade Offers</div>
-      <div id="incoming-trades"><div class="social-empty">Sign in to see trade offers.</div></div>
-      <button class="auth-btn outline" style="margin-top:10px;font-size:.8rem" onclick="loadIncomingTrades()">Refresh</button>
-    </div>
-
-    <!-- Seagate Lyve note -->
-    <div class="social-section" style="border-color:rgba(0,178,169,.3)">
-      <div class="social-section-title" style="color:var(--teal)">🗄️ Storage: Seagate Lyve Cloud</div>
-      <p style="font-family:'Barlow Condensed',sans-serif;font-size:.82rem;color:rgba(245,240,232,.5);line-height:1.6">
-        Face photo uploads and game-state snapshots can be offloaded to a Lyve Cloud bucket (S3-compatible).
-        Currently using Firebase Firestore for saves and Firestore for trade messages.
-        To integrate Lyve: swap face-image base64 storage with presigned S3 PUT calls to your Lyve bucket,
-        then store the returned URL instead of the raw dataURL.
-      </p>
+    <!-- Received cards log -->
+    <div class="social-sec">
+      <div class="social-sec-title">📬 Received Cards</div>
+      <div id="received-log"><div class="social-empty">No received cards yet.</div></div>
     </div>
   </div>
 </div>
 
 <!-- AUTH MODAL -->
 <div class="modal-overlay" id="auth-modal">
-  <div class="catch-modal" style="max-width:380px">
+  <div class="catch-modal" style="max-width:360px">
     <button class="modal-close" onclick="closeAuthModal()">✕</button>
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:3px;color:var(--gold);margin-bottom:14px">JazzDex Account</div>
-    <div style="display:flex;gap:0;margin-bottom:16px;border:1px solid rgba(249,160,27,.2);border-radius:6px;overflow:hidden">
-      <button id="atab-login"    class="auth-tab active" onclick="switchAuthTab('login')">Sign In</button>
-      <button id="atab-register" class="auth-tab"        onclick="switchAuthTab('register')">Create Account</button>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:3px;color:var(--gold);margin-bottom:14px">JazzDex Account</div>
+    <div class="auth-tab-bar">
+      <button class="auth-tab active" id="atab-login"    onclick="switchAuthTab('login')">Sign In</button>
+      <button class="auth-tab"        id="atab-register" onclick="switchAuthTab('register')">Create Account</button>
     </div>
+    <!-- Login panel -->
     <div id="apanel-login">
-      <div class="form-field" style="margin-bottom:10px">
-        <label style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:rgba(245,240,232,.5);font-weight:700;letter-spacing:1px;text-transform:uppercase">Email</label>
-        <input id="auth-email" type="email" placeholder="your@email.com" style="background:rgba(0,0,0,.4);border:1px solid rgba(249,160,27,.25);border-radius:6px;padding:9px 12px;color:var(--cream);font-family:'Barlow Condensed',sans-serif;font-size:.95rem;width:100%">
-      </div>
-      <div class="form-field" style="margin-bottom:14px">
-        <label style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:rgba(245,240,232,.5);font-weight:700;letter-spacing:1px;text-transform:uppercase">Password</label>
-        <input id="auth-pass" type="password" placeholder="••••••••" style="background:rgba(0,0,0,.4);border:1px solid rgba(249,160,27,.25);border-radius:6px;padding:9px 12px;color:var(--cream);font-family:'Barlow Condensed',sans-serif;font-size:.95rem;width:100%">
-      </div>
-      <div id="auth-err" style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:var(--red);margin-bottom:10px;min-height:18px"></div>
-      <button class="auth-btn gold wide" onclick="authAction('login')">Sign In</button>
-      <div style="text-align:center;margin:12px 0;font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:rgba(245,240,232,.3)">— or —</div>
-      <button class="auth-btn outline wide" onclick="authAction('guest')">Continue as Guest</button>
-      <p style="font-family:'Barlow Condensed',sans-serif;font-size:.7rem;color:rgba(245,240,232,.25);text-align:center;margin-top:10px;line-height:1.5">Guest progress saves locally only. Sign in to sync across devices and trade with friends.</p>
+      <label class="auth-label">Email</label>
+      <input class="auth-input" id="auth-login-email" type="email" placeholder="your@email.com" autocomplete="email">
+      <label class="auth-label">Password</label>
+      <input class="auth-input" id="auth-login-pass" type="password" placeholder="••••••••" autocomplete="current-password">
+      <div class="auth-err" id="auth-login-err"></div>
+      <button class="auth-submit" onclick="doLogin()">Sign In</button>
+      <div class="auth-divider">— or —</div>
+      <button class="auth-guest" onclick="doGuest()">Continue as Guest</button>
+      <p class="auth-note">Guest progress saves to this device only. Sign in to sync and trade.</p>
     </div>
+    <!-- Register panel -->
     <div id="apanel-register" style="display:none">
-      <div class="form-field" style="margin-bottom:10px">
-        <label style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:rgba(245,240,232,.5);font-weight:700;letter-spacing:1px;text-transform:uppercase">Display Name</label>
-        <input id="auth-name" type="text" placeholder="JazzFan99" maxlength="24" style="background:rgba(0,0,0,.4);border:1px solid rgba(249,160,27,.25);border-radius:6px;padding:9px 12px;color:var(--cream);font-family:'Barlow Condensed',sans-serif;font-size:.95rem;width:100%">
-      </div>
-      <div class="form-field" style="margin-bottom:10px">
-        <label style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:rgba(245,240,232,.5);font-weight:700;letter-spacing:1px;text-transform:uppercase">Email</label>
-        <input id="auth-email" type="email" placeholder="your@email.com" style="background:rgba(0,0,0,.4);border:1px solid rgba(249,160,27,.25);border-radius:6px;padding:9px 12px;color:var(--cream);font-family:'Barlow Condensed',sans-serif;font-size:.95rem;width:100%">
-      </div>
-      <div class="form-field" style="margin-bottom:14px">
-        <label style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:rgba(245,240,232,.5);font-weight:700;letter-spacing:1px;text-transform:uppercase">Password</label>
-        <input id="auth-pass" type="password" placeholder="min 6 characters" style="background:rgba(0,0,0,.4);border:1px solid rgba(249,160,27,.25);border-radius:6px;padding:9px 12px;color:var(--cream);font-family:'Barlow Condensed',sans-serif;font-size:.95rem;width:100%">
-      </div>
-      <div id="auth-err" style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:var(--red);margin-bottom:10px;min-height:18px"></div>
-      <button class="auth-btn gold wide" onclick="authAction('register')">Create Account</button>
+      <label class="auth-label">Username</label>
+      <input class="auth-input" id="auth-reg-name" type="text" placeholder="JazzFan99" maxlength="24" autocomplete="username">
+      <label class="auth-label">Email</label>
+      <input class="auth-input" id="auth-reg-email" type="email" placeholder="your@email.com" autocomplete="email">
+      <label class="auth-label">Password</label>
+      <input class="auth-input" id="auth-reg-pass" type="password" placeholder="min 6 characters" autocomplete="new-password">
+      <div class="auth-err" id="auth-reg-err"></div>
+      <button class="auth-submit" onclick="doRegister()">Create Account</button>
     </div>
   </div>
 </div>
@@ -577,352 +584,58 @@ canvas#hoop-cv{width:100%;height:150px;display:block;border-radius:8px;backgroun
 <div class="bear-toast" id="bear-toast">🐻 JAZZ BEAR UNLOCKED!</div>
 
 <script type="module">
-
-// ── Firebase imports ──────────────────────────────────────────────
+// ═══════════════════════════════════════════════
+// FIREBASE
+// ═══════════════════════════════════════════════
 import { initializeApp }
-  from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+  from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
 import { getAuth, signInAnonymously, signInWithEmailAndPassword,
          createUserWithEmailAndPassword, updateProfile, signOut,
          onAuthStateChanged }
-  from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc, getDocs,
-         collection, query, where, updateDoc, arrayUnion,
-         arrayRemove, deleteField, serverTimestamp, addDoc,
-         onSnapshot, orderBy, limit }
-  from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+  from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc, getDocs, addDoc,
+         updateDoc, deleteDoc, collection, query, where,
+         orderBy, limit, serverTimestamp, arrayUnion, increment }
+  from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAnvxjxvAz4tj6FlOziXU8UTIyUWbSSsSo",
-  authDomain: "jazzdex.firebaseapp.com",
-  projectId: "jazzdex",
-  storageBucket: "jazzdex.firebasestorage.app",
-  messagingSenderId: "257047661012",
-  appId: "1:257047661012:web:33afe587caef2cf391ae41",
-  measurementId: "G-GEVG5XNNB9"
+const FB = {
+  apiKey:"AIzaSyAnvxjxvAz4tj6FlOziXU8UTIyUWbSSsSo",
+  authDomain:"jazzdex.firebaseapp.com",
+  projectId:"jazzdex",
+  storageBucket:"jazzdex.firebasestorage.app",
+  messagingSenderId:"257047661012",
+  appId:"1:257047661012:web:33afe587caef2cf391ae41"
 };
-
-const app  = initializeApp(firebaseConfig);
+const app  = initializeApp(FB);
 const auth = getAuth(app);
 const db   = getFirestore(app);
 
-// ── Auth state ────────────────────────────────────────────────────
-let currentUID = null;
-let currentDisplayName = 'Player';
+// ═══════════════════════════════════════════════
+// RARITY / SHIRT COLORS
+// ═══════════════════════════════════════════════
+const RC = {common:'#00B2A9',rare:'#7C4DFF',epic:'#FF6D00',legendary:'#F9A01B'};
+const SC = {common:'#00868a',rare:'#5533aa',epic:'#aa3300',legendary:'#aa7700'};
 
-onAuthStateChanged(auth, async (user) => {
-  if (!user) {
-    currentUID = null;
-    renderAuthUI();
-    return;
-  }
-  currentUID = user.uid;
-  currentDisplayName = user.displayName || user.email || 'Anonymous';
-  renderAuthUI();
-
-  // Try to load cloud save
-  try {
-    const snap = await getDoc(doc(db,'saves',user.uid));
-    if (snap.exists()) {
-      applyCloudSave(snap.data());
-    } else {
-      // Push local save to cloud for new sessions
-      await saveState();
-    }
-  } catch(e) { console.warn('Cloud load failed, using local', e); }
-
-  updateCounts(); renderCards(); renderDex(); renderFaces();
-  checkBearUnlock();
-});
-
-// ── Auth UI actions (exposed to HTML) ─────────────────────────────
-window.authAction = async function(mode) {
-  const email = document.getElementById('auth-email')?.value?.trim();
-  const pass  = document.getElementById('auth-pass')?.value;
-  const name  = document.getElementById('auth-name')?.value?.trim();
-  const err   = document.getElementById('auth-err');
-  if(err) err.textContent='';
-  try {
-    if (mode==='register') {
-      if (!name) { if(err) err.textContent='Display name required'; return; }
-      const cred = await createUserWithEmailAndPassword(auth, email, pass);
-      await updateProfile(cred.user, {displayName: name});
-      // Write user profile doc for discovery
-      await setDoc(doc(db,'users',cred.user.uid), {
-        uid: cred.user.uid, displayName: name,
-        email: email, joinedAt: serverTimestamp(),
-        caughtCount: 0,
-      });
-    } else if (mode==='login') {
-      await signInWithEmailAndPassword(auth, email, pass);
-    } else if (mode==='guest') {
-      await signInAnonymously(auth);
-    } else if (mode==='logout') {
-      await signOut(auth);
-    }
-    closeAuthModal();
-  } catch(e) {
-    if(err) err.textContent = e.message.replace('Firebase: ','').replace(/\(.*\)/,'').trim();
-  }
-};
-
-window.openAuthModal = function(tab='login') {
-  const m = document.getElementById('auth-modal');
-  if(m) { m.classList.add('open'); switchAuthTab(tab); }
-};
-
-window.closeAuthModal = function() {
-  const m = document.getElementById('auth-modal');
-  if(m) m.classList.remove('open');
-};
-
-window.switchAuthTab = function(tab) {
-  document.querySelectorAll('.auth-tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.auth-panel').forEach(p=>p.style.display='none');
-  const tb=document.getElementById('atab-'+tab);
-  const pn=document.getElementById('apanel-'+tab);
-  if(tb) tb.classList.add('active');
-  if(pn) pn.style.display='block';
-};
-
-function renderAuthUI() {
-  const bar = document.getElementById('auth-bar');
-  if (!bar) return;
-  if (currentUID && auth.currentUser && !auth.currentUser.isAnonymous) {
-    bar.innerHTML=`<span style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:rgba(245,240,232,.55)">👤 ${currentDisplayName}</span>
-      <button class="auth-btn-sm" onclick="openAuthModal('logout')">Sign Out</button>`;
-  } else if (currentUID && auth.currentUser?.isAnonymous) {
-    bar.innerHTML=`<span style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:rgba(245,240,232,.35)">Guest</span>
-      <button class="auth-btn-sm" onclick="openAuthModal('register')">Sign Up to Save</button>`;
-  } else {
-    bar.innerHTML=`<button class="auth-btn-sm" onclick="openAuthModal('login')">Sign In</button>
-      <button class="auth-btn-sm gold" onclick="openAuthModal('register')">Create Account</button>`;
-  }
-}
-
-// ── Social: Find users ────────────────────────────────────────────
-window.searchUsers = async function() {
-  const q = document.getElementById('user-search-input')?.value?.trim();
-  const res = document.getElementById('user-search-results');
-  if (!q || !res) return;
-  res.innerHTML = '<div class="social-loading">Searching…</div>';
-  try {
-    const snap = await getDocs(query(
-      collection(db,'users'),
-      where('displayName','>=',q),
-      where('displayName','<=',q+'\uf8ff'),
-      limit(10)
-    ));
-    if (snap.empty) { res.innerHTML='<div class="social-empty">No users found.</div>'; return; }
-    res.innerHTML = snap.docs
-      .filter(d=>d.id!==currentUID)
-      .map(d=>{
-        const u=d.data();
-        return `<div class="user-result">
-          <div class="user-result-name">${u.displayName}</div>
-          <div class="user-result-sub">Caught ${u.caughtCount||0}/18</div>
-          <button class="user-result-btn" onclick="viewUserProfile('${d.id}','${u.displayName}')">View</button>
-          <button class="user-result-btn gold" onclick="initiateTrade('${d.id}','${u.displayName}')">Trade</button>
-        </div>`;
-      }).join('');
-  } catch(e) { res.innerHTML='<div class="social-empty">Search failed — check network.</div>'; }
-};
-
-window.viewUserProfile = async function(uid, name) {
-  const area = document.getElementById('user-search-results');
-  if (!area) return;
-  try {
-    const snap = await getDoc(doc(db,'saves',uid));
-    const data = snap.exists() ? snap.data() : {};
-    const caughtList = data.caught||[];
-    area.innerHTML=`<div class="user-profile-panel">
-      <button onclick="closeUserProfile()" class="profile-back">← Back</button>
-      <h3 style="font-family:'Bebas Neue',sans-serif;letter-spacing:2px;color:var(--gold)">${name}</h3>
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:.85rem;color:rgba(245,240,232,.5);margin:6px 0 14px">Caught ${caughtList.length}/18 players</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(62px,1fr));gap:6px">
-        ${PLAYERS.map(p=>{
-          const has = caughtList.includes(p.id)||caughtList.includes(String(p.id));
-          return `<div style="text-align:center;opacity:${has?1:.25}">
-            <div style="filter:${has?'none':'brightness(0)'}">${buildChar(p,32)}</div>
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.55rem;margin-top:2px">${has?p.short:'???'}</div>
-          </div>`;
-        }).join('')}
-      </div>
-      <button class="save-player-btn" style="margin-top:16px;font-size:1rem;padding:10px" onclick="initiateTrade('${uid}','${name}')">🔄 Offer a Trade</button>
-    </div>`;
-  } catch(e) { area.innerHTML='<div class="social-empty">Could not load profile.</div>'; }
-};
-
-window.closeUserProfile = function() {
-  const area = document.getElementById('user-search-results');
-  if(area) area.innerHTML='';
-};
-
-// ── Social: Trading ───────────────────────────────────────────────
-let tradeTargetUID = null, tradeTargetName = null;
-
-window.initiateTrade = function(uid, name) {
-  tradeTargetUID = uid; tradeTargetName = name;
-  const panel = document.getElementById('trade-panel');
-  if (!panel) return;
-  panel.style.display = 'block';
-  document.getElementById('trade-target-name').textContent = name;
-  renderTradeOfferList();
-};
-
-window.cancelTrade = function() {
-  tradeTargetUID = null; tradeTargetName = null;
-  const panel = document.getElementById('trade-panel');
-  if(panel) panel.style.display='none';
-  const status = document.getElementById('trade-status');
-  if(status) status.textContent='';
-};
-
-let tradeSelectedId = null;
-function renderTradeOfferList() {
-  const grid = document.getElementById('trade-offer-grid');
-  if (!grid) return;
-  const options = [...caught].map(id=>{
-    if (id===999) return BEAR;
-    if (id==='cp') return customPlayer;
-    return PLAYERS.find(p=>p.id===id);
-  }).filter(Boolean);
-  grid.innerHTML = options.map(p=>{
-    const count = cardCounts[p.id]||1;
-    const sel = tradeSelectedId===p.id;
-    return `<div class="trade-card ${sel?'selected':''} ${count<2&&!sel?'low-count':''}"
-      onclick="selectTradeCard(${JSON.stringify(p.id)})" title="${count<2?'Only 1 — trade carefully!':''}">
-      ${buildChar(p,36)}
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:.6rem;font-weight:700;margin-top:2px">${p.short}</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:.75rem;color:var(--gold)">×${count}</div>
-    </div>`;
-  }).join('');
-  if (!options.length) grid.innerHTML='<div style="color:rgba(245,240,232,.35);font-family:\'Barlow Condensed\',sans-serif;font-size:.85rem;padding:20px;text-align:center">Catch players first to trade them!</div>';
-}
-
-window.selectTradeCard = function(id) {
-  tradeSelectedId = id;
-  renderTradeOfferList();
-  const btn = document.getElementById('send-trade-btn');
-  if(btn) btn.disabled = false;
-};
-
-window.sendTradeOffer = async function() {
-  if (!tradeSelectedId || !tradeTargetUID || !currentUID) return;
-  const status = document.getElementById('trade-status');
-  try {
-    if(status) status.textContent = 'Sending offer…';
-    await addDoc(collection(db,'trades'), {
-      fromUID: currentUID,
-      fromName: currentDisplayName,
-      toUID: tradeTargetUID,
-      toName: tradeTargetName,
-      offeredCardId: tradeSelectedId,
-      offeredCardCount: cardCounts[tradeSelectedId]||1,
-      status: 'pending',
-      createdAt: serverTimestamp(),
-    });
-    if(status) status.textContent = `✓ Trade offer sent to ${tradeTargetName}!`;
-    tradeSelectedId=null; renderTradeOfferList();
-    const btn=document.getElementById('send-trade-btn'); if(btn) btn.disabled=true;
-    loadIncomingTrades();
-  } catch(e) {
-    if(status) status.textContent='Failed to send: '+e.message;
-  }
-};
-
-async function loadIncomingTrades() {
-  window.loadIncomingTrades = loadIncomingTrades;
-  if (!currentUID) return;
-  const panel = document.getElementById('incoming-trades');
-  if (!panel) return;
-  try {
-    const snap = await getDocs(query(
-      collection(db,'trades'),
-      where('toUID','==',currentUID),
-      where('status','==','pending'),
-      orderBy('createdAt','desc'), limit(10)
-    ));
-    if (snap.empty) { panel.innerHTML='<div class="social-empty">No pending trades.</div>'; return; }
-    panel.innerHTML = snap.docs.map(d=>{
-      const t=d.data();
-      const p = t.offeredCardId===999 ? BEAR
-        : t.offeredCardId==='cp' ? {name:'Custom Player',short:'Custom',rarity:'common'}
-        : PLAYERS.find(pl=>pl.id===t.offeredCardId);
-      return `<div class="trade-incoming">
-        <div class="trade-from">${t.fromName} offers:</div>
-        <div class="trade-card-name">${p?.name||'Unknown'} <span style="color:rgba(245,240,232,.4)">×${t.offeredCardCount}</span></div>
-        <div style="display:flex;gap:6px;margin-top:8px">
-          <button class="user-result-btn gold" onclick="acceptTrade('${d.id}',${JSON.stringify(t.offeredCardId)})">Accept</button>
-          <button class="user-result-btn" onclick="declineTrade('${d.id}')">Decline</button>
-        </div>
-      </div>`;
-    }).join('');
-  } catch(e) { panel.innerHTML='<div class="social-empty">Could not load trades.</div>'; }
-}
-
-window.acceptTrade = async function(tradeDocId, cardId) {
-  try {
-    // Add card to current user's collection
-    caught.add(cardId);
-    cardCounts[cardId] = (cardCounts[cardId]||0)+1;
-    // Mark trade accepted
-    await updateDoc(doc(db,'trades',tradeDocId), {status:'accepted', acceptedAt: serverTimestamp()});
-    await saveState();
-    updateCounts(); renderCards();
-    loadIncomingTrades();
-    showToast('🎉 Trade accepted! Card added to your collection.');
-  } catch(e) { showToast('Trade failed: '+e.message); }
-};
-
-window.declineTrade = async function(tradeDocId) {
-  try {
-    await updateDoc(doc(db,'trades',tradeDocId), {status:'declined'});
-    loadIncomingTrades();
-  } catch(e){}
-};
-
-function showToast(msg, dur=3500) {
-  let t = document.getElementById('game-toast');
-  if(!t){ t=document.createElement('div'); t.id='game-toast'; document.body.appendChild(t); }
-  t.textContent=msg; t.classList.add('show');
-  clearTimeout(t._timer);
-  t._timer=setTimeout(()=>t.classList.remove('show'),dur);
-}
-window.showToast = showToast;
-
-/* ══════════════════════════════════════════════
-   RARITY / SHIRT COLORS
-   ══════════════════════════════════════════════ */
-const RARITY_COLORS = {common:'#00B2A9',rare:'#7C4DFF',epic:'#FF6D00',legendary:'#F9A01B'};
-const SHIRT_COLORS  = {common:'#00868a',rare:'#5533aa',epic:'#aa3300',legendary:'#aa7700'};
-
-/* ══════════════════════════════════════════════
-   SPAWN CONFIG
-   interval = ms between spawn cycles
-   duration = ms each player is visible
-   MAX_SPAWNS = total on-map limit at once
-   ══════════════════════════════════════════════ */
+// ═══════════════════════════════════════════════
+// SPAWN CONFIG
+// ═══════════════════════════════════════════════
 const RARITY_SPAWN = {
-  common:   {interval:7000, duration:18000},
-  rare:     {interval:13000,duration:9000},
-  epic:     {interval:22000,duration:6000},
-  legendary:{interval:40000,duration:3500},
+  common:{interval:7000,duration:18000},
+  rare:{interval:13000,duration:9000},
+  epic:{interval:22000,duration:6000},
+  legendary:{interval:40000,duration:3500}
 };
-const MAX_SPAWNS = 5; // ▶ change to limit simultaneous on-map characters
+const MAX_SPAWNS = 5;
 
-/* ══════════════════════════════════════════════
-   PLAYERS — rarity order: legendary → epic → rare → common
-   lastName used for sort within rarity
-   ══════════════════════════════════════════════ */
+// ═══════════════════════════════════════════════
+// PLAYERS
+// ═══════════════════════════════════════════════
 const PLAYERS = [
-  // LEGENDARY
   {id:1, name:'Karl Malone',      short:'Malone',   rarity:'legendary',lastName:'Malone',   era:'1985–2003',ppg:25.0,apg:3.6, rpg:10.1,blk:1.0, quote:'The Mailman always delivers.',     num:'32'},
   {id:2, name:'John Stockton',    short:'Stockton', rarity:'legendary',lastName:'Stockton', era:'1984–2003',ppg:13.1,apg:10.5,rpg:2.7, blk:0.2, quote:'Greatest PG of all time.',         num:'12'},
-  // EPIC
   {id:3, name:'Pete Maravich',    short:'Pistol',   rarity:'epic',     lastName:'Maravich', era:'1974–1980',ppg:24.4,apg:5.4, rpg:4.2, blk:0.2, quote:'Pistol Pete — pure magic.',        num:'7'},
   {id:4, name:'Donovan Mitchell', short:'Spida',    rarity:'epic',     lastName:'Mitchell', era:'2017–2021',ppg:23.9,apg:4.4, rpg:4.4, blk:0.5, quote:'Spida climbs any wall.',           num:'45'},
   {id:5, name:'Adrian Dantley',   short:'Dantley',  rarity:'epic',     lastName:'Dantley',  era:'1979–1986',ppg:26.6,apg:2.9, rpg:5.7, blk:0.3, quote:'A scoring machine.',               num:'4'},
-  // RARE
   {id:6, name:'Rudy Gobert',      short:'Gobert',   rarity:'rare',     lastName:'Gobert',   era:'2013–2022',ppg:14.3,apg:1.3, rpg:13.5,blk:2.3, quote:'The Stifle Tower.',                num:'27'},
   {id:7, name:'Darrell Griffith', short:'Griff',    rarity:'rare',     lastName:'Griffith', era:'1980–1991',ppg:16.2,apg:2.2, rpg:3.6, blk:0.5, quote:'Dr. Dunkenstein takes flight.',    num:'35'},
   {id:8, name:'Andrei Kirilenko', short:'AK-47',    rarity:'rare',     lastName:'Kirilenko',era:'2001–2011',ppg:12.2,apg:3.2, rpg:6.4, blk:2.2, quote:'AK-47 — one of a kind.',           num:'47'},
@@ -930,154 +643,516 @@ const PLAYERS = [
   {id:10,name:'Deron Williams',   short:'D-Will',   rarity:'rare',     lastName:'Williams', era:'2005–2011',ppg:18.8,apg:9.3, rpg:3.7, blk:0.3, quote:'D-Will was something special.',    num:'8'},
   {id:11,name:'Mark Eaton',       short:'Eaton',    rarity:'rare',     lastName:'Eaton',    era:'1982–1993',ppg:6.0, apg:0.6, rpg:7.9, blk:3.5, quote:'No easy buckets.',                 num:'53'},
   {id:12,name:'Thurl Bailey',     short:'T.Bailey', rarity:'rare',     lastName:'Bailey',   era:'1983–1991',ppg:13.3,apg:1.3, rpg:6.1, blk:1.6, quote:'Big T — heart of gold.',           num:'41'},
-  // COMMON
-  {id:13,name:'Bojan Bogdanovic', short:'Bojan',    rarity:'common',   lastName:'Bogdanovic',era:'2019–2022',ppg:18.2,apg:2.1,rpg:3.7, blk:0.2, quote:'Automatic from corner.',           num:'44'},
+  {id:13,name:'Bojan Bogdanovic', short:'Bojan',    rarity:'common',   lastName:'Bogdanovic',era:'2019–2022',ppg:18.2,apg:2.1,rpg:3.7,blk:0.2,  quote:'Automatic from corner.',           num:'44'},
   {id:14,name:'Carlos Boozer',    short:'Boozer',   rarity:'common',   lastName:'Boozer',   era:'2004–2010',ppg:16.5,apg:1.8, rpg:9.6, blk:0.6, quote:'Power and finesse combined.',      num:'5'},
   {id:15,name:'Jordan Clarkson',  short:'Clarkson', rarity:'common',   lastName:'Clarkson', era:'2019–Now', ppg:17.4,apg:2.5, rpg:3.3, blk:0.2, quote:'Sixth Man energy.',               num:'00'},
   {id:16,name:'Jeff Hornacek',    short:'Hornacek', rarity:'common',   lastName:'Hornacek', era:'1994–2000',ppg:16.6,apg:4.7, rpg:3.3, blk:0.2, quote:"A clutch shooter's shooter.",     num:'14'},
   {id:17,name:'Joe Ingles',       short:'Ingles',   rarity:'common',   lastName:'Ingles',   era:'2014–2022',ppg:8.5, apg:3.3, rpg:3.1, blk:0.3, quote:'Aussie wit & threes.',             num:'2'},
   {id:18,name:'Kyle Korver',      short:'Korver',   rarity:'common',   lastName:'Korver',   era:'2007–2010',ppg:11.5,apg:1.5, rpg:3.0, blk:0.2, quote:'The most dangerous shooter alive.',num:'26'},
 ];
-
-/* ══════════════════════════════════════════════
-   BEAR — secret, only after catching all 18
-   ══════════════════════════════════════════════ */
-const BEAR = {
-  id:999, name:'Jazz Bear', short:'Bear', rarity:'legendary', lastName:'Bear',
-  era:'1994–Now', ppg:0, apg:0, rpg:0, blk:999,
-  quote:'The heart and soul of Delta Center.', num:'🐻', isBear:true,
-};
-
-/* Sort helper: legendary > epic > rare > common, then lastName A→Z */
-const RARITY_ORDER = {legendary:0,epic:1,rare:2,common:3};
-function sortedPlayers(list) {
+const BEAR = {id:999,name:'Jazz Bear',short:'Bear',rarity:'legendary',lastName:'Bear',
+  era:'1994–Now',ppg:0,apg:0,rpg:0,blk:999,quote:'The heart and soul of Delta Center.',num:'🐻',isBear:true};
+const RO = {legendary:0,epic:1,rare:2,common:3};
+function sortedPlayers(list){
   return [...list].sort((a,b)=>{
-    const rd = RARITY_ORDER[a.rarity] - RARITY_ORDER[b.rarity];
-    return rd !== 0 ? rd : (a.lastName||a.name).localeCompare(b.lastName||b.name);
+    const rd=RO[a.rarity]-RO[b.rarity];
+    return rd!==0?rd:(a.lastName||a.name).localeCompare(b.lastName||b.name);
   });
 }
 
-/* ══════════════════════════════════════════════
-   STATE
-   ══════════════════════════════════════════════ */
+// ═══════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════
 let caught       = new Set();
-let cardCounts   = {};
-let faceImages   = {};
+let cardCounts   = {};      // {id: count}
+let cardImages   = {};      // {id: dataURL} — card-only photo (separate from face)
+let faceImages   = {};      // {id: dataURL} — in-game head photo
 let activeSpawns = {};
 let roamPos      = {};
 let roamTimer    = null;
 let courtAF      = null;
 let currentTarget= null;
 let hoopAF       = null;
-let courtRoster  = [];       // array of player ids (max 5)
+let courtRoster  = [];
 let bearUnlocked = false;
 let customPlayer = null;
 let customFaceImg= null;
-// Custom player session tracking
+let customCardImg= null;    // separate card image for custom player
 let sessionStart = Date.now();
 let totalPlayMs  = 0;
 let lastSeen     = null;
+// Social state
+let currentUser  = null;    // Firebase user object
+let friends      = [];      // [{uid, displayName, caughtCount, friendedAt}]
+let tradeTargetUID  = null;
+let tradeTargetName = null;
+let tradeSelectedId = null;
 
-/* ══════════════════════════════════════════════
-   LOCAL STORAGE
-   ══════════════════════════════════════════════ */
-/* ── SAVE: writes to Firestore + localStorage fallback ── */
-async function saveState() {
-  // Always write localStorage so offline/guest play persists
+// ═══════════════════════════════════════════════
+// LOCAL STORAGE — always save/load here first
+// ═══════════════════════════════════════════════
+function lsSave() {
   try {
-    localStorage.setItem('jd_caught',    JSON.stringify([...caught]));
-    localStorage.setItem('jd_counts',   JSON.stringify(cardCounts));
-    localStorage.setItem('jd_faces',    JSON.stringify(faceImages));
-    localStorage.setItem('jd_roster',   JSON.stringify(courtRoster));
-    localStorage.setItem('jd_bear',     bearUnlocked?'1':'0');
-    localStorage.setItem('jd_custom',   JSON.stringify(customPlayer));
-    localStorage.setItem('jd_cface',    customFaceImg||'');
-    localStorage.setItem('jd_roampos',  JSON.stringify(roamPos));
-    const nowMs = totalPlayMs + (Date.now()-sessionStart);
-    sessionStart = Date.now(); totalPlayMs = nowMs;
-    localStorage.setItem('jd_playtime', nowMs.toString());
-    localStorage.setItem('jd_lastseen', new Date().toISOString());
-    lastSeen = new Date().toISOString();
+    const nowMs = totalPlayMs+(Date.now()-sessionStart);
+    sessionStart=Date.now(); totalPlayMs=nowMs;
+    lastSeen=new Date().toISOString();
   } catch(e){}
-  flashSave();
-
-  // Firestore cloud save (if signed in)
-  try {
-    const user = auth.currentUser;
-    if (!user) return;
-    await setDoc(doc(db, 'saves', user.uid), {
-      caught: [...caught], cardCounts,
-      roster: courtRoster, bearUnlocked,
-      customPlayer, totalPlayMs,
-      lastSeen: new Date().toISOString(),
-      uid: user.uid,
-      displayName: user.displayName||user.email||'Anonymous',
-    }, {merge:true});
-  } catch(e){ console.warn('Cloud save failed', e); }
 }
-
-function loadFromLocal() {
+function lsLoad() {
   try {
-  
-    if (c)  caught = new Set(JSON.parse(c));
-    if (cc) cardCounts = JSON.parse(cc);
-    if (f)  faceImages = JSON.parse(f);
-    if (r)  { const parsed = JSON.parse(r); courtRoster = parsed.filter(id=>id==='cp'||id===999||caught.has(id)); }
-    if (b)  bearUnlocked = b==='1';
-    if (cp) customPlayer = JSON.parse(cp);
-    if (cf) customFaceImg = cf||null;
-    if (rp) roamPos = JSON.parse(rp);
-    if (pt) totalPlayMs = parseInt(pt)||0;
-    if (ls) lastSeen = ls;
+   // const g=k=>localStorage.getItem(k);
+    const c=g('jd_caught'),cc=g('jd_counts'),f=g('jd_faces'),ci=g('jd_cimgs'),
+          r=g('jd_roster'),b=g('jd_bear'),cp=g('jd_custom'),cf=g('jd_cface'),
+          ccd=g('jd_ccardimg'),rp=g('jd_roampos'),pt=g('jd_playtime'),ls=g('jd_lastseen');
+    if(c)  caught=new Set(JSON.parse(c).map(x=>typeof x==='string'?x:Number(x)));
+    if(cc) cardCounts=JSON.parse(cc);
+    if(f)  faceImages=JSON.parse(f);
+    if(ci) cardImages=JSON.parse(ci);
+    if(r)  { const p=JSON.parse(r); courtRoster=p.filter(id=>id==='cp'||id===999||caught.has(id)); }
+    if(b)  bearUnlocked=b==='1';
+    if(cp) customPlayer=JSON.parse(cp);
+    if(cf) customFaceImg=cf||null;
+    if(ccd) customCardImg=ccd||null;
+    if(rp) roamPos=JSON.parse(rp);
+    if(pt) totalPlayMs=parseInt(pt)||0;
+    if(ls) lastSeen=ls;
   } catch(e){}
 }
 
-function applyCloudSave(data) {
-  if (!data) return;
-  caught = new Set(data.caught||[]);
-  cardCounts = data.cardCounts||{};
-  courtRoster = (data.roster||[]).filter(id=>id==='cp'||id===999||caught.has(id));
-  bearUnlocked = data.bearUnlocked||false;
-  customPlayer = data.customPlayer||null;
-  totalPlayMs = data.totalPlayMs||0;
-  lastSeen = data.lastSeen||null;
-  updateCounts(); renderCards(); renderDex(); renderFaces();
-  if(bearUnlocked&&!caught.has(999)){caught.add(999);cardCounts[999]=1;}
+// ═══════════════════════════════════════════════
+// CLOUD SAVE / LOAD
+// ═══════════════════════════════════════════════
+async function cloudSave() {
+  lsSave();
+  if (!currentUser||currentUser.isAnonymous) return;
+  try {
+    await setDoc(doc(db,'saves',currentUser.uid), {
+      caught:[...caught].map(Number).filter(n=>!isNaN(n)).concat([...caught].filter(x=>x==='cp'||isNaN(Number(x)))),
+      cardCounts, roster:courtRoster, bearUnlocked,
+      customPlayer: customPlayer||null,
+      totalPlayMs, lastSeen:new Date().toISOString(),
+    },{merge:true});
+    // Update public profile caughtCount
+    await updateDoc(doc(db,'users',currentUser.uid),{
+      caughtCount:PLAYERS.filter(p=>caught.has(p.id)).length,
+      lastSeen:new Date().toISOString()
+    }).catch(()=>{});
+    flashSave();
+  } catch(e){ console.warn('Cloud save failed',e); }
+}
+async function cloudLoad(uid) {
+  try {
+    const snap=await getDoc(doc(db,'saves',uid));
+    if(!snap.exists()) return false;
+    const d=snap.data();
+    const rawCaught=(d.caught||[]);
+    caught=new Set(rawCaught.map(x=>{const n=Number(x);return isNaN(n)?x:n;}));
+    cardCounts=d.cardCounts||{};
+    courtRoster=(d.roster||[]).filter(id=>id==='cp'||id===999||caught.has(id)||caught.has(Number(id)));
+    bearUnlocked=d.bearUnlocked||false;
+    customPlayer=d.customPlayer||null;
+    totalPlayMs=d.totalPlayMs||0;
+    lastSeen=d.lastSeen||null;
+    return true;
+  } catch(e){ return false; }
 }
 
-function flashSave() {
-  const b = document.getElementById('save-badge');
-  if (!b) return;
-  b.style.opacity='1'; b.textContent='💾 saved';
-  setTimeout(()=>b.style.opacity='0', 2000);
+function flashSave(){
+  const b=document.getElementById('save-badge');
+  if(!b)return; b.style.opacity='1'; b.textContent='☁ saved';
+  setTimeout(()=>b.style.opacity='0',2000);
 }
 
-/* ══════════════════════════════════════════════
-   CHARACTER SVG BUILDER
-   ▶ Edit SVG below to change body shape
-   ▶ Edit bobDur to change animation speed
-   ══════════════════════════════════════════════ */
-function buildChar(p, size=56) {
-  const shirt   = SHIRT_COLORS[p.rarity]||'#00868a';
-  const glow    = RARITY_COLORS[p.rarity]||'#00B2A9';
-  const rawId   = p.id; // stable unique id for clipPath
-  const face    = p.isBear ? null : (p.isCustom ? customFaceImg : faceImages[p.id]||null);
-  const bobDur  = (1.4+(String(p.id).charCodeAt(0)%5)*0.18)+'s';
-  const headFill= face ? 'transparent' : (p.isBear?'#8B4513':'#dfc090');
+// ═══════════════════════════════════════════════
+// AUTH
+// ═══════════════════════════════════════════════
+onAuthStateChanged(auth, async user=>{
+  currentUser=user;
+  renderAuthBar();
+  if(!user) return;
+  if(user.isAnonymous) return; // guests: local only, no cloud load
 
-  const bearFace = p.isBear ? `
+  // Named user: load cloud, merge with local
+  const loaded=await cloudLoad(user.uid);
+  if(loaded){
+    updateCounts(); renderCards(); renderDex(); renderFaces();
+    if(bearUnlocked&&!caught.has(999)){caught.add(999);cardCounts[999]=1;}
+    // Refresh custom view if open
+    if(document.getElementById('custom-view').classList.contains('active')) initCustomView();
+  }
+  // Load friends list
+  await loadFriends();
+  // Refresh social tab if open
+  if(document.getElementById('social-view').classList.contains('active')) renderSocialView();
+});
+
+function renderAuthBar(){
+  const bar=document.getElementById('auth-bar'); if(!bar) return;
+  const u=currentUser;
+  if(!u){
+    bar.innerHTML=`<button class="auth-btn-sm gold" onclick="openAuthModal('login')">Sign In</button>`;
+  } else if(u.isAnonymous){
+    bar.innerHTML=`<span style="font-family:'Barlow Condensed',sans-serif;font-size:.72rem;color:rgba(245,240,232,.3)">Guest</span>
+      <button class="auth-btn-sm" onclick="openAuthModal('register')">Save Progress</button>`;
+  } else {
+    const name=u.displayName||u.email||'User';
+    bar.innerHTML=`<span style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:rgba(245,240,232,.55)">👤 ${name}</span>
+      <button class="auth-btn-sm" onclick="doSignOut()">Sign Out</button>`;
+  }
+}
+
+window.openAuthModal = function(tab='login'){
+  document.getElementById('auth-modal').classList.add('open');
+  switchAuthTab(tab);
+  // Clear errors
+  ['auth-login-err','auth-reg-err'].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.textContent='';
+  });
+};
+window.closeAuthModal = function(){
+  document.getElementById('auth-modal').classList.remove('open');
+};
+window.switchAuthTab = function(tab){
+  document.querySelectorAll('.auth-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('atab-'+tab)?.classList.add('active');
+  document.getElementById('apanel-login').style.display  = tab==='login'   ?'block':'none';
+  document.getElementById('apanel-register').style.display = tab==='register'?'block':'none';
+};
+window.doLogin = async function(){
+  const email=document.getElementById('auth-login-email').value.trim();
+  const pass =document.getElementById('auth-login-pass').value;
+  const err  =document.getElementById('auth-login-err');
+  err.textContent='';
+  try {
+    // If currently anonymous, save local progress before auth switch
+    lsSave();
+    await signInWithEmailAndPassword(auth,email,pass);
+    closeAuthModal();
+    showToast('✓ Signed in!');
+  } catch(e){ err.textContent=cleanFirebaseErr(e.message); }
+};
+window.doRegister = async function(){
+  const name =document.getElementById('auth-reg-name').value.trim();
+  const email=document.getElementById('auth-reg-email').value.trim();
+  const pass =document.getElementById('auth-reg-pass').value;
+  const err  =document.getElementById('auth-reg-err');
+  err.textContent='';
+  if(!name){ err.textContent='Username is required.'; return; }
+  try {
+    lsSave();
+    const cred=await createUserWithEmailAndPassword(auth,email,pass);
+    await updateProfile(cred.user,{displayName:name});
+    // Write public profile
+    await setDoc(doc(db,'users',cred.user.uid),{
+      uid:cred.user.uid, displayName:name, email,
+      caughtCount:0, joinedAt:serverTimestamp()
+    });
+    // Upload existing progress
+    await cloudSave();
+    closeAuthModal();
+    showToast('✓ Account created!');
+  } catch(e){ err.textContent=cleanFirebaseErr(e.message); }
+};
+window.doGuest = async function(){
+  try {
+    await signInAnonymously(auth);
+    closeAuthModal();
+  } catch(e){ showToast('Guest sign-in failed: '+e.message); }
+};
+window.doSignOut = async function(){
+  lsSave();
+  await signOut(auth);
+  renderAuthBar();
+  showToast('Signed out.');
+};
+function cleanFirebaseErr(msg){
+  return msg.replace('Firebase: ','').replace(/\(auth\/[^)]+\)/,'').trim();
+}
+
+// ═══════════════════════════════════════════════
+// SOCIAL — FRIENDS
+// ═══════════════════════════════════════════════
+async function loadFriends(){
+  friends=[];
+  if(!currentUser||currentUser.isAnonymous) return;
+  try {
+    const snap=await getDoc(doc(db,'users',currentUser.uid));
+    const uids=(snap.data()?.friends)||[];
+    for(const uid of uids){
+      const p=await getDoc(doc(db,'users',uid));
+      if(p.exists()) friends.push({uid,...p.data()});
+    }
+  } catch(e){}
+}
+
+function renderFriendsList(){
+  const el=document.getElementById('friends-list'); if(!el) return;
+  if(!currentUser||currentUser.isAnonymous){
+    el.innerHTML='<div class="social-empty">Sign in to see your friends.</div>'; return;
+  }
+  if(!friends.length){
+    el.innerHTML='<div class="social-empty">No friends yet — search for players below!</div>'; return;
+  }
+  el.innerHTML=friends.map(f=>`
+    <div class="friend-row">
+      <div>
+        <div class="friend-name">${f.displayName}</div>
+        <div class="friend-sub">Caught ${f.caughtCount||0}/18</div>
+      </div>
+      <button class="soc-btn teal" onclick="openTrade('${f.uid}','${f.displayName}')">Send Card</button>
+    </div>`).join('');
+}
+
+window.searchUsers = async function(){
+  const q=document.getElementById('user-search-input')?.value?.trim();
+  const res=document.getElementById('search-results'); if(!res) return;
+  if(!q){ res.innerHTML=''; return; }
+  if(!currentUser||currentUser.isAnonymous){
+    res.innerHTML='<div class="social-empty">Sign in to search for players.</div>'; return;
+  }
+  res.innerHTML='<div class="social-empty">Searching…</div>';
+  try {
+    const snap=await getDocs(query(
+      collection(db,'users'),
+      where('displayName','>=',q),
+      where('displayName','<=',q+'\uf8ff'),
+      limit(8)
+    ));
+    const myFriendUIDs=friends.map(f=>f.uid);
+    const results=snap.docs.filter(d=>d.id!==currentUser.uid);
+    if(!results.length){ res.innerHTML='<div class="social-empty">No users found.</div>'; return; }
+    res.innerHTML=results.map(d=>{
+      const u=d.data();
+      const isFriend=myFriendUIDs.includes(d.id);
+      return `<div class="user-row">
+        <div>
+          <div class="user-row-name">${u.displayName}</div>
+          <div class="user-row-sub">Caught ${u.caughtCount||0}/18</div>
+        </div>
+        ${isFriend
+          ? `<span class="user-row-sub">Friends ✓</span>
+             <button class="soc-btn teal" onclick="openTrade('${d.id}','${u.displayName}')">Send Card</button>`
+          : `<button class="soc-btn" onclick="addFriend('${d.id}','${u.displayName}')">Add Friend</button>`}
+      </div>`;
+    }).join('');
+  } catch(e){ res.innerHTML=`<div class="social-empty">Search failed — try again.</div>`; }
+};
+
+// Load suggested players (most active/recent)
+async function loadSuggested(){
+  const el=document.getElementById('suggested-users'); if(!el) return;
+  if(!currentUser||currentUser.isAnonymous){ el.innerHTML=''; return; }
+  try {
+    const snap=await getDocs(query(
+      collection(db,'users'),
+      orderBy('caughtCount','desc'),
+      limit(5)
+    ));
+    const myFriendUIDs=friends.map(f=>f.uid);
+    const results=snap.docs.filter(d=>d.id!==currentUser.uid).slice(0,4);
+    if(!results.length){ el.innerHTML=''; return; }
+    el.innerHTML=`<div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:rgba(245,240,232,.35);margin-bottom:6px;letter-spacing:1px;text-transform:uppercase">Suggested Players</div>`
+      +results.map(d=>{
+        const u=d.data();
+        const isFriend=myFriendUIDs.includes(d.id);
+        return `<div class="user-row">
+          <div>
+            <div class="user-row-name">${u.displayName}</div>
+            <div class="user-row-sub">Caught ${u.caughtCount||0}/18</div>
+          </div>
+          ${isFriend
+            ? `<span class="user-row-sub">Friends ✓</span>
+               <button class="soc-btn teal" onclick="openTrade('${d.id}','${u.displayName}')">Send Card</button>`
+            : `<button class="soc-btn" onclick="addFriend('${d.id}','${u.displayName}')">Add Friend</button>`}
+        </div>`;
+      }).join('');
+  } catch(e){ el.innerHTML=''; }
+}
+
+window.addFriend = async function(uid, name){
+  if(!currentUser||currentUser.isAnonymous){ openAuthModal('register'); return; }
+  try {
+    // Add to both users' friend lists
+    await updateDoc(doc(db,'users',currentUser.uid),{friends:arrayUnion(uid)});
+    await updateDoc(doc(db,'users',uid),{friends:arrayUnion(currentUser.uid)});
+    await loadFriends();
+    renderFriendsList();
+    // Refresh search results
+    await searchUsers();
+    showToast(`✓ ${name} added as friend!`);
+  } catch(e){ showToast('Failed: '+e.message); }
+};
+
+// ═══════════════════════════════════════════════
+// SOCIAL — CARD TRADING (send only, instant)
+// ═══════════════════════════════════════════════
+window.openTrade = function(uid, name){
+  if(!currentUser||currentUser.isAnonymous){ openAuthModal('register'); return; }
+  tradeTargetUID=uid; tradeTargetName=name; tradeSelectedId=null;
+  document.getElementById('trade-send-panel').style.display='block';
+  document.getElementById('trade-to-name').textContent=name;
+  document.getElementById('trade-send-btn').disabled=true;
+  document.getElementById('trade-send-status').textContent='';
+  renderTradeCardGrid();
+  // Scroll to trade panel
+  document.getElementById('trade-send-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+};
+window.closeTrade = function(){
+  tradeTargetUID=null; tradeTargetName=null; tradeSelectedId=null;
+  document.getElementById('trade-send-panel').style.display='none';
+};
+
+function renderTradeCardGrid(){
+  const grid=document.getElementById('trade-card-grid'); if(!grid) return;
+  // All cards the user has (caught players + bear + custom)
+  const opts=[];
+  sortedPlayers(PLAYERS.filter(p=>caught.has(p.id))).forEach(p=>opts.push(p));
+  if(bearUnlocked&&caught.has(999)) opts.push(BEAR);
+  if(customPlayer) opts.push(customPlayer);
+
+  if(!opts.length){ grid.innerHTML='<div class="social-empty">No cards to send.</div>'; return; }
+  grid.innerHTML=opts.map(p=>{
+    const cnt=cardCounts[p.id]||1;
+    const sel=tradeSelectedId===p.id;
+    return `<div class="trade-card-opt ${sel?'sel':''}" onclick="selectTradeCard(${JSON.stringify(p.id)})">
+      ${buildChar(p,34)}
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:.6rem;font-weight:700;margin-top:2px">${p.short}</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:.75rem;color:var(--gold)">×${cnt}</div>
+    </div>`;
+  }).join('');
+}
+
+window.selectTradeCard = function(id){
+  tradeSelectedId=id;
+  renderTradeCardGrid();
+  document.getElementById('trade-send-btn').disabled=false;
+  document.getElementById('trade-send-status').textContent='';
+};
+
+window.confirmSendCard = async function(){
+  if(!tradeSelectedId||!tradeTargetUID||!currentUser) return;
+  const btn=document.getElementById('trade-send-btn');
+  const status=document.getElementById('trade-send-status');
+  btn.disabled=true; status.textContent='Sending…';
+
+  // Check if we have the card
+  const cnt=cardCounts[tradeSelectedId]||0;
+  if(cnt<1){ status.textContent='You don\'t have this card!'; btn.disabled=false; return; }
+
+  try {
+    // Decrement sender
+    cardCounts[tradeSelectedId]=Math.max(0,cnt-1);
+    if(cardCounts[tradeSelectedId]===0){
+      delete cardCounts[tradeSelectedId];
+      caught.delete(tradeSelectedId);
+    }
+
+    // Write transfer record — receiver doc
+    const cardObj=tradeSelectedId===999?BEAR
+      :tradeSelectedId==='cp'?{...customPlayer,isSentCustom:true}
+      :PLAYERS.find(p=>p.id===tradeSelectedId);
+
+    await addDoc(collection(db,'transfers'),{
+      fromUID:currentUser.uid,
+      fromName:currentUser.displayName||'Unknown',
+      toUID:tradeTargetUID,
+      toName:tradeTargetName,
+      cardId:tradeSelectedId,
+      cardName:cardObj?.name||'Unknown',
+      cardRarity:cardObj?.rarity||'common',
+      sentAt:serverTimestamp(),
+    });
+
+    // Add card to receiver's Firestore save (increment)
+    const receiverSave=doc(db,'saves',tradeTargetUID);
+    const rSnap=await getDoc(receiverSave);
+    if(rSnap.exists()){
+      const rd=rSnap.data();
+      const rCounts={...rd.cardCounts||{}};
+      const rCaught=[...(rd.caught||[])];
+      const key=String(tradeSelectedId);
+      rCounts[key]=(rCounts[key]||0)+1;
+      if(!rCaught.includes(tradeSelectedId)&&!rCaught.includes(key)) rCaught.push(tradeSelectedId);
+      await updateDoc(receiverSave,{cardCounts:rCounts,caught:rCaught});
+    } else {
+      await setDoc(receiverSave,{
+        caught:[tradeSelectedId], cardCounts:{[String(tradeSelectedId)]:1}
+      },{merge:true});
+    }
+
+    await cloudSave();
+    updateCounts(); renderCards();
+    status.textContent=`✓ ${cardObj?.name} sent to ${tradeTargetName}!`;
+    tradeSelectedId=null; renderTradeCardGrid();
+    showToast(`🏀 Card sent to ${tradeTargetName}!`);
+    await loadReceivedCards();
+  } catch(e){ status.textContent='Failed: '+e.message; btn.disabled=false; }
+};
+
+async function loadReceivedCards(){
+  const el=document.getElementById('received-log'); if(!el) return;
+  if(!currentUser||currentUser.isAnonymous){
+    el.innerHTML='<div class="social-empty">Sign in to see received cards.</div>'; return;
+  }
+  try {
+    const snap=await getDocs(query(
+      collection(db,'transfers'),
+      where('toUID','==',currentUser.uid),
+      orderBy('sentAt','desc'), limit(10)
+    ));
+    if(snap.empty){ el.innerHTML='<div class="social-empty">No received cards yet.</div>'; return; }
+    el.innerHTML=snap.docs.map(d=>{
+      const t=d.data();
+      const ts=t.sentAt?.toDate?.()?.toLocaleDateString('en-US')||'Recently';
+      return `<div class="incoming-trade">
+        <div class="it-from">From ${t.fromName} · ${ts}</div>
+        <div class="it-card" style="color:${RC[t.cardRarity]||'#fff'}">${t.cardName}</div>
+      </div>`;
+    }).join('');
+  } catch(e){ el.innerHTML='<div class="social-empty">Could not load history.</div>'; }
+}
+
+function renderSocialView(){
+  renderFriendsList();
+  loadSuggested();
+  loadReceivedCards();
+  // Show/hide guest upsell
+  const upsell=document.getElementById('guest-upsell');
+  if(upsell) upsell.style.display=(!currentUser||currentUser.isAnonymous)?'block':'none';
+}
+
+// ═══════════════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════════════
+function showToast(msg,dur=3200){
+  let t=document.getElementById('game-toast');
+  if(!t){t=document.createElement('div');t.id='game-toast';document.body.appendChild(t);}
+  t.textContent=msg; t.classList.add('show');
+  clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),dur);
+}
+window.showToast=showToast;
+
+// ═══════════════════════════════════════════════
+// CHARACTER SVG
+// ═══════════════════════════════════════════════
+function buildChar(p,size=56){
+  const shirt=SC[p.rarity]||'#00868a';
+  const glow=RC[p.rarity]||'#00B2A9';
+  const rawId=p.id;
+  const face=p.isBear?null:(p.isCustom?customFaceImg:faceImages[p.id]||null);
+  const bobDur=(1.4+(String(p.id).charCodeAt(0)%5)*0.18)+'s';
+  const headFill=face?'transparent':(p.isBear?'#8B4513':'#dfc090');
+  const bearFace=p.isBear?`
     <circle cx="17" cy="7"  r="5" fill="#6B3410"/><circle cx="39" cy="7"  r="5" fill="#6B3410"/>
     <circle cx="17" cy="7"  r="3" fill="#8B4513"/><circle cx="39" cy="7"  r="3" fill="#8B4513"/>
     <ellipse cx="28" cy="22" rx="7" ry="5" fill="#c8956a"/>
     <ellipse cx="28" cy="19" rx="3" ry="2" fill="#1a0a00"/>
     <circle cx="23" cy="15" r="2.5" fill="#1a0a00"/><circle cx="33" cy="15" r="2.5" fill="#1a0a00"/>
     <circle cx="23.7" cy="14.2" r=".8" fill="white"/><circle cx="33.7" cy="14.2" r=".8" fill="white"/>
-    <path d="M24 23 Q28 27 32 23" stroke="#5a2a10" stroke-width="1.2" fill="none" stroke-linecap="round"/>` : '';
-
-  const faceEl = face
-    ? `<image href="${face}" x="13" y="3" width="30" height="30" clip-path="url(#hc${rawId})"/>`
-    : (p.isBear ? bearFace : '');
-
+    <path d="M24 23 Q28 27 32 23" stroke="#5a2a10" stroke-width="1.2" fill="none" stroke-linecap="round"/>`:' ';
+  const faceEl=face
+    ?`<image href="${face}" x="13" y="3" width="30" height="30" clip-path="url(#hc${rawId})"/>`
+    :(p.isBear?bearFace:'');
   return `<svg width="${size}" height="${Math.round(size*1.07)}" viewBox="0 0 56 60" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;display:block">
   <defs><clipPath id="hc${rawId}"><circle cx="28" cy="18" r="15"/></clipPath></defs>
   <g style="animation:chbob${rawId} ${bobDur} ease-in-out infinite">
@@ -1104,15 +1179,14 @@ function buildChar(p, size=56) {
 </svg>`;
 }
 
-/* ══════════════════════════════════════════════
-   FACES PANEL
-   ══════════════════════════════════════════════ */
-function renderFaces() {
-  const grid = document.getElementById('faces-grid');
-  if (!grid) return;
-  grid.innerHTML = PLAYERS.map(p => {
-    const col = RARITY_COLORS[p.rarity];
-    const has = !!faceImages[p.id];
+// ═══════════════════════════════════════════════
+// FACES PANEL
+// ═══════════════════════════════════════════════
+function renderFaces(){
+  const grid=document.getElementById('faces-grid'); if(!grid) return;
+  grid.innerHTML=PLAYERS.map(p=>{
+    const col=RC[p.rarity];
+    const has=!!faceImages[p.id];
     return `<div class="face-slot" style="border-color:${col}55">
       <label>
         <div class="face-preview" id="fp-${p.id}">${has?`<img src="${faceImages[p.id]}"/>`:'📷'}</div>
@@ -1123,15 +1197,14 @@ function renderFaces() {
     </div>`;
   }).join('');
 }
-
-function loadFace(id, input) {
+window.loadFace=function(id,input){
   const file=input.files[0]; if(!file) return;
-  const reader=new FileReader();
-  reader.onload=e=>{
+  const r=new FileReader();
+  r.onload=e=>{
     faceImages[id]=e.target.result;
     const prev=document.getElementById('fp-'+id);
     if(prev) prev.innerHTML=`<img src="${e.target.result}"/>`;
-    saveState();
+    cloudSave();
     if(document.getElementById('cards-view').classList.contains('active')) renderCards();
     if(document.getElementById('dex-view').classList.contains('active'))   renderDex();
     if(document.getElementById('court-view').classList.contains('active')) rebuildRoamers();
@@ -1140,267 +1213,191 @@ function loadFace(id, input) {
     const sb=document.querySelector(`.spawn-char[data-id="${id}"] .char-body`);
     if(sb) sb.innerHTML=buildChar(PLAYERS.find(pl=>pl.id===id),50);
   };
-  reader.readAsDataURL(file);
-}
+  r.readAsDataURL(file);
+};
 
-/* ══════════════════════════════════════════════
-   CUSTOM PLAYER
-   ══════════════════════════════════════════════ */
-function loadCustomFace(input) {
+// ═══════════════════════════════════════════════
+// CUSTOM PLAYER
+// Custom player is a card only — it does NOT spawn
+// on the map or appear on the court (intentional).
+// It shows in Cards view and can be traded.
+// ═══════════════════════════════════════════════
+window.loadCustomFace=function(input){
   const file=input.files[0]; if(!file) return;
-  const reader=new FileReader();
-  reader.onload=e=>{ customFaceImg=e.target.result; refreshCustomPreview(); };
-  reader.readAsDataURL(file);
-}
-
-function getCustomFakePlayer() {
-  const name   = document.getElementById('cp-name')?.value||'My Player';
-  const num    = document.getElementById('cp-num')?.value||'00';
-  const rarity = document.getElementById('cp-rarity')?.value||'common';
-  return {id:'cp',name,short:name.split(' ')[0]||name,rarity,num,isCustom:true};
-}
-
-function refreshCustomPreview() {
-  const preview = document.getElementById('custom-preview');
-  if (!preview) return;
-  const fake = getCustomFakePlayer();
-  preview.innerHTML = buildChar(fake, 80);
-  // Live stat display
-  const ppg = document.getElementById('cp-ppg')?.value||'—';
-  const apg = document.getElementById('cp-apg')?.value||'—';
-  const rpg = document.getElementById('cp-rpg')?.value||'—';
-  const ls  = document.getElementById('cp-live-stats');
-  if (ls) ls.innerHTML = `<div>PPG <span>${ppg}</span></div><div>APG <span>${apg}</span></div><div>RPG <span>${rpg}</span></div>`;
-}
-
-function saveCustomPlayer() {
-  const name  = document.getElementById('cp-name')?.value?.trim()||'My Player';
-  const num   = document.getElementById('cp-num')?.value?.trim()||'00';
-  const ppg   = parseFloat(document.getElementById('cp-ppg')?.value)||0;
-  const apg   = parseFloat(document.getElementById('cp-apg')?.value)||0;
-  const rpg   = parseFloat(document.getElementById('cp-rpg')?.value)||0;
-  const rarity= document.getElementById('cp-rarity')?.value||'common';
-  const quote = document.getElementById('cp-quote')?.value?.trim()||'Built different.';
-  const now   = new Date();
-
-  customPlayer = {
-    id:'cp', name, short:name.split(' ')[0]||name, rarity,
-    era:`${now.getFullYear()}–Now`, lastName:name.split(' ').pop(),
-    ppg, apg, rpg, blk:0, quote, num, isCustom:true,
-    joinedISO: now.toISOString(),
-    joinedDisplay: fmtDateNice(now.toISOString()),
+  const r=new FileReader();
+  r.onload=e=>{ customFaceImg=e.target.result; refreshCustomPreview(); };
+  r.readAsDataURL(file);
+};
+window.loadCustomCardImg=function(input){
+  const file=input.files[0]; if(!file) return;
+  const r=new FileReader();
+  r.onload=e=>{ customCardImg=e.target.result; renderCustomCard(); };
+  r.readAsDataURL(file);
+};
+function getCustomFakePlayer(){
+  return {
+    id:'cp',
+    name:document.getElementById('cp-name')?.value||'My Player',
+    short:(document.getElementById('cp-name')?.value||'My Player').split(' ')[0],
+    rarity:document.getElementById('cp-rarity')?.value||'common',
+    num:document.getElementById('cp-num')?.value||'00',
+    isCustom:true
   };
-
-  saveState();
+}
+function refreshCustomPreview(){
+  const preview=document.getElementById('custom-preview'); if(!preview) return;
+  preview.innerHTML=buildChar(getCustomFakePlayer(),80);
+  const ppg=document.getElementById('cp-ppg')?.value||'—';
+  const apg=document.getElementById('cp-apg')?.value||'—';
+  const rpg=document.getElementById('cp-rpg')?.value||'—';
+  const ls=document.getElementById('cp-live-stats');
+  if(ls) ls.innerHTML=`<div>PPG <span>${ppg}</span></div><div>APG <span>${apg}</span></div><div>RPG <span>${rpg}</span></div>`;
+}
+window.refreshCustomPreview=refreshCustomPreview;
+window.saveCustomPlayer=function(){
+  const name =document.getElementById('cp-name')?.value?.trim()||'My Player';
+  const num  =document.getElementById('cp-num')?.value?.trim()||'00';
+  const ppg  =parseFloat(document.getElementById('cp-ppg')?.value)||0;
+  const apg  =parseFloat(document.getElementById('cp-apg')?.value)||0;
+  const rpg  =parseFloat(document.getElementById('cp-rpg')?.value)||0;
+  const rarity=document.getElementById('cp-rarity')?.value||'common';
+  const quote=document.getElementById('cp-quote')?.value?.trim()||'Built different.';
+  const now  =new Date();
+  const existing=customPlayer; // preserve joinedISO if re-saving
+  customPlayer={
+    id:'cp',name,short:name.split(' ')[0]||name,rarity,
+    era:`${now.getFullYear()}–Now`,lastName:name.split(' ').pop(),
+    ppg,apg,rpg,blk:0,quote,num,isCustom:true,
+    joinedISO:existing?.joinedISO||now.toISOString(),
+    joinedDisplay:existing?.joinedDisplay||fmtDateNice(now.toISOString()),
+  };
+  // Also give them the card
+  if(!cardCounts['cp']) cardCounts['cp']=1;
+  cloudSave();
   const badge=document.getElementById('cp-saved');
-  if(badge){badge.style.display='block'; setTimeout(()=>badge.style.display='none',2500);}
+  if(badge){badge.style.display='block';setTimeout(()=>badge.style.display='none',2500);}
   renderCustomCard();
   renderCustomStats();
+  renderCards(); // update cards view
+};
+function fmtDuration(ms){
+  const h=Math.floor(ms/3600000),m=Math.floor((ms%3600000)/60000);
+  return h>0?`${h}h ${m}m`:`${m}m`;
 }
-
-function fmtDuration(ms) {
-  const h = Math.floor(ms/3600000);
-  const m = Math.floor((ms%3600000)/60000);
-  if (h>0) return `${h}h ${m}m`;
-  return `${m}m`;
-}
-
-function fmtDateNice(iso) {
+function fmtDateNice(iso){
   if(!iso) return '—';
-  const d = new Date(iso);
-  const day = d.getDate();
-  const suffix = day===1||day===21||day===31?'st':day===2||day===22?'nd':day===3||day===23?'rd':'th';
-  return d.toLocaleDateString('en-US',{month:'long',year:'numeric'}).replace(',',` ${day}${suffix},`);
+  const d=new Date(iso);
+  const day=d.getDate();
+  const sfx=day===1||day===21||day===31?'st':day===2||day===22?'nd':day===3||day===23?'rd':'th';
+  const mo=d.toLocaleDateString('en-US',{month:'long'});
+  const yr=d.getFullYear();
+  return `${mo} ${day}${sfx}, ${yr}`;
 }
-
-function renderCustomStats() {
-  const sec = document.getElementById('cp-stats-section');
-  if (!sec||!customPlayer) { if(sec) sec.innerHTML=''; return; }
-  const playtime = fmtDuration(totalPlayMs+(Date.now()-sessionStart));
-  const lsDisplay = lastSeen ? fmtDateNice(lastSeen) : 'This session';
-  const joinedDisplay = customPlayer.joinedISO ? fmtDateNice(customPlayer.joinedISO) : (customPlayer.joinedDisplay||'—');
-  sec.innerHTML = `<div class="cp-stats-panel" style="max-width:520px;margin:16px auto 0">
+function renderCustomStats(){
+  const sec=document.getElementById('cp-stats-section'); if(!sec) return;
+  if(!customPlayer){sec.innerHTML='';return;}
+  const playtime=fmtDuration(totalPlayMs+(Date.now()-sessionStart));
+  const lsDisp=lastSeen?fmtDateNice(lastSeen):'This session';
+  const joined=fmtDateNice(customPlayer.joinedISO||customPlayer.joinedDisplay);
+  // My player stats: NO "when traded" or "friends since" — those only show on others' cards
+  sec.innerHTML=`<div class="cp-stats-panel" style="max-width:520px;margin:16px auto 0">
     <h4>📊 My Player Stats</h4>
-    <div class="cp-stat-row"><span class="cp-stat-label">Joined</span><span class="cp-stat-val">${joinedDisplay}</span></div>
+    <div class="cp-stat-row"><span class="cp-stat-label">Joined</span><span class="cp-stat-val">${joined}</span></div>
     <div class="cp-stat-row"><span class="cp-stat-label">Time Played</span><span class="cp-stat-val">${playtime}</span></div>
-    <div class="cp-stat-row"><span class="cp-stat-label">Last Active</span><span class="cp-stat-val">${lsDisplay}</span></div>
+    <div class="cp-stat-row"><span class="cp-stat-label">Last Active</span><span class="cp-stat-val">${lsDisp}</span></div>
     <div class="cp-stat-row"><span class="cp-stat-label">Cards Caught</span><span class="cp-stat-val">${caught.size}</span></div>
-    <div class="cp-stat-row"><span class="cp-stat-label">When Traded</span><span class="cp-stat-val" style="color:rgba(245,240,232,.3);font-style:italic">Coming with Social features</span></div>
-    <div class="cp-stat-row"><span class="cp-stat-label">Friends Since</span><span class="cp-stat-val" style="color:rgba(245,240,232,.3);font-style:italic">Coming with Social features</span></div>
   </div>`;
 }
-
-function buildCardHTML(p, count) {
-  const face = p.isCustom ? customFaceImg : faceImages[p.id];
-  const frontFace = face
-    ? `<div class="card-face card-front">
-         <img class="card-front-img" src="${face}" alt="${p.name}"/>
-         <div class="card-jersey-badge">#${p.num}</div>
-         <div class="card-front-overlay">
-           <div class="card-pname">${p.name}</div>
-           <span class="card-rbadge rarity-${p.rarity}">${p.rarity}</span>
-         </div>
-       </div>`
-    : `<div class="card-face card-front">
-         <div class="card-front-noimg">
-           <div class="card-char">${buildChar(p,70)}</div>
-           <div class="card-pname">${p.name}</div>
-           <div class="card-era">${p.era}</div>
-           <span class="card-rbadge rarity-${p.rarity}" style="margin-top:2px">${p.rarity}</span>
-         </div>
-         <div class="card-jersey-badge">#${p.num}</div>
-       </div>`;
-
-  const customDateRow = p.isCustom
-    ? `<div class="srow" style="grid-column:1/-1"><span class="sl">Joined</span><span class="sv" style="font-size:.75rem">${p.joinedDisplay||fmtDateNice(p.joinedISO)||'—'}</span></div>`
-    : '';
-
-  return `<div class="card-flip-wrap" data-r="${p.rarity}" onclick="this.classList.toggle('flipped')">
-    <div class="card-count-badge">×${count}</div>
-    <div class="card-inner">
-      ${frontFace}
-      <div class="card-face card-back">
-        <div class="card-back-inner">
-          <div class="card-back-num">#${String(p.id).padStart(3,'0')} · ${p.rarity.toUpperCase()}</div>
-          <div class="card-back-name">${p.name}</div>
-          <div class="card-back-era">${p.era}</div>
-          <div class="card-back-stats">
-            <div class="srow"><span class="sl">PPG</span><span class="sv">${p.ppg}</span></div>
-            <div class="srow"><span class="sl">APG</span><span class="sv">${p.apg}</span></div>
-            <div class="srow"><span class="sl">RPG</span><span class="sv">${p.rpg}</span></div>
-            <div class="srow"><span class="sl">BLK</span><span class="sv">${p.blk}</span></div>
-            ${customDateRow}
-          </div>
-          <div class="card-back-quote">"${p.quote}"</div>
-          <div class="card-back-hint">tap to flip back</div>
-        </div>
-      </div>
-    </div>
-  </div>`;
-}
-
-function renderCustomCard() {
-  const area = document.getElementById('custom-card-display');
-  if(!area||!customPlayer){if(area)area.innerHTML='';return;}
-  const count = cardCounts['cp']||1;
-  area.innerHTML = `
+function renderCustomCard(){
+  const area=document.getElementById('custom-card-display'); if(!area) return;
+  if(!customPlayer){area.innerHTML='';return;}
+  const count=cardCounts['cp']||1;
+  area.innerHTML=`
     <div style="font-family:'Barlow Condensed',sans-serif;font-size:.78rem;color:rgba(245,240,232,.35);text-align:center;margin:12px 0 8px;letter-spacing:1px">YOUR CARD — tap to flip</div>
-    <div class="cards-grid" style="max-width:220px;margin:0 auto">${buildCardHTML(customPlayer,count)}</div>`;
+    <label class="face-upload-btn" style="max-width:520px;margin:0 auto 12px;display:flex">
+      🖼 Upload Card Photo (separate from face)
+      <input type="file" accept="image/*" onchange="loadCustomCardImg(this)" style="display:none">
+    </label>
+    <div class="cards-grid" style="max-width:220px;margin:0 auto">${buildCardHTML(customPlayer,count,true)}</div>`;
 }
-
-function initCustomView() {
-  if(customPlayer) {
-    document.getElementById('cp-name').value   = customPlayer.name||'';
-    document.getElementById('cp-num').value    = customPlayer.num||'';
-    document.getElementById('cp-ppg').value    = customPlayer.ppg||'';
-    document.getElementById('cp-apg').value    = customPlayer.apg||'';
-    document.getElementById('cp-rpg').value    = customPlayer.rpg||'';
-    document.getElementById('cp-rarity').value = customPlayer.rarity||'common';
-    document.getElementById('cp-quote').value  = customPlayer.quote||'';
+function initCustomView(){
+  if(customPlayer){
+    document.getElementById('cp-name').value   =customPlayer.name||'';
+    document.getElementById('cp-num').value    =customPlayer.num||'';
+    document.getElementById('cp-ppg').value    =customPlayer.ppg||'';
+    document.getElementById('cp-apg').value    =customPlayer.apg||'';
+    document.getElementById('cp-rpg').value    =customPlayer.rpg||'';
+    document.getElementById('cp-rarity').value =customPlayer.rarity||'common';
+    document.getElementById('cp-quote').value  =customPlayer.quote||'';
   }
-  refreshCustomPreview();
-  renderCustomCard();
-  renderCustomStats();
+  refreshCustomPreview(); renderCustomCard(); renderCustomStats();
   ['cp-name','cp-num','cp-rarity','cp-ppg','cp-apg','cp-rpg'].forEach(id=>{
     const el=document.getElementById(id);
-    if(el) el.addEventListener('input',refreshCustomPreview);
+    if(el){ el.removeEventListener('input',refreshCustomPreview); el.addEventListener('input',refreshCustomPreview); }
   });
 }
 
-/* ══════════════════════════════════════════════
-   JAZZ BEAR — fully secret, no nav tab
-   After catching all 18, Bear unlocks:
-   - shows toast
-   - starts spawning on map
-   - appears in cards, dex, court picker
-   ══════════════════════════════════════════════ */
-function checkBearUnlock() {
-  if (bearUnlocked) return;
-  const allCaught = PLAYERS.every(p=>caught.has(p.id));
-  if (!allCaught) return;
-  bearUnlocked = true;
-  caught.add(999);
-  cardCounts[999] = 1;
-  saveState();
-  showBearToast();
-  scheduleBear();
+// ═══════════════════════════════════════════════
+// BEAR
+// ═══════════════════════════════════════════════
+function checkBearUnlock(){
+  if(bearUnlocked) return;
+  if(!PLAYERS.every(p=>caught.has(p.id))) return;
+  bearUnlocked=true; caught.add(999); cardCounts[999]=1;
+  cloudSave(); showBearToast(); scheduleBear();
+}
+function showBearToast(){
+  const t=document.getElementById('bear-toast'); if(!t) return;
+  t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),4500);
 }
 
-function showBearToast() {
-  const t = document.getElementById('bear-toast');
-  if(!t) return;
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'), 4500);
-}
-
-/* ══════════════════════════════════════════════
-   SPAWN SYSTEM
-   Global cap = MAX_SPAWNS across all players.
-   ══════════════════════════════════════════════ */
-function totalActiveSpawns() {
-  return Object.keys(activeSpawns).length;
-}
-
-function scheduleAll() {
+// ═══════════════════════════════════════════════
+// SPAWN SYSTEM
+// ═══════════════════════════════════════════════
+function scheduleAll(){
   PLAYERS.forEach(p=>{
-    const delay = Math.random() * RARITY_SPAWN[p.rarity].interval * 0.7;
-    setTimeout(()=>spawnLoop(p), delay);
+    const delay=Math.random()*RARITY_SPAWN[p.rarity].interval*0.7;
+    setTimeout(()=>spawnLoop(p),delay);
   });
 }
-
-function scheduleBear() {
-  spawnLoop(BEAR);
+function scheduleBear(){ spawnLoop(BEAR); }
+function spawnLoop(p){
+  if(!activeSpawns[p.id]) trySpawn(p);
+  const cfg=p.isBear?RARITY_SPAWN.legendary:RARITY_SPAWN[p.rarity];
+  const next=cfg.interval*(0.8+Math.random()*0.6);
+  setTimeout(()=>spawnLoop(p),cfg.duration+next);
 }
-
-function spawnLoop(p) {
-  if (!activeSpawns[p.id]) trySpawn(p);
-  const cfg = p.isBear ? RARITY_SPAWN.legendary : RARITY_SPAWN[p.rarity];
-  const nextIn = cfg.interval*(0.8+Math.random()*0.6);
-  setTimeout(()=>spawnLoop(p), cfg.duration+nextIn);
-}
-
-function trySpawn(p) {
-  // Bear only spawns if unlocked
-  if (p.isBear && !bearUnlocked) return;
-  // Global spawn cap
-  if (totalActiveSpawns() >= MAX_SPAWNS) return;
-  if (activeSpawns[p.id]) return;
-
-  const cfg  = p.isBear ? RARITY_SPAWN.legendary : RARITY_SPAWN[p.rarity];
-  const glow = RARITY_COLORS[p.rarity];
-  const court= document.getElementById('court-map');
-  let x = 12+Math.random()*76;
-  let y = 14+Math.random()*72;
-
-  const wrap = document.createElement('div');
-  wrap.className='spawn-char';
-  wrap.dataset.id=p.id;
+function trySpawn(p){
+  if(p.isBear&&!bearUnlocked) return;
+  if(Object.keys(activeSpawns).length>=MAX_SPAWNS) return;
+  if(activeSpawns[p.id]) return;
+  const cfg=p.isBear?RARITY_SPAWN.legendary:RARITY_SPAWN[p.rarity];
+  const glow=RC[p.rarity];
+  const court=document.getElementById('court-map');
+  let x=12+Math.random()*76, y=14+Math.random()*72;
+  const wrap=document.createElement('div');
+  wrap.className='spawn-char'; wrap.dataset.id=p.id;
   wrap.style.cssText=`left:${x}%;top:${y}%;filter:drop-shadow(0 0 ${p.rarity==='legendary'?'12':'6'}px ${glow})`;
-
   const body=document.createElement('div'); body.className='char-body';
   body.innerHTML=buildChar(p,50);
   const shadow=document.createElement('div'); shadow.className='char-shadow';
   const tag=document.createElement('div'); tag.className='char-tag';
   tag.style.color=glow;
-  tag.textContent=p.isBear?'???' : p.short; // Bear shows ??? as a tease before catch
-
+  tag.textContent=p.isBear?'???':p.short;
   body.appendChild(shadow); wrap.appendChild(body); wrap.appendChild(tag);
   court.appendChild(wrap);
   requestAnimationFrame(()=>wrap.classList.add('popin'));
-  wrap.addEventListener('click',()=>openCatch(p.id, p.isBear));
-
+  wrap.addEventListener('click',()=>openCatch(p.id,p.isBear));
   const roamId=setInterval(()=>{
     if(!activeSpawns[p.id]) return;
     x=Math.max(8,Math.min(92,x+(Math.random()-.5)*10));
     y=Math.max(10,Math.min(88,y+(Math.random()-.5)*10));
     wrap.style.left=x+'%'; wrap.style.top=y+'%';
   },3200);
-
   const despawnId=setTimeout(()=>doDeSpawn(p.id),cfg.duration);
   activeSpawns[p.id]={el:wrap,roamId,despawnId};
 }
-
-function doDeSpawn(id) {
+function doDeSpawn(id){
   const s=activeSpawns[id]; if(!s) return;
   clearInterval(s.roamId); clearTimeout(s.despawnId);
   s.el.classList.add('popout');
@@ -1408,12 +1405,12 @@ function doDeSpawn(id) {
   delete activeSpawns[id];
 }
 
-/* ══════════════════════════════════════════════
-   CATCH MODAL — 3 shots, auto-catch on make
-   ══════════════════════════════════════════════ */
-function openCatch(id, isBear=false) {
-  currentTarget = isBear ? BEAR : PLAYERS.find(p=>p.id===id);
-  const p = currentTarget;
+// ═══════════════════════════════════════════════
+// CATCH MODAL
+// ═══════════════════════════════════════════════
+function openCatch(id,isBear=false){
+  currentTarget=isBear?BEAR:PLAYERS.find(p=>p.id===id);
+  const p=currentTarget;
   const pips=[0,1,2].map(i=>`<div class="shot-pip pending" id="sp${i}">🏀</div>`).join('');
   document.getElementById('modal-body').innerHTML=`
     <div class="modal-header">
@@ -1438,18 +1435,17 @@ function openCatch(id, isBear=false) {
   document.getElementById('catch-modal').classList.add('open');
   initHoop();
 }
+window.openCatch=openCatch;
 
-function initHoop() {
+function initHoop(){
   const canvas=document.getElementById('hoop-cv'); if(!canvas) return;
   const ctx=canvas.getContext('2d');
   const W=canvas.width,H=canvas.height;
-  const hoopX=W*.75,hoopY=H*.30,rimR=20;
-  const ballX=W*.14,ballY=H*.84;
-  const sweetW=22; // ▶ tolerance — bigger = easier
+  const hoopX=W*.75,hoopY=H*.30,rimR=20,ballX=W*.14,ballY=H*.84;
+  const sweetW=22;
   const AIM_SPEEDS={common:.016,rare:.026,epic:.036,legendary:.050};
   const speed=AIM_SPEEDS[currentTarget?.rarity]||.025;
   let aimAngle=0,phase='aim',flyT=0,flyScatter=0,swish=0,shotsDone=0;
-
   function scatter(){return Math.sin(aimAngle)*58;}
   function arcPt(t,sc){
     const tx=hoopX+sc,cpX=(ballX+tx)*.5,cpY=Math.min(ballY,hoopY)-H*.55;
@@ -1508,68 +1504,121 @@ function initHoop() {
   }
   function autoCatch(){
     const p=currentTarget; if(!p) return;
-    caught.add(p.id);
-    cardCounts[p.id]=(cardCounts[p.id]||0)+1;
-    updateCounts(); doDeSpawn(p.id); saveState();
-    updateMapMissingBanner();
+    caught.add(p.id); cardCounts[p.id]=(cardCounts[p.id]||0)+1;
+    updateCounts(); doDeSpawn(p.id); cloudSave();
     if(!p.isBear) checkBearUnlock();
     if(hoopAF) cancelAnimationFrame(hoopAF);
     document.getElementById('success-screen').style.display='block';
     setTimeout(closeModal,1900);
     if(document.getElementById('court-view').classList.contains('active')) rebuildRoamers();
     if(document.getElementById('cards-view').classList.contains('active')) renderCards();
+    updateMapMissingBanner();
   }
   window._doThrow=()=>{if(phase!=='aim')return;flyScatter=scatter();flyT=0;phase='fly';};
   hoopAF=requestAnimationFrame(frame);
 }
-
-function doThrow(){if(window._doThrow)window._doThrow();}
+window.doThrow=function(){if(window._doThrow)window._doThrow();};
 function closeModal(){
   if(hoopAF)cancelAnimationFrame(hoopAF);
   document.getElementById('catch-modal').classList.remove('open');
   window._doThrow=null;currentTarget=null;
 }
+window.closeModal=closeModal;
 
-/* ══════════════════════════════════════════════
-   COUNTS
-   ══════════════════════════════════════════════ */
-function updateCounts() {
+// ═══════════════════════════════════════════════
+// COUNTS
+// ═══════════════════════════════════════════════
+function updateCounts(){
   const unique=PLAYERS.filter(p=>caught.has(p.id)).length;
   document.getElementById('caught-count').textContent=unique;
-  const dn=document.getElementById('dex-n'); if(dn)dn.textContent=unique;
-  const df=document.getElementById('dex-fill'); if(df)df.style.width=(unique/PLAYERS.length*100)+'%';
+  const dn=document.getElementById('dex-n');if(dn)dn.textContent=unique;
+  const df=document.getElementById('dex-fill');if(df)df.style.width=(unique/PLAYERS.length*100)+'%';
 }
 
-/* ══════════════════════════════════════════════
-   CARDS — only caught, sorted by rarity then lastName
-   No placeholders. Jersey # always visible.
-   ══════════════════════════════════════════════ */
-function renderCards() {
-  const grid=document.getElementById('cards-grid'); if(!grid) return;
-  // Gather caught regular players sorted
-  let toShow = sortedPlayers(PLAYERS.filter(p=>caught.has(p.id)));
-  // Bear goes at front if unlocked
-  if (bearUnlocked && caught.has(999)) toShow = [BEAR, ...toShow];
-  // Custom player card at end if saved
-  if (customPlayer) toShow.push(customPlayer);
+// ═══════════════════════════════════════════════
+// CARDS
+// buildCardHTML(p, count, isOwnCustom)
+// isOwnCustom=true → omit "When Traded"/"Friends Since"
+// isOwnCustom=false → show those fields if present
+// ═══════════════════════════════════════════════
+function buildCardHTML(p, count, isOwnCustom=false){
+  // Card photo: custom players use customCardImg, regular use cardImages[id], fallback to faceImages
+  const cardPhoto = p.isCustom
+    ? (customCardImg||customFaceImg||null)
+    : (cardImages[p.id]||faceImages[p.id]||null);
 
+  const frontFace=cardPhoto
+    ?`<div class="card-face card-front">
+         <img class="card-front-img" src="${cardPhoto}" alt="${p.name}"/>
+         <div class="card-jersey-badge">#${p.num}</div>
+         <div class="card-front-overlay">
+           <div class="card-pname">${p.name}</div>
+           <span class="card-rbadge rarity-${p.rarity}">${p.rarity}</span>
+         </div>
+       </div>`
+    :`<div class="card-face card-front">
+         <div class="card-front-noimg">
+           <div class="card-char">${buildChar(p,70)}</div>
+           <div class="card-pname">${p.name}</div>
+           <div class="card-era">${p.era}</div>
+           <span class="card-rbadge rarity-${p.rarity}" style="margin-top:2px">${p.rarity}</span>
+         </div>
+         <div class="card-jersey-badge">#${p.num}</div>
+       </div>`;
+
+  // Custom card back: show joined date with full day.
+  // "When Traded" and "Friends Since" only show on cards received from others, NOT your own.
+  const customRows = p.isCustom
+    ? `<div class="srow" style="grid-column:1/-1"><span class="sl">Joined</span><span class="sv" style="font-size:.73rem">${p.joinedDisplay||fmtDateNice(p.joinedISO)||'—'}</span></div>`
+      + (!isOwnCustom && p.tradedAt ? `<div class="srow" style="grid-column:1/-1"><span class="sl">Traded</span><span class="sv" style="font-size:.73rem">${fmtDateNice(p.tradedAt)}</span></div>` : '')
+      + (!isOwnCustom && p.fromName ? `<div class="srow" style="grid-column:1/-1"><span class="sl">From</span><span class="sv" style="font-size:.73rem">${p.fromName}</span></div>` : '')
+    : '';
+
+  return `<div class="card-flip-wrap" data-r="${p.rarity}" onclick="this.classList.toggle('flipped')">
+    <div class="card-count-badge">×${count}</div>
+    <div class="card-inner">
+      ${frontFace}
+      <div class="card-face card-back">
+        <div class="card-back-inner">
+          <div class="card-back-num">#${String(p.id).padStart(3,'0')} · ${p.rarity.toUpperCase()}</div>
+          <div class="card-back-name">${p.name}</div>
+          <div class="card-back-era">${p.era}</div>
+          <div class="card-back-stats">
+            <div class="srow"><span class="sl">PPG</span><span class="sv">${p.ppg}</span></div>
+            <div class="srow"><span class="sl">APG</span><span class="sv">${p.apg}</span></div>
+            <div class="srow"><span class="sl">RPG</span><span class="sv">${p.rpg}</span></div>
+            <div class="srow"><span class="sl">BLK</span><span class="sv">${p.blk}</span></div>
+            ${customRows}
+          </div>
+          <div class="card-back-quote">"${p.quote}"</div>
+          <div class="card-back-hint">tap to flip back</div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderCards(){
+  const grid=document.getElementById('cards-grid'); if(!grid) return;
+  let toShow=sortedPlayers(PLAYERS.filter(p=>caught.has(p.id)));
+  if(bearUnlocked&&caught.has(999)) toShow=[BEAR,...toShow];
+  // Custom player card at the end if saved
+  if(customPlayer) toShow.push(customPlayer);
   if(!toShow.length){
     grid.innerHTML=`<div style="grid-column:1/-1;font-family:'Barlow Condensed',sans-serif;color:rgba(245,240,232,.35);font-size:1rem;padding:40px 0;text-align:center">Catch players on the Map to see their cards here!</div>`;
     return;
   }
-  grid.innerHTML=toShow.map(p=>buildCardHTML(p, cardCounts[p.id]||1)).join('');
+  grid.innerHTML=toShow.map(p=>buildCardHTML(p,cardCounts[p.id]||1, p.isCustom)).join('');
 }
 
-/* ══════════════════════════════════════════════
-   DEX — all players silhouette until caught,
-         sorted by rarity then lastName
-   ══════════════════════════════════════════════ */
-function renderDex() {
+// ═══════════════════════════════════════════════
+// DEX
+// ═══════════════════════════════════════════════
+function renderDex(){
   const grid=document.getElementById('dex-grid'); if(!grid) return;
   updateCounts();
-  let list = sortedPlayers(PLAYERS);
-  if (bearUnlocked) list = [BEAR,...list];
-
+  let list=sortedPlayers(PLAYERS);
+  if(bearUnlocked) list=[BEAR,...list];
   grid.innerHTML=list.map(p=>{
     const got=caught.has(p.id);
     return `<div class="dex-slot ${got?'got':''}">
@@ -1579,124 +1628,45 @@ function renderDex() {
   }).join('');
 }
 
-/* Show missing players as a subtle overlay on the MAP legend */
-function updateMapMissingBanner() {
-  const legend = document.getElementById('map-legend-missing');
-  if (!legend) return;
-  const missing = PLAYERS.filter(p=>!caught.has(p.id));
-  const total = PLAYERS.length;
-  const caught_n = total - missing.length;
-  if (missing.length === 0) {
-    legend.innerHTML = `<span style="color:var(--teal);font-family:'Barlow Condensed',sans-serif;font-size:.82rem">🏆 All ${total} players caught!</span>`;
+// ═══════════════════════════════════════════════
+// MAP — missing players banner
+// ═══════════════════════════════════════════════
+function updateMapMissingBanner(){
+  let el=document.getElementById('map-missing-banner');
+  if(!el){
+    el=document.createElement('div');
+    el.id='map-missing-banner';
+    el.className='map-legend';
+    el.style.cssText='padding-top:5px;padding-bottom:5px;min-height:0';
+    const legend=document.querySelector('.map-legend');
+    if(legend) legend.after(el);
+  }
+  const missing=PLAYERS.filter(p=>!caught.has(p.id));
+  if(!missing.length){
+    el.innerHTML=`<span style="color:var(--teal);font-family:'Barlow Condensed',sans-serif;font-size:.82rem">🏆 All ${PLAYERS.length} players caught!</span>`;
     return;
   }
-  if (missing.length <= 5) {
-    legend.innerHTML = `<span style="color:var(--red);font-family:'Barlow Condensed',sans-serif;font-size:.78rem">
-      🔴 <strong style="color:#ff5555">${missing.length} left:</strong>
-      ${missing.map(p=>`<span style="color:rgba(245,240,232,.7)">${p.short}</span>`).join(' · ')}
-    </span>`;
+  if(missing.length<=5){
+    el.innerHTML=`<span style="color:var(--red);font-family:'Barlow Condensed',sans-serif;font-size:.8rem;font-weight:700">🔴 ${missing.length} left: </span>`
+      +missing.map(p=>`<span style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:rgba(245,240,232,.7);margin-left:4px">${p.short}</span>`).join('<span style="color:rgba(245,240,232,.25)"> · </span>');
   } else {
-    legend.innerHTML = '';
+    el.innerHTML='';
   }
 }
 
-/* ══════════════════════════════════════════════
-   ROSTER SELECTOR — 5 fixed slots, click to swap
-   Clicking a filled slot opens picker on that slot index.
-   The slot is replaced in-place, not moved.
-   ══════════════════════════════════════════════ */
-function renderRosterBar() {
-  const bar=document.getElementById('roster-bar');
-  const hint=document.getElementById('roster-hint');
-  if(!bar) return;
-  const MAX=5;
-  let html='';
-  for(let i=0;i<MAX;i++){
-    const pid=courtRoster[i];
-    if(pid!==undefined){
-      const p=pid==='cp'?customPlayer:(pid===999?BEAR:PLAYERS.find(pl=>pl.id===pid));
-      if(p){
-        const col=RARITY_COLORS[p.rarity]||'#F9A01B';
-        html+=`<div class="roster-slot filled" title="${p.name} — tap to swap" onclick="openPicker(${i})" style="border-color:${col}">
-          ${buildChar(p,38)}
-        </div>`;
-      } else {
-        html+=`<div class="roster-slot" onclick="openPicker(${i})">+</div>`;
-      }
-    } else {
-      html+=`<div class="roster-slot" onclick="openPicker(${i})">+</div>`;
-    }
-  }
-  bar.innerHTML=html;
-  const filled=courtRoster.filter(x=>x!==undefined).length;
-  if(hint) hint.textContent=filled===0?'Tap + to add players (up to 5)':'Tap any slot to swap — hover to remove';
-}
-
-let pickerSlotIdx=null;
-function openPicker(slotIdx) {
-  pickerSlotIdx=slotIdx;
-  const grid=document.getElementById('picker-grid'); if(!grid) return;
-  // Build available list: caught players + custom player (if saved) + bear (if unlocked)
-  const available=PLAYERS.filter(p=>caught.has(p.id));
-  if(customPlayer) available.push({...customPlayer}); // custom player always available if saved
-  if(bearUnlocked&&caught.has(999)) available.push(BEAR);
-
-  const currentInSlot=courtRoster[slotIdx];
-  grid.innerHTML=available.map(p=>{
-    const isThis=currentInSlot===p.id;
-    const onCourt=courtRoster.includes(p.id)&&!isThis;
-    return `<div class="picker-item ${isThis?'on-court':''}" onclick="selectInSlot(${JSON.stringify(p.id)})">
-      <div class="pi-char">${buildChar(p,40)}</div>
-      <div class="pi-name">${p.short}</div>
-      ${isThis?'<div style="font-size:.5rem;color:var(--gold);font-family:\'Barlow Condensed\',sans-serif">IN THIS SLOT</div>':''}
-      ${onCourt&&!isThis?'<div style="font-size:.5rem;color:rgba(245,240,232,.35);font-family:\'Barlow Condensed\',sans-serif">ON COURT</div>':''}
-    </div>`;
-  }).join('');
-
-  // Add a "remove" option if slot is filled
-  if(currentInSlot!==undefined){
-    grid.innerHTML+=`<div class="picker-item" onclick="clearSlot(${slotIdx})" style="border-color:var(--red);color:var(--red)">
-      <div class="pi-char" style="font-size:1.4rem;height:44px;display:flex;align-items:center;justify-content:center">✕</div>
-      <div class="pi-name">Remove</div>
-    </div>`;
-  }
-
-  if(!available.length) grid.innerHTML=`<div style="font-family:'Barlow Condensed',sans-serif;color:rgba(245,240,232,.5);padding:20px;text-align:center">Catch players first!</div>`;
-  document.getElementById('picker-overlay').classList.add('open');
-}
-
-function selectInSlot(pid) {
-  if(pickerSlotIdx===null) return;
-  // If player is already in another slot, swap them
-  const existingSlot=courtRoster.indexOf(pid);
-  if(existingSlot!==-1&&existingSlot!==pickerSlotIdx){
-    const displaced=courtRoster[pickerSlotIdx];
-    courtRoster[existingSlot]=displaced;
-  }
-  courtRoster[pickerSlotIdx]=pid;
-  closePicker(); saveState(); rebuildRoamers(); renderRosterBar();
-}
-
-function clearSlot(slotIdx) {
-  courtRoster.splice(slotIdx,1,undefined);
-  // Trim trailing undefineds
-  while(courtRoster.length&&courtRoster[courtRoster.length-1]===undefined) courtRoster.pop();
-  closePicker(); saveState(); rebuildRoamers(); renderRosterBar();
-}
-
-function closePicker(){document.getElementById('picker-overlay').classList.remove('open');pickerSlotIdx=null;}
-
-/* ══════════════════════════════════════════════
-   COURT — roamers + canvas ball
-   ══════════════════════════════════════════════ */
-function rebuildRoamers() {
+// ═══════════════════════════════════════════════
+// COURT — roamers + canvas ball
+// Custom player is excluded from court (cards only)
+// ═══════════════════════════════════════════════
+function rebuildRoamers(){
   const court=document.getElementById('roam-court');
   const footer=document.getElementById('court-footer-top');
+
+  // Resolve roster — custom player excluded from court
   const players=courtRoster
-    .filter(id=>id!==undefined)
+    .filter(id=>id!==undefined&&id!=='cp') // no custom player on court
     .map(id=>{
-      if(id==='cp') return customPlayer;
-      if(id===999)  return BEAR;
+      if(id===999) return BEAR;
       return PLAYERS.find(p=>p.id===id);
     })
     .filter(Boolean);
@@ -1707,28 +1677,28 @@ function rebuildRoamers() {
 
   const cv=document.getElementById('court-cv');
   if(cv){
-    cv.width=court.offsetWidth||900;
-    cv.height=court.offsetHeight||490;
-    // Always clear canvas — prevents ghost ball when no players
-    const ctx=cv.getContext('2d');
-    ctx.clearRect(0,0,cv.width,cv.height);
+    cv.width=court.offsetWidth||900; cv.height=court.offsetHeight||490;
+    cv.getContext('2d').clearRect(0,0,cv.width,cv.height);
   }
 
   if(!players.length){
-    if(footer) footer.textContent='Use the slots below to put players on the court!';
+    if(footer)footer.textContent='Use the slots below to put players on the court!';
     renderRosterBar(); return;
   }
-
   if(footer) footer.textContent=players.length===1
     ?`${players[0].short} is warming up! 🏀`
     :`${players.map(p=>p.short).join(', ')} running drills 🏀`;
 
   players.forEach(p=>{
-    if(!roamPos[p.id]) roamPos[p.id]={x:20+Math.random()*60,y:20+Math.random()*60};
+    // Use p.id as roamPos key — for Bear that's 999
+    const posKey=p.id;
+    if(!roamPos[posKey]) roamPos[posKey]={x:20+Math.random()*60,y:20+Math.random()*60};
     const el=document.createElement('div');
-    el.className='roamer-div';el.id='rv-'+p.id;
-    el.style.left=roamPos[p.id].x+'%';el.style.top=roamPos[p.id].y+'%';
-    el.innerHTML=`${buildChar(p,50)}<div class="roamer-tag" style="color:${RARITY_COLORS[p.rarity]||'#F9A01B'}">${p.short}</div>`;
+    el.className='roamer-div'; el.id='rv-'+posKey;
+    el.style.left=roamPos[posKey].x+'%'; el.style.top=roamPos[posKey].y+'%';
+    // Use p.name for Bear (not '???') and p.short for others
+    const tag=p.isBear?p.name:p.short;
+    el.innerHTML=`${buildChar(p,50)}<div class="roamer-tag" style="color:${RC[p.rarity]||'#F9A01B'}">${tag}</div>`;
     court.appendChild(el);
   });
 
@@ -1747,28 +1717,18 @@ function rebuildRoamers() {
   renderRosterBar();
 }
 
-function startDribble(player) {
+function startDribble(player){
   const canvas=document.getElementById('court-cv'); if(!canvas) return;
   const ctx=canvas.getContext('2d');
-  let t=0, tDir=1;
+  let t=0,tDir=1;
   const SPEED=0.048;
-
-  // Character SVG is rendered at size=50. viewBox 0 0 56 60.
-  // The .roamer-div is transform:translate(-50%,-100%) so its anchor point = feet.
-  // Right arm outer tip in SVG: x≈52, y≈33  →  pixel offset from center:
-  //   xOff = (52-28)/56 * 50 = +21px   yOff from feet = (60-33)/60 * 54 = 24px up
-  const CHAR_RENDER = 50;
-  const CHAR_H = Math.round(CHAR_RENDER * 1.07); // ≈54px tall
-  const ARM_X_OFF = Math.round(((52-28)/56) * CHAR_RENDER); // +21px right of center
-  const ARM_Y_UP  = Math.round(((60-33)/60) * CHAR_H);      // ≈24px up from feet
-
-  function getHandPos() {
-    const pos = roamPos[player.id]||{x:50,y:50};
-    const feetX = (pos.x/100)*canvas.width;
-    const feetY = (pos.y/100)*canvas.height;
-    return { hx: feetX + ARM_X_OFF, hy: feetY - ARM_Y_UP, feetY };
+  const CHAR_H=Math.round(50*1.07);
+  const ARM_X_OFF=Math.round(((52-28)/56)*50);
+  const ARM_Y_UP=Math.round(((60-33)/60)*CHAR_H);
+  function getHandPos(){
+    const pos=roamPos[player.id]||{x:50,y:50};
+    return{hx:(pos.x/100)*canvas.width+ARM_X_OFF,hy:(pos.y/100)*canvas.height-ARM_Y_UP,feetY:(pos.y/100)*canvas.height};
   }
-
   function drawBall(x,y,r=9){
     const g=ctx.createRadialGradient(x-r*.3,y-r*.3,r*.12,x,y,r);
     g.addColorStop(0,'#ffb347');g.addColorStop(1,'#c84800');
@@ -1776,31 +1736,21 @@ function startDribble(player) {
     ctx.strokeStyle='rgba(0,0,0,.3)';ctx.lineWidth=1;
     ctx.beginPath();ctx.arc(x,y,r,-.45,.45);ctx.stroke();
   }
-
   function frame(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    const {hx,hy,feetY} = getHandPos();
-    // t=0 → ball at hand; t=1 → ball at floor
-    // Use ease-in curve so ball spends more time near the hand (like a real dribble)
-    const eased = Math.pow(t, 0.55);
-    const bx = hx;
-    const by = hy + eased*(feetY - hy - 4);
-    // Ground shadow — fades in as ball approaches floor
-    ctx.globalAlpha = 0.1 + 0.25*eased;
-    ctx.fillStyle='#000';
-    ctx.beginPath();
-    ctx.ellipse(bx, feetY+1, 6+5*eased, 2.5, 0, 0, Math.PI*2);
-    ctx.fill();
-    ctx.globalAlpha=1;
-    drawBall(bx, by);
-    t += tDir*SPEED;
-    if(t>=1){t=1;tDir=-1;} if(t<=0){t=0;tDir=1;}
+    const{hx,hy,feetY}=getHandPos();
+    const eased=Math.pow(t,0.55);
+    const bx=hx, by=hy+eased*(feetY-hy-4);
+    ctx.globalAlpha=0.1+0.25*eased; ctx.fillStyle='#000';
+    ctx.beginPath();ctx.ellipse(bx,feetY+1,6+5*eased,2.5,0,0,Math.PI*2);ctx.fill();
+    ctx.globalAlpha=1; drawBall(bx,by);
+    t+=tDir*SPEED; if(t>=1){t=1;tDir=-1;} if(t<=0){t=0;tDir=1;}
     courtAF=requestAnimationFrame(frame);
   }
   courtAF=requestAnimationFrame(frame);
 }
 
-function startPassing(players) {
+function startPassing(players){
   const canvas=document.getElementById('court-cv'); if(!canvas) return;
   const ctx=canvas.getContext('2d');
   let fromIdx=0,toIdx=1,t=0;
@@ -1823,10 +1773,79 @@ function startPassing(players) {
   courtAF=requestAnimationFrame(frame);
 }
 
-/* ══════════════════════════════════════════════
-   VIEW SWITCHER
-   ══════════════════════════════════════════════ */
-function showView(id,btn) {
+// ═══════════════════════════════════════════════
+// ROSTER BAR + PICKER
+// Custom player excluded from court picker
+// ═══════════════════════════════════════════════
+function renderRosterBar(){
+  const bar=document.getElementById('roster-bar');
+  const hint=document.getElementById('roster-hint');
+  if(!bar) return;
+  const MAX=5; let html='';
+  for(let i=0;i<MAX;i++){
+    const pid=courtRoster[i];
+    if(pid!==undefined&&pid!=='cp'){
+      const p=pid===999?BEAR:PLAYERS.find(pl=>pl.id===pid);
+      if(p){
+        const col=RC[p.rarity]||'#F9A01B';
+        html+=`<div class="roster-slot filled" title="${p.name} — tap to swap" onclick="openPicker(${i})" style="border-color:${col}">${buildChar(p,38)}</div>`;
+      } else { html+=`<div class="roster-slot" onclick="openPicker(${i})">+</div>`; }
+    } else { html+=`<div class="roster-slot" onclick="openPicker(${i})">+</div>`; }
+  }
+  bar.innerHTML=html;
+  const filled=courtRoster.filter(x=>x!==undefined&&x!=='cp').length;
+  if(hint) hint.textContent=filled===0?'Tap + to add players (up to 5)':'Tap any slot to swap — hover to remove';
+}
+
+let pickerSlotIdx=null;
+function openPicker(slotIdx){
+  pickerSlotIdx=slotIdx;
+  const grid=document.getElementById('picker-grid'); if(!grid) return;
+  // Only real players + bear on court, no custom player
+  const available=PLAYERS.filter(p=>caught.has(p.id));
+  if(bearUnlocked&&caught.has(999)) available.push(BEAR);
+  const currentInSlot=courtRoster[slotIdx];
+  grid.innerHTML=available.map(p=>{
+    const isThis=currentInSlot===p.id;
+    const onCourt=courtRoster.includes(p.id)&&!isThis;
+    return `<div class="picker-item ${isThis?'on-court':''}" onclick="selectInSlot(${JSON.stringify(p.id)})">
+      <div class="pi-char">${buildChar(p,40)}</div>
+      <div class="pi-name">${p.short}</div>
+      ${isThis?'<div style="font-size:.5rem;color:var(--gold);font-family:\'Barlow Condensed\',sans-serif">IN THIS SLOT</div>':''}
+      ${onCourt&&!isThis?'<div style="font-size:.5rem;color:rgba(245,240,232,.35);font-family:\'Barlow Condensed\',sans-serif">ON COURT</div>':''}
+    </div>`;
+  }).join('');
+  if(currentInSlot!==undefined&&currentInSlot!=='cp'){
+    grid.innerHTML+=`<div class="picker-item" onclick="clearSlot(${slotIdx})" style="border-color:var(--red);color:var(--red)">
+      <div class="pi-char" style="font-size:1.4rem;height:44px;display:flex;align-items:center;justify-content:center">✕</div>
+      <div class="pi-name">Remove</div>
+    </div>`;
+  }
+  if(!available.length) grid.innerHTML=`<div style="font-family:'Barlow Condensed',sans-serif;color:rgba(245,240,232,.5);padding:20px;text-align:center">Catch players first!</div>`;
+  document.getElementById('picker-overlay').classList.add('open');
+}
+function selectInSlot(pid){
+  if(pickerSlotIdx===null) return;
+  const existingSlot=courtRoster.indexOf(pid);
+  if(existingSlot!==-1&&existingSlot!==pickerSlotIdx){
+    courtRoster[existingSlot]=courtRoster[pickerSlotIdx];
+  }
+  courtRoster[pickerSlotIdx]=pid;
+  closePicker(); cloudSave(); rebuildRoamers(); renderRosterBar();
+}
+function clearSlot(slotIdx){
+  courtRoster.splice(slotIdx,1,undefined);
+  while(courtRoster.length&&courtRoster[courtRoster.length-1]===undefined) courtRoster.pop();
+  closePicker(); cloudSave(); rebuildRoamers(); renderRosterBar();
+}
+function closePicker(){document.getElementById('picker-overlay').classList.remove('open');pickerSlotIdx=null;}
+window.openPicker=openPicker; window.selectInSlot=selectInSlot;
+window.clearSlot=clearSlot; window.closePicker=closePicker;
+
+// ═══════════════════════════════════════════════
+// VIEW SWITCHER
+// ═══════════════════════════════════════════════
+function showView(id,btn){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -1837,63 +1856,30 @@ function showView(id,btn) {
   if(id==='faces-view')  renderFaces();
   if(id==='custom-view') initCustomView();
   if(id==='map-view')    updateMapMissingBanner();
-  if(id==='social-view') {
-    renderAuthUI();
-    const banner=document.getElementById('guest-banner');
-    if(banner) banner.style.display=(currentUID&&auth.currentUser&&!auth.currentUser.isAnonymous)?'none':'block';
-    if(currentUID) loadIncomingTrades();
-  }
+  if(id==='social-view') renderSocialView();
 }
+window.showView=showView;
 
-/* ══════════════════════════════════════════════
-   SOCIAL EXPORT STUB
-   (wire up to Firebase when ready)
-   ══════════════════════════════════════════════ */
-function exportPlayerData() {
-  return {
-    caught:[...caught],
-    cardCounts,
-    customPlayer,
-    totalPlayMs:totalPlayMs+(Date.now()-sessionStart),
-    lastSeen:new Date().toISOString(),
-    // TODO: add uid, friendsList when accounts implemented
-  };
-}
-
-// Expose all functions called from HTML to window (required for type="module")
-window.showView=showView; window.openCatch=openCatch; window.closeModal=closeModal;
-window.doThrow=doThrow; window.openPicker=openPicker; window.closePicker=closePicker;
-window.selectInSlot=selectInSlot; window.clearSlot=clearSlot;
-window.loadFace=loadFace; window.loadCustomFace=loadCustomFace;
-window.saveCustomPlayer=saveCustomPlayer; window.refreshCustomPreview=refreshCustomPreview;
-window.renderDex=renderDex; window.renderCards=renderCards;
-
-/* ══════════════════════════════════════════════
-   INIT
-   ══════════════════════════════════════════════ */
-// 1. Immediately load local state so the game is playable offline/before Firebase resolves
-loadFromLocal();
+// ═══════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════
+// Load local state immediately — game is playable before Firebase resolves
+lsLoad();
 updateCounts();
 updateMapMissingBanner();
-if(bearUnlocked && !caught.has(999)){caught.add(999);cardCounts[999]=1;}
-renderCards();
-renderDex();
-renderFaces();
+if(bearUnlocked&&!caught.has(999)){caught.add(999);cardCounts[999]=1;}
+renderCards(); renderDex(); renderFaces();
 document.getElementById('total-count').textContent=PLAYERS.length;
 document.getElementById('dex-total').textContent=PLAYERS.length;
 document.getElementById('save-badge').style.opacity='0';
-// Start spawning immediately
+// Start spawning
 scheduleAll();
 if(bearUnlocked) scheduleBear();
 // Autosave every 2 min
-setInterval(saveState, 120000);
-// Show guest banner if not signed in after 1s
-setTimeout(()=>{
-  const banner = document.getElementById('guest-banner');
-  if(banner && !currentUID) banner.style.display='block';
-},1000);
-// Try anonymous sign-in for basic cloud access if not already signed in
+setInterval(()=>cloudSave(),120000);
+// Sign in anonymously so we get a UID even for guests
 signInAnonymously(auth).catch(()=>{});
+
 </script>
 </body>
 </html>
