@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="https://cdn.nba.com/logos/nba/1610612762/global/L/logo.svg">
+
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ══ BRAND COLORS ══ */
@@ -1999,6 +2000,7 @@ localStorage.removeItem('jd_caught');
 localStorage.removeItem('jd_counts');
 localStorage.removeItem('jd_roster');
 localStorage.removeItem('jd_bear');
+localStorage.removeItem('jd_seen');
 
 lsLoad();
 updateCounts();
@@ -2015,6 +2017,7 @@ if(bearUnlocked) scheduleBear();
 // Autosave every 2 min
 setInterval(()=>cloudSave(),120000);
 // Sign in anonymously so we get a UID even for guests
+
 signInAnonymously(auth).catch(()=>{});
 
 // Intro overlay — only show to first-time visitors
@@ -2038,6 +2041,8 @@ window.dismissIntro=function(){
   setTimeout(()=>overlay.style.display='none',500);
   localStorage.setItem('jd_seen','1');
 };
+
+
 
 </script>
 </body>
