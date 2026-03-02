@@ -603,7 +603,7 @@ import { getAuth, signInAnonymously, signInWithEmailAndPassword,
   from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
 import { getFirestore, doc, setDoc, getDoc, getDocs, addDoc,
          updateDoc, deleteDoc, collection, query, where,
-         orderBy, limit, serverTimestamp, arrayUnion, increment }
+         orderBy, limit, serverTimestamp, arrayUnion, increment, onSnapshot }
   from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
 
 const FB = {
@@ -780,6 +780,47 @@ onAuthStateChanged(auth, async user=>{
   renderAuthBar();
   if(!user) return;
   if(user.isAnonymous) return; // guests: local only, no cloud load
+
+  // Listen for incoming trades
+const tradeQuery = query(
+  collection(db, "trades"),
+  where("to", "==", user.uid)
+);
+
+onSnapshot(tradeQuery, async (snapshot) => {
+  for (const docSnap of snapshot.docs) {
+    const trade = docSnap.data();
+
+    const mySaveRef = doc(db, "saves", user.uid);
+    const mySnap = await getDoc(mySaveRef);
+
+    if (mySnap.exists()) {
+      const data = mySnap.data();
+      const counts = { ...(data.cardCounts || {}) };
+      const caughtArr = [...(data.caught || [])];
+
+      const key = String(trade.cardId);
+      counts[key] = (counts[key] || 0) + 1;
+
+      if (!caughtArr.includes(trade.cardId) &&
+          !caughtArr.includes(key)) {
+        caughtArr.push(trade.cardId);
+      }
+
+      await updateDoc(mySaveRef, {
+        cardCounts: counts,
+        caught: caughtArr
+      });
+    } else {
+      await setDoc(mySaveRef, {
+        caught: [trade.cardId],
+        cardCounts: { [String(trade.cardId)]: 1 }
+      }, { merge: true });
+    }
+
+    // Delete trade document after processing
+    await deleteDoc(doc(db, "trades", docSnap.id));
+  }});
 
   // Named user: load cloud, merge with local
   const loaded=await cloudLoad(user.uid);
@@ -1042,55 +1083,82 @@ window.selectTradeCard = function(id){
 };
 
 window.confirmSendCard = async function(){
-  if(!tradeSelectedId||!tradeTargetUID||!currentUser) return;
-  const btn=document.getElementById('trade-send-btn');
-  const status=document.getElementById('trade-send-status');
-  btn.disabled=true; status.textContent='Sending…';
+  console.log("🔥 confirmSendCard running");
+  if(!tradeSelectedId || !tradeTargetUID || !currentUser) return;
 
-  // Check if we have the card
-  const cnt=cardCounts[tradeSelectedId]||0;
-  if(cnt<1){ status.textContent='You don\'t have this card!'; btn.disabled=false; return; }
+  const btn = document.getElementById('trade-send-btn');
+  const status = document.getElementById('trade-send-status');
+  btn.disabled = true;
+  status.textContent = 'Sending…';
+
+  const mySaveRef = doc(db, "saves", currentUser.uid);
+  const mySnap = await getDoc(mySaveRef);
+
+  if(!mySnap.exists()){
+    status.textContent = "Save not found.";
+    btn.disabled = false;
+    return;
+  }
+
+  const data = mySnap.data();
+  const counts = { ...(data.cardCounts || {}) };
+  const caughtArr = [...(data.caught || [])];
+
+  const key = String(tradeSelectedId);
+
+  if(!counts[key] || counts[key] <= 0){
+    status.textContent = "You don't own this card.";
+    btn.disabled = false;
+    return;
+  }
 
   try {
-    // Decrement sender
-    cardCounts[tradeSelectedId]=Math.max(0,cnt-1);
-    if(cardCounts[tradeSelectedId]===0){
-      delete cardCounts[tradeSelectedId];
-      caught.delete(tradeSelectedId);
+    // 1️⃣ Remove from sender
+    counts[key] -= 1;
+    if(counts[key] <= 0){
+      delete counts[key];
+      const idx = caughtArr.indexOf(tradeSelectedId);
+      if(idx > -1) caughtArr.splice(idx,1);
     }
 
-    // Write transfer record — receiver doc
-    const cardObj=tradeSelectedId===999?BEAR
-      :tradeSelectedId==='cp'?{...customPlayer,isSentCustom:true}
-      :PLAYERS.find(p=>p.id===tradeSelectedId);
+    await setDoc(mySaveRef,{
+      cardCounts: counts,
+      caught: caughtArr
+    },{ merge:true });
 
-    await addDoc(collection(db,'transfers'),{
-      fromUID:currentUser.uid,
-      fromName:currentUser.displayName||'Unknown',
-      toUID:tradeTargetUID,
-      toName:tradeTargetName,
-      cardId:tradeSelectedId,
-      cardName:cardObj?.name||'Unknown',
-      cardRarity:cardObj?.rarity||'common',
-      sentAt:serverTimestamp(),
+    // 2️⃣ Create trade document
+    await addDoc(collection(db,"trades"),{
+      from: currentUser.uid,
+      to: tradeTargetUID,
+      cardId: tradeSelectedId,
+      createdAt: serverTimestamp()
     });
 
-    // Add card to receiver's Firestore save (increment)
-    const receiverSave=doc(db,'saves',tradeTargetUID);
-    const rSnap=await getDoc(receiverSave);
-    if(rSnap.exists()){
-      const rd=rSnap.data();
-      const rCounts={...rd.cardCounts||{}};
-      const rCaught=[...(rd.caught||[])];
-      const key=String(tradeSelectedId);
-      rCounts[key]=(rCounts[key]||0)+1;
-      if(!rCaught.includes(tradeSelectedId)&&!rCaught.includes(key)) rCaught.push(tradeSelectedId);
-      await updateDoc(receiverSave,{cardCounts:rCounts,caught:rCaught});
-    } else {
-      await setDoc(receiverSave,{
-        caught:[tradeSelectedId], cardCounts:{[String(tradeSelectedId)]:1}
-      },{merge:true});
-    }
+    status.textContent = "✓ Card sent!";
+    showToast("🏀 Card sent!");
+
+    tradeSelectedId = null;
+    renderTradeCardGrid();
+
+  } catch(e){
+    status.textContent = "Failed: " + e.message;
+    btn.disabled = false;
+  }
+}; 
+  // remove from sender save first (your existing logic)
+  await updateDoc(doc(db,'saves',currentUser.uid),{
+    cardCounts: updatedCounts,
+    caught: updatedCaught
+  });
+
+  // 🔥 create trade instead of editing receiver directly
+  await addDoc(collection(db, "trades"), {
+    from: currentUser.uid,
+    to: tradeTargetUID,
+    cardId: tradeSelectedId,
+    createdAt: serverTimestamp()
+  });
+      
 
     await cloudSave();
     updateCounts(); renderCards();
@@ -1948,26 +2016,26 @@ window.showView=showView;
 // HARDCODED PLAYER IMAGES
 // ═══════════════════════════════════════════════
 const DEFAULT_FACES = {
-  1:  'images/malone.jpg',
-  2:  'images/stockton.jpg',
-  3:  'images/maravich.jpeg',
-  4:  'images/mitchell.jpg',
-  5:  'images/dantley.jpg',
-  6:  'images/gobert.jpg',
-  7:  'images/griffith.jpg',
-  8:  'images/kirilenko.jpg',
-  9:  'images/okur.jpg',
-  10: 'images/dwilliams.jpg',
-  11: 'images/eaton.jpg',
-  12: 'images/bailey.jpg',
-  13: 'images/bogdanovic.jpg',
-  14: 'images/boozer.jpg',
-  15: 'images/clarkson.jpg',
-  16: 'images/hornacek.jpg',
-  17: 'images/ingles.jpg',
-  18: 'images/korver.jpg',
-  19: 'images/vwilliams.jpg',
-  999: 'images/bear.jpg'
+  1:  'malone.jpg',
+  2:  'stockton.jpg',
+  3:  'maravich.jpeg',
+  4:  'mitchell.jpg',
+  5:  'dantley.jpg',
+  6:  'gobert.jpg',
+  7:  'griffith.jpg',
+  8:  'kirilenko.jpg',
+  9:  'okur.jpg',
+  10: 'dwilliams.jpg',
+  11: 'eaton.jpg',
+  12: 'bailey.jpg',
+  13: 'bogdanovic.jpg',
+  14: 'boozer.jpg',
+  15: 'clarkson.jpg',
+  16: 'hornacek.jpg',
+  17: 'ingles.jpg',
+  18: 'korver.jpg',
+  19: 'vwilliams.jpg',
+  999:'bear.jpg'
 };
 
 async function loadDefaultFaces() {
