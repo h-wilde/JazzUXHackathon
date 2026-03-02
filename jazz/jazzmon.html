@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JazzDex</title>
+<link rel="icon" type="image/svg+xml" href="https://cdn.nba.com/logos/nba/1610612762/global/L/logo.svg">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ══ BRAND COLORS ══ */
 :root {
-  --navy:#002B5C; --gold:#F9A01B; --teal:#00B2A9;
+  --navy:#002B5C; --gold:#F9A01B; --teal:#00a9e0;
   --red:#C8102E; --cream:#F5F0E8; --bg:#001525;
   --common:#00a9e0; --rare:#00471b; --epic:#FF6D00; --legendary:#F9A01B;
 }
@@ -16,8 +16,8 @@
 body{background:var(--bg);color:var(--cream);font-family:'Barlow',sans-serif;min-height:100vh;overflow-x:hidden;}
 
 /* HEADER */
-header{background:linear-gradient(135deg,#002044,#001020);border-bottom:3px solid var(--gold);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
-.logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;color:var(--gold);text-shadow:0 0 24px rgba(249,160,27,.5);}
+header{background:linear-gradient(135deg,#002044,#001020);border-bottom:3px solid var(--gold);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;letter-spacing:4px;color:var(--gold);text-shadow:0 0 24px rgba(249,160,27,.5);}
 .logo span{color:var(--teal);}
 .hdr-right{display:flex;align-items:center;gap:16px;}
 .hdr-stats{font-family:'Barlow Condensed',sans-serif;font-size:.85rem;color:rgba(245,240,232,.55);display:flex;gap:16px;}
@@ -41,9 +41,10 @@ nav{background:var(--navy);display:flex;justify-content:center;gap:3px;padding:6
 .court-wrap::before{content:'';display:block;padding-top: min(54%, calc(100vh - 180px));}
 .court-wrap svg.floor{position:absolute;inset:0;width:100%;height:100%;}
 
-#map-view.active{display:flex;flex-direction:column;height:calc(100vh - 115px);}
-#map-view .court-wrap{position:relative;width:calc(100% - 32px);max-width:none;margin:12px auto;overflow:hidden;border:4px solid var(--gold);border-radius:10px;}
-#map-view .court-wrap::before{content:'';display:block;padding-top:54.5%;}
+#map-view.active{display:block}
+#map-view .court-wrap{position:relative;width:calc(100% - 32px);max-width:960px;margin:12px auto 0;overflow:hidden;border:4px solid var(--gold);border-radius:10px;aspect-ratio:16/9;min-height:0;}
+#map-view .court-wrap::before{display:none;}
+#map-view .court-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 #map-view .map-legend{flex-shrink:0;width:calc(100% - 32px);max-width:none;margin:0 auto 12px;border-radius:6px;}
 
 #court-view.active{display:flex;flex-direction:column;height:calc(100vh - 115px);}
@@ -62,7 +63,7 @@ nav{background:var(--navy);display:flex;justify-content:center;gap:3px;padding:6
 .char-shadow{width:26px;height:6px;background:rgba(0,0,0,.4);border-radius:50%;margin-top:-2px;animation:sh-bob 1.8s ease-in-out infinite;}
 @keyframes sh-bob{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.6)}}
 .char-tag{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;font-weight:700;background:rgba(0,0,0,.8);padding:2px 6px;border-radius:3px;white-space:nowrap;margin-top:4px;letter-spacing:.4px;border-left:2px solid currentColor;}
-.map-legend{background:var(--navy);padding:10px 20px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;border-top:1px solid rgba(249,160,27,.2);max-width:960px;margin:0 auto;}
+.map-legend{background:var(--navy);padding:10px 20px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;border-top:1px solid rgba(249,160,27,.2);border-radius:0 0 6px 6px;}
 .leg-item{display:flex;align-items:center;gap:6px;}
 .leg-dot{width:10px;height:10px;border-radius:50%;}
 .map-hint{color:rgba(245,240,232,.4);font-size:.78rem;margin-left:auto;font-style:italic;}
@@ -317,7 +318,12 @@ canvas#hoop-cv{width:100%;height:150px;display:block;border-radius:8px;backgroun
 <body>
 
 <header>
+  <div style="display:flex;align-items:center;gap:14px;">
+  <a href="https://www.nba.com/jazz" target="_blank" rel="noopener" style="display:flex;align-items:center;flex-shrink:0;">
+    <img src="https://cdn.nba.com/logos/nba/1610612762/global/L/logo.svg" alt="Utah Jazz" style="height:50px;width:auto;background:white;border-radius:6px;padding:3px 6px;filter:drop-shadow(0 0 8px rgba(249,160,27,.5));">
+  </a>
   <div class="logo">Jazz<span>Dex</span></div>
+</div>
   <div class="hdr-right">
     <div class="hdr-stats">
       <span>CAUGHT <strong id="caught-count">0</strong></span>
@@ -340,6 +346,7 @@ canvas#hoop-cv{width:100%;height:150px;display:block;border-radius:8px;backgroun
 
 <!-- MAP -->
 <div id="map-view" class="view active">
+<div style="width:calc(100% - 32px);max-width:960px;margin:12px auto 0;">
   <div class="court-wrap" id="court-map">
     <img src="images/jazz-court.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" alt="Jazz court">
   </div>
@@ -350,6 +357,7 @@ canvas#hoop-cv{width:100%;height:150px;display:block;border-radius:8px;backgroun
     <div class="leg-item"><div class="leg-dot" style="background:var(--legendary)"></div>Legendary</div>
     <span class="map-hint">Players respawn — catch multiples!</span>
   </div>
+</div>
 </div>
 
 <!-- CARDS -->
@@ -567,6 +575,20 @@ canvas#hoop-cv{width:100%;height:150px;display:block;border-radius:8px;backgroun
 
 <!-- BEAR TOAST -->
 <div class="bear-toast" id="bear-toast">🐻 JAZZ BEAR UNLOCKED!</div>
+
+<!-- INTRO OVERLAY -->
+<div id="intro-overlay" style="display:none;position:fixed;inset:0;z-index:900;background:linear-gradient(160deg,#001020ee,#002244f0);backdrop-filter:blur(8px);align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:32px;">
+  <img src="https://cdn.nba.com/logos/nba/1610612762/global/L/logo.svg" style="height:80px;margin-bottom:24px;filter:drop-shadow(0 0 20px rgba(249,160,27,.6));">
+  <div style="font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:6px;color:var(--gold);text-shadow:0 0 30px rgba(249,160,27,.5);line-height:1.1;margin-bottom:12px">Catch Jazz Legends<br>Roaming the Court!</div>
+  <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;color:rgba(245,240,232,.65);max-width:340px;line-height:1.6;margin-bottom:28px">Tap players as they appear on the map, make a basket to catch them, and build your JazzDex collection.</div>
+  <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:28px">
+    <span style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;background:rgba(0,178,169,.15);border:1px solid rgba(0,178,169,.4);color:var(--teal);padding:5px 14px;border-radius:20px">🗺 Roam the Map</span>
+    <span style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;background:rgba(249,160,27,.1);border:1px solid rgba(249,160,27,.3);color:var(--gold);padding:5px 14px;border-radius:20px">🏀 Shoot to Catch</span>
+    <span style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;background:rgba(200,16,46,.1);border:1px solid rgba(200,16,46,.3);color:#ff6b6b;padding:5px 14px;border-radius:20px">🃏 Collect Cards</span>
+  </div>
+  <button onclick="dismissIntro()" style="background:linear-gradient(135deg,var(--gold),#c87c00);color:var(--navy);border:none;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:3px;padding:12px 40px;border-radius:8px;cursor:pointer;box-shadow:0 4px 24px rgba(249,160,27,.4)">LET'S GO 🏀</button>
+  <div id="intro-countdown" style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;color:rgba(245,240,232,.25);margin-top:12px">Closing in 3…</div>
+</div>
 
 <script type="module">
 // ═══════════════════════════════════════════════
@@ -1994,6 +2016,28 @@ if(bearUnlocked) scheduleBear();
 setInterval(()=>cloudSave(),120000);
 // Sign in anonymously so we get a UID even for guests
 signInAnonymously(auth).catch(()=>{});
+
+// Intro overlay — only show to first-time visitors
+if(!localStorage.getItem('jd_seen')){
+  const overlay=document.getElementById('intro-overlay');
+  overlay.style.display='flex';
+  let secs=3;
+  const cd=document.getElementById('intro-countdown');
+  const timer=setInterval(()=>{
+    secs--;
+    if(secs<=0){ clearInterval(timer); dismissIntro(); }
+    else cd.textContent=`Closing in ${secs}…`;
+  },1000);
+  overlay._timer=timer;
+}
+window.dismissIntro=function(){
+  clearInterval(document.getElementById('intro-overlay')?._timer);
+  const overlay=document.getElementById('intro-overlay');
+  overlay.style.opacity='0';
+  overlay.style.transition='opacity .5s';
+  setTimeout(()=>overlay.style.display='none',500);
+  localStorage.setItem('jd_seen','1');
+};
 
 </script>
 </body>
